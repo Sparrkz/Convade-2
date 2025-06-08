@@ -5,13 +5,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> About Us || Convade || Convade HTML 5 Template </title>
+    <title> Login || Fistudy || Fistudy HTML 5 Template </title>
     <!-- favicons Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
     <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
-    <meta name="description" content="Convade HTML 5 Template " />
+    <meta name="description" content="fistudy HTML 5 Template " />
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,11 +23,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap"
         rel="stylesheet">
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
-
 
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
@@ -65,9 +60,6 @@
     <link rel="stylesheet" href="assets/css/module-css/page-header.css" />
     <link rel="stylesheet" href="assets/css/module-css/become-a-teacher.css" />
     <link rel="stylesheet" href="assets/css/module-css/shop.css" />
-    <link rel="stylesheet" href="assets/css/module-css/faq.css" />
-    <link rel="stylesheet" href="assets/css/module-css/error.css" /> 
-    <!-- <link rel="stylesheet" href="assets/css/dark.css" /> -->
 
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -279,8 +271,7 @@
                                             <li><a href="cart.html">Cart</a></li>
                                             <li><a href="checkout.html">Checkout</a></li>
                                             <li><a href="wishlist.html">Wishlist</a></li>
-                                            <li><a href="sign-up.html">Sign Up</a></li>
-                                            <li><a href="login.html">Login</a></li>
+                                           
                                         </ul>
                                     </li>
                                     <li class="dropdown">
@@ -360,12 +351,12 @@
                             <img src="assets/images/shapes/page-header-shape-3.png" alt="">
                         </div>
                     </div>
-                    <h2>About Us</h2>
+                    <h2>Login</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li><a href="index.html">Home</a></li>
                             <li><span>//</span></li>
-                            <li>About Us</li>
+                            <li>Login</li>
                         </ul>
                     </div>
                 </div>
@@ -373,515 +364,62 @@
         </section>
         <!--Page Header End-->
 
-        <!--About Three Start-->
-        <section class="about-three">
-            <div class="about-three__shape-2 rotate-me"></div>
-            <div class="about-three__shape-3 text-rotate-box"></div>
-            <div class="about-three__shape-4 float-bob-y"></div>
+        <!--Start Login One-->
+        <section class="login-one">
             <div class="container">
-                <div class="row">
-                    <div class="col-xl-7">
-                        <div class="about-three__left wow slideInLeft" data-wow-delay="100ms"
-                            data-wow-duration="2500ms">
-                            <div class="about-three__shape-1 img-bounce">
-                                <img src="assets/images/shapes/about-three-shape-1.png" alt="">
-                            </div>
-                            <div class="about-three__img-box">
-                                <div class="about-three__img-one">
-                                    <img src="assets/images/resources/about-three-img-1.jpg" alt="">
-                                </div>
-                                <div class="about-three__img-two">
-                                    <img src="assets/images/resources/about-three-img-2.jpg" alt="">
-                                </div>
-                                <div class="about-three__experience-box">
-                                    <div class="about-three__experience-box-inner">
-                                        <div class="about-three__experience-icon">
-                                            <img src="assets/images/icon/about-three-experience-icon.png" alt="">
-                                        </div>
-                                        <div class="about-three__experience-count-box">
-                                            <div class="about-three__experience-count">
-                                                <h3 class="odometer" data-count="25">00</h3>
-                                                <span>+</span>
-                                                <p>Years</p>
-                                            </div>
-                                            <p>of experience</p>
-                                        </div>
+                <div class="login-one__form">
+                    <div class="inner-title text-center">
+                        <h2>Login Here</h2>
+                    </div>
+                    <form id="login-one__form" name="Login-one_form" action="#" method="post">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="form-group">
+                                    <div class="input-box">
+                                        <input type="email" name="form_email" id="formEmail" placeholder="Email..."
+                                            required="" value="">
                                     </div>
-                                    <div class="about-three__experience-box-shape"></div>
                                 </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="form-group">
+                                    <div class="input-box">
+                                        <input type="text" name="form_password" id="formPassword"
+                                            placeholder="Password..." required="" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="form-group">
+                                    <button class="thm-btn" type="submit" data-loading-text="Please wait...">Login
+                                        Here</button>
+                                </div>
+                            </div>
+                            <div class="remember-forget">
+                                <div class="checked-box1">
+                                    <input type="checkbox" name="saveMyInfo" id="saveinfo" checked="">
+                                    <label for="saveinfo">
+                                        <span></span>
+                                        Remember me
+                                    </label>
+                                </div>
+                                <div class="forget">
+                                    <a href="#">Forget password?</a>
+                                </div>
+                            </div>
+
+                            <div class="create-account text-center">
+                                <p>Not registered yet? <a href="sign-up.html">Create an Account</a></p>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-5">
-                        <div class="about-three__right">
-                            <div class="section-title-two text-left sec-title-animation animation-style2">
-                                <div class="section-title-two__tagline-box">
-                                    <div class="section-title-two__tagline-shape">
-                                        <img src="assets/images/shapes/section-title-two-shape-1.png" alt="">
-                                    </div>
-                                    <span class="section-title-two__tagline">About Us</span>
-                                </div>
-                                <h2 class="section-title-two__title title-animation">Behind the Scenes: Discover the
-                                    People & Passion <span>Behind</span>
-                                </h2>
-                            </div>
-                            <p class="about-three__text-1">Meet the talented individuals who bring our vision to life
-                                every day. With a shared passion and commitment, our team works tirelessly to deliver
-                                exceptional quality and innovation.</p>
-                            <div class="about-three__mission-vission">
-                                <div class="about-three__tab-box tabs-box">
-                                    <ul class="tab-buttons clearfix list-unstyled">
-                                        <li data-tab="#mission" class="tab-btn active-btn"><span>Our Mission</span></li>
-                                        <li data-tab="#vission" class="tab-btn"><span>Our Vision</span></li>
-                                    </ul>
-                                    <div class="tabs-content">
-                                        <!--tab-->
-                                        <div class="tab active-tab" id="mission">
-                                            <div class="tabs-content__inner">
-                                                <ul class="list-unstyled about-three__mission-vission-list">
-                                                    <li>
-                                                        <div class="about-three__mission-vission-content">
-                                                            <h4 class="about-three__mission-vission-title">It provides
-                                                                tools for course creation</h4>
-                                                            <p class="about-three__mission-vission-text">enrollment
-                                                                management, and tracking learner progress, ensuring a
-                                                                streamlined learning experience.</p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="about-three__mission-vission-content">
-                                                            <h4 class="about-three__mission-vission-title">Many LMS
-                                                                platforms include collaborative </h4>
-                                                            <p class="about-three__mission-vission-text">collaborative
-                                                                features such as discussion forums, messaging, and group
-                                                                projects, which facilitate interaction and communication
-                                                                among learners</p>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!--tab-->
-                                        <!--tab-->
-                                        <div class="tab" id="vission">
-                                            <div class="tabs-content__inner">
-                                                <ul class="list-unstyled about-three__mission-vission-list">
-                                                    <li>
-                                                        <div class="about-three__mission-vission-content">
-                                                            <h4 class="about-three__mission-vission-title">It provides
-                                                                tools for course creation</h4>
-                                                            <p class="about-three__mission-vission-text">enrollment
-                                                                management, and tracking learner progress, ensuring a
-                                                                streamlined learning experience.</p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="about-three__mission-vission-content">
-                                                            <h4 class="about-three__mission-vission-title">Many LMS
-                                                                platforms include collaborative </h4>
-                                                            <p class="about-three__mission-vission-text">collaborative
-                                                                features such as discussion forums, messaging, and group
-                                                                projects, which facilitate interaction and communication
-                                                                among learners</p>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!--tab-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </section>
-        <!--About Three End-->
-
-        <!--Why Choose Three Start-->
-        <section class="why-choose-three">
-            <div class="why-choose-three__shape-1 img-bounce"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6">
-                        <div class="why-choose-three__left">
-                            <div class="section-title-two text-left sec-title-animation animation-style2">
-                                <div class="section-title-two__tagline-box">
-                                    <div class="section-title-two__tagline-shape">
-                                        <img src="assets/images/shapes/section-title-two-shape-1.png" alt="">
-                                    </div>
-                                    <span class="section-title-two__tagline">Why Choose Us</span>
-                                </div>
-                                <h2 class="section-title-two__title title-animation">Discover Why Our Student <br> and
-                                    Clients <span>Choose Us</span>
-                                </h2>
-                            </div>
-                            <p class="why-choose-three__text-1">Meet the talented individuals who bring our vision to
-                                life every day. With a shared passion and commitment, our team works tirelessly to
-                                deliver exceptional quality and innovation. Discover the stories, skills, and dedication
-                                that make us who we are.</p>
-                            <div class="why-choose-three__ceo-speech-box">
-                                <div class="why-choose-three__ceo-speech">
-                                    <div class="why-choose-three__ceo-img-two">
-                                        <img src="assets/images/resources/why-choose-three-ceo-img-two.jpg" alt="">
-                                    </div>
-                                    <div class="why-choose-three__ceo-details">
-                                        <div class="why-choose-three__ceo-img">
-                                            <img src="assets/images/resources/why-choose-three-ceo-img.jpg" alt="">
-                                        </div>
-                                        <div class="why-choose-three__ceo-content">
-                                            <p>CEO & FOUNDER</p>
-                                            <h5>Jordan Williamson</h5>
-                                        </div>
-                                    </div>
-                                    <p class="why-choose-three__ceo-text">It’s an honor to be here with all of you
-                                        today,
-                                        especially at such a pivotal moment in the world of education and technology. As
-                                        we
-                                        gather here, we’re witnessing rapid shifts in how people learn, work, and grow,
-                                        and
-                                        our mission at Convade has never felt more relevant.</p>
-                                </div>
-                                <div class="why-choose-three__ceo-speech-border"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <div class="why-choose-three__right">
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <ul class="list-unstyled why-choose-three__feature">
-                                        <li>
-                                            <div class="why-choose-three__feature-single">
-                                                <div class="why-choose-three__feature-img">
-                                                    <img src="assets/images/icon/why-choose-three-feature-1.png" alt="">
-                                                </div>
-                                                <div class="why-choose-three__feature-content">
-                                                    <h4 class="why-choose-three__feature-title">AI-Driven
-                                                        Personalization</h4>
-                                                    <p class="why-choose-three__feature-text">Our platform leverages AI
-                                                        to tailor learning paths to individual users. This means each
-                                                        learner receives</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="why-choose-three__feature-single">
-                                                <div class="why-choose-three__feature-img">
-                                                    <img src="assets/images/icon/why-choose-three-feature-2.png" alt="">
-                                                </div>
-                                                <div class="why-choose-three__feature-content">
-                                                    <h4 class="why-choose-three__feature-title">Mobile-Optimized
-                                                        Learning</h4>
-                                                    <p class="why-choose-three__feature-text">With a fully responsive
-                                                        mobile interface, learners can access courses</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <ul class="list-unstyled why-choose-three__feature why-choose-three__feature--two">
-                                        <li>
-                                            <div class="why-choose-three__feature-single">
-                                                <div class="why-choose-three__feature-img">
-                                                    <img src="assets/images/icon/why-choose-three-feature-3.png" alt="">
-                                                </div>
-                                                <div class="why-choose-three__feature-content">
-                                                    <h4 class="why-choose-three__feature-title">Gamified Learning
-                                                        Modules</h4>
-                                                    <p class="why-choose-three__feature-text">Our platform leverages AI
-                                                        to tailor learning paths to individual users. This means each
-                                                        learner receives </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="why-choose-three__feature-single">
-                                                <div class="why-choose-three__feature-img">
-                                                    <img src="assets/images/icon/why-choose-three-feature-4.png" alt="">
-                                                </div>
-                                                <div class="why-choose-three__feature-content">
-                                                    <h4 class="why-choose-three__feature-title">Real-Time Analytics and
-                                                        Reporting</h4>
-                                                    <p class="why-choose-three__feature-text">Administrators and
-                                                        educators can access real-time data insights, enabling them.</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Why Choose Three End-->
-
-        <!-- Counter One Start -->
-        <section class="counter-one">
-            <div class="counter-one__bg" style="background-image: url(assets/images/backgrounds/counter-one-bg.jpg);">
-                <div class="counter-one__video-link">
-                    <div class="counter-one__video-shape-1">
-                        <img src="assets/images/shapes/counter-one-video-shape-1.png" alt="">
-                    </div>
-                    <a href="https://www.youtube.com/watch?v=Get7rqXYrbQ" class="video-popup">
-                        <div class="counter-one__video-icon">
-                            <span class="icon-play"></span>
-                            <i class="ripple"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="counter-one__shape-1"
-                style="background-image: url(assets/images/shapes/counter-one-shape-1.png);"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-8">
-                        <div class="counter-one__left">
-                            <ul class="counter-one__list list-unstyled">
-                                <li>
-                                    <div class="counter-one__count-hover-img"
-                                        style="background-image: url(assets/images/resources/counter-one-single-hover-img.jpg);">
-                                    </div>
-                                    <div class="counter-one__count count-box">
-                                        <h3 class="count-text" data-stop="10" data-speed="1500">00</h3>
-                                        <span>k</span>
-                                    </div>
-                                    <p>Student Trained</p>
-                                </li>
-                                <li>
-                                    <div class="counter-one__count-hover-img"
-                                        style="background-image: url(assets/images/resources/counter-one-single-hover-img.jpg);">
-                                    </div>
-                                    <div class="counter-one__count count-box">
-                                        <h3 class="count-text" data-stop="50" data-speed="1500">00</h3>
-                                        <span>+</span>
-                                    </div>
-                                    <p>Recorded Courses</p>
-                                </li>
-                                <li>
-                                    <div class="counter-one__count-hover-img"
-                                        style="background-image: url(assets/images/resources/counter-one-single-hover-img.jpg);">
-                                    </div>
-                                    <div class="counter-one__count count-box">
-                                        <h3 class="count-text" data-stop="15" data-speed="1500">00</h3>
-                                        <span>M</span>
-                                    </div>
-                                    <p>Satisfaction Rate</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Counter One End -->
-
-        <!--Testimonial Two Start -->
-        <section class="testimonial-two">
-            <div class="testimonial-two__shape-6">
-                <img src="assets/images/shapes/testimonial-two-shape-6.png" alt="">
-            </div>
-            <div class="testimonial-two__shape-1">
-                <img src="assets/images/shapes/testimonial-two-shape-1.png" alt="">
-                <div class="testimonial-two__shape-icon-1">
-                    <img src="assets/images/icon/testimonial-two-shape-icon-1.png" alt="" class="zoom-fade">
-                </div>
-                <div class="testimonial-two__shape-img-2">
-                    <img src="assets/images/testimonial/testimonial-two-shape-img-2.jpg" alt="">
-                </div>
-                <div class="testimonial-two__shape-img-3 img-bounce">
-                    <img src="assets/images/testimonial/testimonial-two-shape-img-3.jpg" alt="">
-                </div>
-            </div>
-            <div class="testimonial-two__shape-2">
-                <img src="assets/images/shapes/testimonial-two-shape-2.png" alt="">
-                <div class="testimonial-two__shape-icon-2 float-bob-y">
-                    <img src="assets/images/icon/testimonial-two-shape-icon-2.png" alt="">
-                </div>
-                <div class="testimonial-two__shape-img-1 zoom-fade">
-                    <img src="assets/images/testimonial/testimonial-two-shape-img-1.jpg" alt="">
-                </div>
-            </div>
-            <div class="testimonial-two__shape-3 float-bob-x">
-                <img src="assets/images/shapes/testimonial-two-shape-3.png" alt="">
-            </div>
-            <div class="testimonial-two__shape-4"></div>
-            <div class="testimonial-two__shape-5"></div>
-            <div class="container">
-                <div class="testimonial-two__inner">
-                    <div class="testimonial-two__quote">
-                        <span class="icon-quote"></span>
-                    </div>
-                    <div class="testimonial-two__slider">
-
-                        <div class="testimonial-two__main-content">
-                            <div class="testimonial-two__carousel owl-carousel owl-theme">
-                                <div class="testimonial-two__item">
-                                    <div class="testimonial-two__inner-content">
-                                        <div class="testimonial-two__rating">
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                        </div>
-                                        <p class="testimonial-two__text"> It has survived not only five centuries,
-                                            but
-                                            also the leap into electronic<br> typesetting, remaining essentially
-                                            unchanged.
-                                            It was popularised in the<br> 1960s with the release of Letraset sheets
-                                            containing Lorem Ipsum<br> passages, and more recently with desktop
-                                            publishing
-                                            software like Aldus<br> PageMaker including versions of Lorem Ipsum.</p>
-                                        <div class="testimonial-two__client-info">
-                                            <div class="testimonial-two__client-logo">
-                                                <img src="assets/images/testimonial/testimonial-two-client-logo.png"
-                                                    alt="">
-                                            </div>
-                                            <div class="testimonial-two__client-name-box">
-                                                <h4 class="testimonial-two__client-name"><a
-                                                        href="testimonials.html">Mitchel Clack</a></h4>
-                                                <p class="testimonial-two__client-sub-title">Tech Specialist</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="testimonial-two__item">
-                                    <div class="testimonial-two__inner-content">
-                                        <div class="testimonial-two__rating">
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                        </div>
-                                        <p class="testimonial-two__text"> It has survived not only five centuries,
-                                            but
-                                            also the leap into electronic<br> typesetting, remaining essentially
-                                            unchanged.
-                                            It was popularised in the<br> 1960s with the release of Letraset sheets
-                                            containing Lorem Ipsum<br> passages, and more recently with desktop
-                                            publishing
-                                            software like Aldus<br> PageMaker including versions of Lorem Ipsum.</p>
-                                        <div class="testimonial-two__client-info">
-                                            <div class="testimonial-two__client-logo">
-                                                <img src="assets/images/testimonial/testimonial-two-client-logo.png"
-                                                    alt="">
-                                            </div>
-                                            <div class="testimonial-two__client-name-box">
-                                                <h4 class="testimonial-two__client-name"><a
-                                                        href="testimonials.html">Mitchela Smith</a></h4>
-                                                <p class="testimonial-two__client-sub-title">Tech Specialist</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="testimonial-two__item">
-                                    <div class="testimonial-two__inner-content">
-                                        <div class="testimonial-two__rating">
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                        </div>
-                                        <p class="testimonial-two__text"> It has survived not only five centuries,
-                                            but
-                                            also the leap into electronic<br> typesetting, remaining essentially
-                                            unchanged.
-                                            It was popularised in the<br> 1960s with the release of Letraset sheets
-                                            containing Lorem Ipsum<br> passages, and more recently with desktop
-                                            publishing
-                                            software like Aldus<br> PageMaker including versions of Lorem Ipsum.</p>
-                                        <div class="testimonial-two__client-info">
-                                            <div class="testimonial-two__client-logo">
-                                                <img src="assets/images/testimonial/testimonial-two-client-logo.png"
-                                                    alt="">
-                                            </div>
-                                            <div class="testimonial-two__client-name-box">
-                                                <h4 class="testimonial-two__client-name"><a
-                                                        href="testimonials.html">Sarah Smith</a></h4>
-                                                <p class="testimonial-two__client-sub-title">Tech Specialist</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="testimonial-two__thumb-outer-box">
-                            <div class="testimonial-two__thumb-carousel owl-carousel owl-theme">
-                                <div class="testimonial-two__thumb-item">
-                                    <div class="testimonial-two__img-holder-box">
-                                        <div class="testimonial-two__img-holder">
-                                            <img src="assets/images/testimonial/testimonial-2-1.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="testimonial-two__thumb-item">
-                                    <div class="testimonial-two__img-holder-box">
-                                        <div class="testimonial-two__img-holder">
-                                            <img src="assets/images/testimonial/testimonial-2-2.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="testimonial-two__thumb-item">
-                                    <div class="testimonial-two__img-holder-box">
-                                        <div class="testimonial-two__img-holder">
-                                            <img src="assets/images/testimonial/testimonial-2-3.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Testimonial Two End -->
-
-        <!-- Sliding Text Three Start-->
-        <section class="sliding-text-three sliding-text-four">
-            <div class="sliding-text-three__wrap">
-                <ul class="sliding-text-three__list list-unstyled marquee_mode">
-                    <li>
-                        <h2 data-hover="20+ Instructor " class="sliding-text-three__title count-box">Testimonial
-                            <img src="assets/images/shapes/sliding-text-three-shape-1.png" alt=""></h2>
-                    </li>
-                    <li>
-                        <h2 data-hover="20+ Instructor " class="sliding-text-three__title count-box">Testimonial
-                            <img src="assets/images/shapes/sliding-text-three-shape-1.png" alt=""></h2>
-                    </li>
-                    <li>
-                        <h2 data-hover="20+ Instructor " class="sliding-text-three__title count-box">Testimonial
-                            <img src="assets/images/shapes/sliding-text-three-shape-1.png" alt=""></h2>
-                    </li>
-                    <li>
-                        <h2 data-hover="20+ Instructor " class="sliding-text-three__title count-box">Testimonial
-                            <img src="assets/images/shapes/sliding-text-three-shape-1.png" alt=""></h2>
-                    </li>
-                    <li>
-                        <h2 data-hover="20+ Instructor " class="sliding-text-three__title count-box">Testimonial
-                            <img src="assets/images/shapes/sliding-text-three-shape-1.png" alt=""></h2>
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <!-- Sliding Text Three End -->
-
+        <!--End Login One-->
 
         <!--Newsletter Two Start -->
-        <section class="newsletter-two newsletter-three">
+        <section class="newsletter-two">
             <div class="container">
                 <div class="newsletter-two__inner">
                     <div class="newsletter-two__img">
@@ -1077,7 +615,7 @@
                         <div class="col-xl-12">
                             <div class="site-footer__bottom-inner">
                                 <div class="site-footer__copyright">
-                                    <p class="site-footer__copyright-text">Copyright © 2025 <a href="#">Convade</a>. All
+                                    <p class="site-footer__copyright-text">Copyright © 2025 <a href="#">FiStudy</a>. All
                                         Rights Reserved</p>
                                 </div>
                                 <div class="site-footer__bottom-card-box">
@@ -1121,7 +659,7 @@
             <ul class="mobile-nav__contact list-unstyled">
                 <li>
                     <i class="fa fa-envelope"></i>
-                    <a href="mailto:needhelp@packageName__.com">needhelp@Convade.com</a>
+                    <a href="mailto:needhelp@packageName__.com">needhelp@fistudy.com</a>
                 </li>
                 <li>
                     <i class="fas fa-phone"></i>

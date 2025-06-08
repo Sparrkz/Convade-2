@@ -75,7 +75,7 @@
 .banner-one__title-box-shape {
   position: absolute;
   bottom: -17px;
-  left: 0;
+  right: 0;
 }
 
 .banner-one__title-box-shape img {
@@ -120,7 +120,7 @@
 }
 
 .banner-one__btn-box .thm-btn {
-  background-color: var(--Convade-primary);
+  background-color: var(--fistudy-primary);
 }
 
 .banner-one__other-btn-box {
@@ -138,35 +138,35 @@
   flex-wrap: wrap;
   gap: 7px;
   font-size: 14px;
-  color: var(--Convade-black);
+  color: var(--fistudy-black);
   font-weight: 500;
   font-style: italic;
-  font-family: var(--Convade-font-two);
-  border: 1px solid var(--Convade-bdr-color);
-  background-color: var(--Convade-white);
+  font-family: var(--fistudy-font-two);
+  border: 1px solid var(--fistudy-bdr-color);
+  background-color: var(--fistudy-white);
   padding: 9px 20px 8px;
   border-radius: 23px;
 }
 
 .banner-one__other-btn-1 span {
-  color: var(--Convade-base);
+  color: var(--fistudy-base);
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 
 .banner-one__other-btn-1:hover {
-  background-color: var(--Convade-base);
-  color: var(--Convade-white);
+  background-color: var(--fistudy-base);
+  color: var(--fistudy-white);
 }
 
 .banner-one__other-btn-2 span {
-  color: var(--Convade-primary);
+  color: var(--fistudy-primary);
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
 
 .banner-one__other-btn-1:hover span {
-  color: var(--Convade-white);
+  color: var(--fistudy-white);
 }
 
 .banner-one__right {
@@ -262,7 +262,7 @@
 
 .banner-one__udemy-review {
   position: absolute;
-  background-color: var(--Convade-white);
+  background-color: var(--fistudy-white);
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.06);
   border-radius: 16px;
   padding: 18px 15px 18px;
@@ -283,7 +283,7 @@
 .banner-one__udemy-review-img img {
   width: 100%;
   border-radius: 50%;
-  border: 1px solid var(--Convade-black);
+  border: 1px solid var(--fistudy-black);
 }
 
 .banner-one__udemy-review-logo {
@@ -305,7 +305,7 @@
 
 .banner-one__udemy-review-client-name {
   font-size: 16px;
-  color: var(--Convade-gray);
+  color: var(--fistudy-gray);
   font-weight: 600;
   line-height: 16px;
 }
@@ -321,12 +321,12 @@
   position: relative;
   display: inline-block;
   font-size: 13px;
-  color: var(--Convade-primary);
+  color: var(--fistudy-primary);
 }
 
 .banner-one__student-trained {
   position: absolute;
-  background-color: var(--Convade-white);
+  background-color: var(--fistudy-white);
   box-shadow: 0px 0px 80px rgba(104, 126, 255, 0.47);
   border-radius: 12px;
   padding: 15px 15px 15px;
@@ -371,7 +371,7 @@
 .banner-one__student-trained-img img {
   width: 100%;
   border-radius: 50%;
-  border: 1px solid var(--Convade-bdr-color);
+  border: 1px solid var(--fistudy-bdr-color);
 }
 
 .banner-one__student-trained-count-box {
@@ -388,28 +388,28 @@
 
 .banner-one__student-trained-count-box-inner p {
   font-size: 24px;
-  color: var(--Convade-base);
+  color: var(--fistudy-base);
   font-weight: 700;
   line-height: 30px;
   font-style: italic;
-  font-family: var(--Convade-font-two);
+  font-family: var(--fistudy-font-two);
 }
 
 .banner-one__student-trained-count-box-inner span {
   font-size: 24px;
-  color: var(--Convade-base);
+  color: var(--fistudy-base);
   font-weight: 700;
   line-height: 30px;
   font-style: italic;
-  font-family: var(--Convade-font-two);
+  font-family: var(--fistudy-font-two);
 }
 
 .banner-one__student-trained-text {
   font-size: 16px;
   font-weight: 500;
-  color: var(--Convade-black);
+  color: var(--fistudy-black);
   font-style: italic;
-  font-family: var(--Convade-font-two);
+  font-family: var(--fistudy-font-two);
 }
 
 .banner-one__category-search-box {
@@ -436,8 +436,8 @@
 }
 
 .banner-one__category-select-box .select-box .nice-select {
-  background-color: var(--Convade-white);
-  color: var(--Convade-gray);
+  background-color: var(--fistudy-white);
+  color: var(--fistudy-gray);
   font-size: 16px;
   font-weight: 400;
   height: 60px;
@@ -468,13 +468,13 @@
 
 .banner-one__category-input input[type="search"] {
   font-size: 16px;
-  color: var(--Convade-gray);
+  color: var(--fistudy-gray);
   font-weight: 400;
   height: 60px;
   width: 100%;
-  background: var(--Convade-white);
+  background: var(--fistudy-white);
   border: none;
-  border-left: 1px solid var(--Convade-bdr-color);
+  border-left: 1px solid var(--fistudy-bdr-color);
   outline: none;
   padding: 0 20px 0;
   padding-right: 133px;
@@ -487,10 +487,10 @@
   top: 7px;
   right: 7px;
   border: none;
-  background-color: var(--Convade-base);
+  background-color: var(--fistudy-base);
   font-size: 18px;
   line-height: 18px;
-  color: var(--Convade-white);
+  color: var(--fistudy-white);
   font-weight: 500;
   padding: 14px 30px;
   border-radius: 10px;
@@ -500,7 +500,7 @@
 }
 
 .banner-one__category-btn:hover {
-  background-color: var(--Convade-black);
+  background-color: var(--fistudy-black);
 }
 
 .banner-one__tags {
@@ -519,16 +519,16 @@
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  border: 1px solid var(--Convade-bdr-color);
-  color: var(--Convade-base);
-  background-color: var(--Convade-white);
+  border: 1px solid var(--fistudy-bdr-color);
+  color: var(--fistudy-base);
+  background-color: var(--fistudy-white);
   padding: 6px 20px 6px;
   border-radius: 8px;
 }
 
 .banner-one__tags a:hover {
-  background-color: var(--Convade-base);
-  color: var(--Convade-white);
+  background-color: var(--fistudy-base);
+  color: var(--fistudy-white);
 }
 
 /*--------------------------------------------------------------
@@ -678,11 +678,11 @@
 
 .banner-two__sub-title {
   font-size: 24px;
-  color: var(--Convade-base);
+  color: var(--fistudy-base);
   font-weight: 600;
   font-style: italic;
   line-height: 30px;
-  font-family: var(--Convade-font-two);
+  font-family: var(--fistudy-font-two);
 }
 
 .banner-two__title {
@@ -699,7 +699,7 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-  font-family: var(--Convade-font-two);
+  font-family: var(--fistudy-font-two);
   font-weight: 400;
   font-style: italic;
 }
@@ -724,19 +724,19 @@
 }
 
 .banner-two__btn-box .thm-btn-two span {
-  background-color: var(--Convade-base);
+  background-color: var(--fistudy-base);
 }
 
 .banner-two__btn-box .thm-btn-two span::before {
-  background-color: var(--Convade-primary);
+  background-color: var(--fistudy-primary);
 }
 
 .banner-two__btn-box .thm-btn-two>i {
-  background-color: var(--Convade-base);
+  background-color: var(--fistudy-base);
 }
 
 .banner-two__btn-box .thm-btn-two i::after {
-  background-color: var(--Convade-primary);
+  background-color: var(--fistudy-primary);
 }
 
 .banner-two__success-student {
@@ -774,7 +774,7 @@
 .banner-two__success-student-img img {
   width: 100%;
   border-radius: 50%;
-  border: 1px solid var(--Convade-bdr-color);
+  border: 1px solid var(--fistudy-bdr-color);
 }
 
 .banner-two__success-student-content {
@@ -795,18 +795,18 @@
 
 .banner-two__success-student-count-box p {
   font-size: 24px;
-  color: var(--Convade-base);
+  color: var(--fistudy-base);
   font-weight: 600;
   line-height: 24px !important;
-  font-family: var(--Convade-font-two) !important;
+  font-family: var(--fistudy-font-two) !important;
 }
 
 .banner-two__success-student-count-box span {
   font-size: 24px;
-  color: var(--Convade-base);
+  color: var(--fistudy-base);
   font-weight: 600;
   line-height: 24px;
-  font-family: var(--Convade-font-two);
+  font-family: var(--fistudy-font-two);
 }
 
 .banner-two__success-student-text {
@@ -858,7 +858,7 @@
   line-height: 40px;
   text-align: center;
   font-size: 15px;
-  color: var(--Convade-white);
+  color: var(--fistudy-white);
   background-color: #F70DC5;
   border-radius: 50%;
   margin: 0 auto 0;
@@ -870,8 +870,8 @@
 }
 
 .banner-two__video-icon:hover {
-  background-color: var(--Convade-primary);
-  color: var(--Convade-white);
+  background-color: var(--fistudy-primary);
+  color: var(--fistudy-white);
 }
 
 .banner-two__video-link .ripple,
@@ -965,7 +965,7 @@
 .banner-two__course-discount {
   position: relative;
   display: block;
-  background-color: var(--Convade-white);
+  background-color: var(--fistudy-white);
   box-shadow: 0px 0px 20px rgba(190, 190, 190, 0.38);
   border-radius: 13px;
   padding: 14px 14px 19px;
@@ -1015,12 +1015,12 @@
   top: 10px;
   left: 10px;
   background-color: #FFC224;
-  border: 1px solid var(--Convade-black);
+  border: 1px solid var(--fistudy-black);
   border-radius: 7px;
   font-size: 12px;
   line-height: 12px;
   font-weight: 600;
-  color: var(--Convade-black);
+  color: var(--fistudy-black);
   padding: 5px 5px 5px;
   z-index: 2;
 }
@@ -1039,16 +1039,16 @@
 }
 
 .banner-two__course-discount-title a {
-  color: var(--Convade-black);
+  color: var(--fistudy-black);
 }
 
 .banner-two__course-discount-title a:hover {
-  color: var(--Convade-base);
+  color: var(--fistudy-base);
 }
 
 .banner-two__course-discount-price {
   font-size: 18px;
-  color: var(--Convade-primary);
+  color: var(--fistudy-primary);
   font-weight: 500;
   line-height: 18px;
 }
@@ -1062,13 +1062,13 @@
 .banner-two__course-discount-rating-text {
   font-size: 12px;
   font-weight: 500;
-  color: var(--Convade-black);
+  color: var(--fistudy-black);
   line-height: 12px;
   margin-bottom: 2px;
 }
 
 .banner-two__course-discount-rating-text span {
-  color: var(--Convade-gray);
+  color: var(--fistudy-gray);
 }
 
 .banner-two__course-discount-star {
@@ -1100,14 +1100,14 @@
   justify-content: center;
   width: 36px;
   height: 24px;
-  background-color: var(--Convade-base);
-  color: var(--Convade-white);
+  background-color: var(--fistudy-base);
+  color: var(--fistudy-white);
   font-size: 12px;
   border-radius: 100px;
 }
 
 .banner-two__course-discount-arrow a:hover {
-  background-color: var(--Convade-primary);
+  background-color: var(--fistudy-primary);
 }
 
 .banner-two__content-two {
@@ -1181,7 +1181,7 @@
   left: 6px;
   right: -6px;
   bottom: -6px;
-  border: 2px solid var(--Convade-black);
+  border: 2px solid var(--fistudy-black);
   border-radius: 45px;
   z-index: -1;
 
@@ -1216,24 +1216,24 @@
 
 .banner-two__experience-count>h3 {
   font-size: 24px;
-  color: var(--Convade-base);
+  color: var(--fistudy-base);
   font-weight: 600;
   line-height: 24px !important;
-  font-family: var(--Convade-font-two) !important;
+  font-family: var(--fistudy-font-two) !important;
 }
 
 .banner-two__experience-count span {
   font-size: 24px;
   font-weight: 600;
   line-height: 24px !important;
-  font-family: var(--Convade-font-two) !important;
-  color: var(--Convade-base);
+  font-family: var(--fistudy-font-two) !important;
+  color: var(--fistudy-base);
 }
 
 .banner-two__experience-count>p {
   font-weight: 600;
-  font-family: var(--Convade-font-two);
-  color: var(--Convade-black);
+  font-family: var(--fistudy-font-two);
+  color: var(--fistudy-black);
   text-transform: capitalize;
   position: relative;
   top: 3px;
@@ -1244,8 +1244,8 @@
 
 .banner-two__experience-count-box>p {
   font-weight: 600;
-  font-family: var(--Convade-font-two);
-  color: var(--Convade-black);
+  font-family: var(--fistudy-font-two);
+  color: var(--fistudy-black);
   text-transform: lowercase;
   font-size: 16px;
   line-height: 26px;
