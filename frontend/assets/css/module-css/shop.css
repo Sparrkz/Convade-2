@@ -29,7 +29,7 @@ Product
 .shop-search {
     position: relative;
     display: block;
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
     padding: 30px 30px 30px;
 }
 
@@ -41,12 +41,12 @@ Product
 .shop-search form input[type=text] {
     width: 100%;
     height: 60px;
-    background-color: var(--Convade-white);
+    background-color: var(--fistudy-white);
     padding-left: 30px;
     padding-right: 60px;
     font-size: 16px;
-    color: var(--Convade-gray);
-    font-family: var(--Convade-font);
+    color: var(--fistudy-gray);
+    font-family: var(--fistudy-font);
     border: none;
     outline: none;
     font-weight: 500;
@@ -58,8 +58,8 @@ Product
 }
 
 .shop-search form button[type="submit"] {
-    background-color: var(--Convade-base);
-    color: var(--Convade-white);
+    background-color: var(--fistudy-base);
+    color: var(--fistudy-white);
     font-size: 18px;
     position: absolute;
     top: 5px;
@@ -78,15 +78,15 @@ Product
 }
 
 .shop-search form button:hover[type="submit"] {
-    background-color: var(--Convade-black);
-    color: var(--Convade-white);
+    background-color: var(--fistudy-black);
+    color: var(--fistudy-white);
 }
 
 .product__price-ranger {
     position: relative;
     padding: 28px 30px 27px;
     margin: 0;
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
 }
 
 .product__price-ranger.price-ranger {
@@ -95,7 +95,7 @@ Product
 }
 
 .product__price-ranger .price-ranger .ui-widget-content {
-    background: var(--Convade-white);
+    background: var(--fistudy-white);
     border: none;
     height: 5px;
 }
@@ -103,7 +103,7 @@ Product
 .product__price-ranger .price-ranger .ui-slider-handle {
     position: absolute;
     top: -5px;
-    background: var(--Convade-base);
+    background: var(--fistudy-base);
     border: 0;
     height: 14px;
     width: 14px !important;
@@ -115,7 +115,7 @@ Product
 }
 
 .product__price-ranger .price-ranger .ui-slider .ui-slider-range {
-    background: var(--Convade-base);
+    background: var(--fistudy-base);
 }
 
 .product__price-ranger .price-ranger #slider-range {
@@ -137,11 +137,11 @@ Product
 .product__price-ranger .price-ranger .ranger-min-max-block input[type="submit"] {
     position: relative;
     display: block;
-    background: var(--Convade-black);
+    background: var(--fistudy-black);
     float: right;
     text-align: center;
     border: none;
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
     font-size: 12px;
     font-weight: 700;
     margin-top: 0;
@@ -155,7 +155,7 @@ Product
 .product__price-ranger .price-ranger .ranger-min-max-block input[type="text"] {
     position: relative;
     display: inline-block;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     font-size: 14px;
     font-weight: 400;
     width: 40px;
@@ -169,7 +169,7 @@ Product
 .product__price-ranger .price-ranger .ranger-min-max-block span {
     position: relative;
     display: inline-block;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     font-size: 14px;
     font-weight: 400;
     line-height: 40px;
@@ -179,7 +179,7 @@ Product
 .shop-category {
     position: relative;
     display: block;
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
     padding: 29px 15px 15px;
 }
 
@@ -198,7 +198,7 @@ Product
     line-height: 24px;
     font-size: 16px;
     text-transform: capitalize;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     margin-bottom: 5px;
 }
 
@@ -212,7 +212,7 @@ Product
     line-height: 24px;
     font-size: 16px;
     text-transform: capitalize;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     font-weight: 500;
     border-radius: 8px;
     transition: all 0.3s ease;
@@ -227,7 +227,7 @@ Product
     left: 0;
     bottom: 0;
     width: 100%;
-    background: var(--Convade-white);
+    background: var(--fistudy-white);
     border-radius: 8px;
     z-index: -1;
     transform: scaleY(0.0);
@@ -243,8 +243,8 @@ Product
 
 .shop-category ul li:hover a,
 .shop-category ul li.active a {
-    color: var(--Convade-black);
-    background: var(--Convade-white);
+    color: var(--fistudy-black);
+    background: var(--fistudy-white);
 }
 
 .shop-category ul li a:after {
@@ -255,7 +255,7 @@ Product
     content: "\e924";
     opacity: 1;
     font-size: 15px;
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
     line-height: 30px;
     font-weight: 700;
     transform: scale(0);
@@ -266,7 +266,7 @@ Product
 
 .shop-category ul li a:hover:after,
 .shop-category ul li.active a:after {
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
     transform: scale(1);
     text-shadow: none;
 }
@@ -274,7 +274,7 @@ Product
 .shop-color-option {
     position: relative;
     display: block;
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
     padding: 29px 30px 27px;
 }
 
@@ -287,7 +287,7 @@ Product
     position: relative;
     display: block;
     font-size: 16px;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     padding-left: 30px;
 }
 
@@ -302,7 +302,7 @@ Product
     left: 0;
     height: 18px;
     width: 18px;
-    background-color: var(--Convade-black);
+    background-color: var(--fistudy-black);
     border-radius: 0%;
     transform: translateY(-50%);
 }
@@ -326,7 +326,7 @@ Product
 .shop-product-tags {
     position: relative;
     display: block;
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
     padding: 25px 15px 30px;
     overflow: hidden;
     z-index: 1;
@@ -342,10 +342,10 @@ Product
 
 .shop-product__tags-list a {
     font-size: 12px;
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    background: var(--Convade-white);
+    background: var(--fistudy-white);
     display: inline-block;
     padding: 5px 20px 5px;
     margin-left: 5px;
@@ -361,14 +361,14 @@ Product
 }
 
 .shop-product__tags-list a:hover {
-    color: var(--Convade-white);
-    background: var(--Convade-base);
+    color: var(--fistudy-white);
+    background: var(--fistudy-base);
 }
 
 .shop-product-review {
     position: relative;
     display: block;
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
     padding: 28px 30px 30px;
     overflow: hidden;
     z-index: 1;
@@ -406,7 +406,7 @@ Product
     position: relative;
     display: block;
     padding-left: 30px;
-    color: var(--Convade-primary);
+    color: var(--fistudy-primary);
     font-size: 16px;
     line-height: 16px;
     font-weight: 400;
@@ -425,7 +425,7 @@ Product
     left: 0;
     width: 15px;
     height: 15px;
-    border: 1px solid var(--Convade-gray);
+    border: 1px solid var(--fistudy-gray);
     border-radius: 0%;
     transition: all 200ms linear;
     transition-delay: 0.1s;
@@ -439,7 +439,7 @@ Product
     bottom: -1px;
     right: -1px;
     transform: scale(0);
-    background-color: var(--Convade-base);
+    background-color: var(--fistudy-base);
     border-radius: 0%;
     transition: all 200ms linear;
     transition-delay: 0.1s;
@@ -448,7 +448,7 @@ Product
 .sidebar-rating-box ul li input[type=radio]:checked+label {}
 
 .sidebar-rating-box ul li input[type=radio]:checked+label i {
-    border-color: var(--Convade-base);
+    border-color: var(--fistudy-base);
 }
 
 .sidebar-rating-box ul li input[type=radio]:checked+label i::before {
@@ -465,7 +465,7 @@ Product
 .shop-product-recent-products {
     position: relative;
     display: block;
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
     padding: 29px 30px 27px;
 }
 
@@ -506,7 +506,7 @@ Product
     transition-timing-function: ease-in-out;
     transition-duration: .7s;
     transition-property: all;
-    background: rgba(var(--Convade-black-rgb), 0.5);
+    background: rgba(var(--fistudy-black-rgb), 0.5);
     opacity: 0;
     z-index: 1;
     content: "";
@@ -535,7 +535,7 @@ Product
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
     font-size: 16px;
     line-height: 0;
     transform: translateY(10px) scale(0);
@@ -547,7 +547,7 @@ Product
 }
 
 .shop-product-recent-products ul li .img a:hover {
-    color: var(--Convade-primary);
+    color: var(--fistudy-primary);
     transform: translateY(0) scale(1);
 }
 
@@ -571,13 +571,13 @@ Product
 }
 
 .shop-product-recent-products ul li .content .title h5 a {
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
     transition: all 200ms linear;
     transition-delay: 0.1s;
 }
 
 .shop-product-recent-products ul li .content .title h5 a:hover {
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
 }
 
 .shop-product-recent-products ul li .content .price {
@@ -587,7 +587,7 @@ Product
 }
 
 .shop-product-recent-products ul li .content .price p {
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
 }
 
 .shop-product-recent-products ul li .content .review {
@@ -597,7 +597,7 @@ Product
 }
 
 .shop-product-recent-products ul li .content .review i {
-    color: var(--Convade-primary);
+    color: var(--fistudy-primary);
     font-size: 12px;
 }
 
@@ -646,8 +646,8 @@ Product
 }
 
 .product__showing-sort .select-box .nice-select {
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
-    color: var(--Convade-gray);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
+    color: var(--fistudy-gray);
     font-size: 16px;
     font-weight: 400;
     height: 70px;
@@ -672,8 +672,8 @@ Product
     position: relative;
     display: block;
     margin-bottom: 30px;
-    border: 1px solid var(--Convade-bdr-color);
-    background-color: var(--Convade-white);
+    border: 1px solid var(--fistudy-bdr-color);
+    background-color: var(--fistudy-white);
     padding: 0 0 30px;
     transition: all 500ms ease;
     z-index: 1;
@@ -746,19 +746,19 @@ Product
 }
 
 .product__all-title a {
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
     -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
 }
 
 .product__all-title a:hover {
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
 }
 
 .product__all-price {
     font-size: 16px;
     font-weight: 500;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     margin-top: 4px;
 }
 
@@ -771,7 +771,7 @@ Product
 
 .product__all-review i {
     font-size: 17px;
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
 }
 
 .product__all-review i+i {
@@ -805,7 +805,7 @@ Product Details
 
 .product-details__img img {
     width: 100%;
-    border: 1px solid var(--Convade-bdr-color);
+    border: 1px solid var(--fistudy-bdr-color);
     border-radius: 15px;
     mix-blend-mode: luminosity;
 }
@@ -827,7 +827,7 @@ Product Details
 .product-details__title span {
     position: relative;
     display: inline-block;
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
     font-size: 20px;
     line-height: 26px;
     font-weight: 400;
@@ -841,12 +841,12 @@ Product Details
     margin-top: 23px;
     padding-bottom: 33px;
     margin-bottom: 28px;
-    border-bottom: 1px solid var(--Convade-bdr-color);
+    border-bottom: 1px solid var(--fistudy-bdr-color);
 }
 
 .product-details__reveiw i {
     font-size: 16px;
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
 }
 
 .product-details__reveiw i+i {
@@ -858,7 +858,7 @@ Product Details
     top: 1px;
     line-height: 1;
     font-size: 16px;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     margin-left: 18px;
 }
 
@@ -889,7 +889,7 @@ Product Details
 
 .product-details__quantity-title {
     margin: 0;
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
     font-size: 18px;
     line-height: 30px;
     font-weight: 400;
@@ -908,29 +908,29 @@ Product Details
     width: 98px;
     border-radius: 10px;
     height: 50px;
-    border: 1px solid var(--Convade-bdr-color);
+    border: 1px solid var(--fistudy-bdr-color);
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
-    font-family: var(--Convade-font);
+    font-family: var(--fistudy-font);
     padding-left: 30px;
     outline: none;
     font-size: 18px;
     font-weight: 700;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
 }
 
 .product-details__quantity .quantity-box button {
     width: 24px;
     height: 24px;
     background-color: transparent;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     font-size: 8px;
     position: absolute;
     top: 1px;
     right: 1px;
     background-color: #fff;
     border: none;
-    border-left: 1px solid var(--Convade-bdr-color);
+    border-left: 1px solid var(--fistudy-bdr-color);
     border-top-right-radius: 10px;
     display: flex;
     align-items: center;
@@ -941,7 +941,7 @@ Product Details
 .product-details__quantity .quantity-box button.sub {
     bottom: 1px;
     top: auto;
-    border-top: 1px solid var(--Convade-bdr-color);
+    border-top: 1px solid var(--fistudy-bdr-color);
     border-top-right-radius: 0px;
     border-bottom-right-radius: 10px;
 }
@@ -961,17 +961,17 @@ Product Details
 
 .product-details__buttons-1 .thm-btn {
     background: transparent;
-    border: 1px solid var(--Convade-base);
-    color: var(--Convade-base);
+    border: 1px solid var(--fistudy-base);
+    color: var(--fistudy-base);
     padding: 10px 25px 11px;
 }
 
 .product-details__buttons-1 .thm-btn::before {
-    background-color: rgba(var(--Convade-base-rgb), .30);
+    background-color: rgba(var(--fistudy-base-rgb), .30);
 }
 
 .product-details__buttons-1 .thm-btn:hover {
-    border-color: var(--Convade-black);
+    border-color: var(--fistudy-black);
 }
 
 .product-details__buttons-2 {
@@ -991,7 +991,7 @@ Product Details
 }
 
 .product-details__social .title h3 {
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
     font-size: 20px;
     line-height: 30px;
     font-weight: 400;
@@ -1010,11 +1010,11 @@ Product Details
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
     font-size: 15px;
     transition: all 200ms linear;
     transition-delay: 0.1s;
-    background-color: var(--Convade-black);
+    background-color: var(--fistudy-black);
     border-radius: 50%;
     height: 45px;
     width: 45px;
@@ -1025,8 +1025,8 @@ Product Details
 }
 
 .product-details__social-link a:hover {
-    color: var(--Convade-white);
-    background-color: var(--Convade-base);
+    color: var(--fistudy-white);
+    background-color: var(--fistudy-base);
 }
 
 
@@ -1036,7 +1036,7 @@ Product Details
 .product-description {
     position: relative;
     display: block;
-    background-color: var(--Convade-white);
+    background-color: var(--fistudy-white);
     padding: 0px 0px 50px;
 }
 
@@ -1077,7 +1077,7 @@ Product Details
 }
 
 .product-description__list ul li p {
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
     margin: 0;
     font-weight: 500;
 }
@@ -1085,7 +1085,7 @@ Product Details
 .product-description__list ul li p span:before {
     position: relative;
     display: inline-block;
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
     font-size: 17px;
     line-height: 17px;
     margin-right: 11px;
@@ -1110,7 +1110,7 @@ Product Details
 .comments-area {
     position: relative;
     display: block;
-    border-top: 1px solid var(--Convade-bdr-color);
+    border-top: 1px solid var(--fistudy-bdr-color);
     padding-top: 56px;
 }
 
@@ -1134,7 +1134,7 @@ Product Details
     display: block;
     margin-bottom: 40px;
     padding-bottom: 40px;
-    border-bottom: 1px solid var(--Convade-bdr-color);
+    border-bottom: 1px solid var(--fistudy-bdr-color);
 }
 
 .comments-area .comment {
@@ -1188,7 +1188,7 @@ Product Details
 }
 
 .review-one__content-top .info h2 span {
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
     font-size: 16px;
     font-weight: 500;
     letter-spacing: 0;
@@ -1200,7 +1200,7 @@ Product Details
 }
 
 .review-one__content-top .reply-btn i:before {
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
     font-size: 17px;
 }
 
@@ -1257,7 +1257,7 @@ Product Details
 
 .review-form-one__rate i {
     font-size: 17px;
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
 }
 
 .review-form-one__rate i+i {
@@ -1275,10 +1275,10 @@ Product Details
 
 .review-form-one__input-box textarea {
     font-size: 16px;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     height: 190px;
     width: 100%;
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
     padding: 25px 30px 30px;
     border: none;
     outline: none;
@@ -1302,12 +1302,12 @@ Product Details
     height: 60px;
     width: 100%;
     border: none;
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
     padding-left: 30px;
     padding-right: 30px;
     outline: none;
     font-size: 16px;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     display: block;
     font-weight: 400;
     border-radius: 8px;
@@ -1326,7 +1326,7 @@ Product Details
 .cart-page {
     position: relative;
     display: block;
-    background: var(--Convade-white);
+    background: var(--fistudy-white);
     padding: 112px 0px 112px;
 }
 
@@ -1349,7 +1349,7 @@ Product Details
 }
 
 .cart-table thead th {
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
     font-size: 20px;
     line-height: 30px;
     font-weight: 700;
@@ -1367,15 +1367,15 @@ Product Details
 }
 
 .cart-table tbody tr:last-child {
-    border-bottom: 1px solid var(--Convade-bdr-color);
+    border-bottom: 1px solid var(--fistudy-bdr-color);
 }
 
 .cart-table tbody td {
     font-size: 18px;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     vertical-align: middle;
-    border-top: 1px solid var(--Convade-bdr-color);
-    border-bottom: 1px solid var(--Convade-bdr-color);
+    border-top: 1px solid var(--fistudy-bdr-color);
+    border-bottom: 1px solid var(--fistudy-bdr-color);
     padding-top: 30px;
     padding-bottom: 30px;
     padding-left: 0;
@@ -1402,25 +1402,25 @@ Product Details
 
 .cart-table .product-box .img-box img {
     width: 100%;
-    border: 1px solid var(--Convade-bdr-color);
+    border: 1px solid var(--fistudy-bdr-color);
     border-radius: 10px;
 }
 
 .cart-table h3 {
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
     font-size: 20px;
     font-weight: 400;
     margin: 0;
 }
 
 .cart-table h3 a {
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
     transition: all 200ms linear;
     transition-delay: 0.1s;
 }
 
 .cart-table h3 a:hover {
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
 }
 
 .cart-table .quantity-box {
@@ -1434,14 +1434,14 @@ Product Details
     width: 98px;
     border-radius: 10px;
     height: 50px;
-    border: 1px solid var(--Convade-bdr-color);
+    border: 1px solid var(--fistudy-bdr-color);
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
-    font-family: var(--Convade-font);
+    font-family: var(--fistudy-font);
     padding-left: 30px;
     outline: none;
     font-size: 18px;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     font-weight: 600;
 }
 
@@ -1449,7 +1449,7 @@ Product Details
     width: 24px;
     height: 24px;
     background-color: transparent;
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
     font-size: 8px;
     position: absolute;
     top: 1px;
@@ -1461,13 +1461,13 @@ Product Details
     justify-content: center;
     outline: none;
     border: none;
-    border-left: 1px solid var(--Convade-bdr-color);
+    border-left: 1px solid var(--fistudy-bdr-color);
 }
 
 .cart-table .quantity-box button.sub {
     bottom: 1px;
     top: auto;
-    border-top: 1px solid var(--Convade-bdr-color);
+    border-top: 1px solid var(--fistudy-bdr-color);
     border-top-right-radius: 0px;
     border-bottom-right-radius: 10px;
 }
@@ -1480,7 +1480,7 @@ Product Details
 .cart-table .cross-icon i:before {
     position: relative;
     display: inline-block;
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
     font-size: 16px;
 }
 
@@ -1494,13 +1494,13 @@ Product Details
     width: 100%;
     max-width: 370px;
     border-radius: 15px;
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
     padding-left: 30px;
     padding-right: 30px;
     margin-right: 20px;
-    font-family: var(--Convade-font);
+    font-family: var(--fistudy-font);
     font-size: 16px;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     height: 50px;
     line-height: 50px;
     margin-bottom: 20px;
@@ -1510,7 +1510,7 @@ Product Details
 }
 
 .cart-cupon__form ::placeholder {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     opacity: 1;
 }
 
@@ -1519,7 +1519,7 @@ Product Details
 }
 
 .cart-cupon__form .thm-btn:hover {
-    border-color: var(--Convade-black);
+    border-color: var(--fistudy-black);
 }
 
 .cart-total {
@@ -1533,7 +1533,7 @@ Product Details
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     font-size: 18px;
     font-weight: 500;
 }
@@ -1544,7 +1544,7 @@ Product Details
 
 .cart-total li span:first-child {
     display: block;
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
     font-size: 20px;
     margin-right: 80px;
     font-weight: 700;
@@ -1558,7 +1558,7 @@ Product Details
 }
 
 .cart-total-amount {
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
 }
 
 .cart-page__buttons {
@@ -1575,17 +1575,17 @@ Product Details
 
 .cart-page__buttons-1 .thm-btn {
     background: transparent;
-    border: 1px solid var(--Convade-base);
-    color: var(--Convade-base);
+    border: 1px solid var(--fistudy-base);
+    color: var(--fistudy-base);
     padding: 10px 30px 11px;
 }
 
 .cart-page__buttons-1 .thm-btn::before {
-    background-color: rgba(var(--Convade-base-rgb), .30);
+    background-color: rgba(var(--fistudy-base-rgb), .30);
 }
 
 .cart-page__buttons-1 .thm-btn:hover {
-    border-color: var(--Convade-black);
+    border-color: var(--fistudy-black);
 }
 
 .cart-page__buttons-2 {
@@ -1622,7 +1622,7 @@ Product Details
 }
 
 .billing_title span {
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
 }
 
 .billing_title h2 {
@@ -1662,13 +1662,13 @@ Product Details
     height: 60px;
     width: 100%;
     border: none;
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
     padding-left: 30px;
     padding-right: 30px;
     border-radius: 0px;
     outline: none;
     font-size: 16px;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     display: block;
     font-weight: 400;
 }
@@ -1685,13 +1685,13 @@ Product Details
     padding-left: 30px;
     margin-right: 0px;
     margin-bottom: 0;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     font-size: 16px;
     line-height: 26px;
     font-weight: 400;
     text-transform: none;
     cursor: pointer;
-    font-family: var(--Convade-font);
+    font-family: var(--fistudy-font);
 }
 
 .billing_details .checked-box input[type="checkbox"] {
@@ -1707,7 +1707,7 @@ Product Details
     border-radius: 50%;
     vertical-align: middle;
     background-color: transparent;
-    background: var(--Convade-base);
+    background: var(--fistudy-base);
     cursor: pointer;
     -webkit-transition: all 300ms ease;
     -moz-transition: all 300ms ease;
@@ -1722,8 +1722,8 @@ Product Details
     top: 4px;
     left: 6px;
     display: block;
-    border-bottom: 2px solid var(--Convade-white);
-    border-right: 2px solid var(--Convade-white);
+    border-bottom: 2px solid var(--fistudy-white);
+    border-right: 2px solid var(--fistudy-white);
     content: '';
     width: 6px;
     height: 9px;
@@ -1740,7 +1740,7 @@ Product Details
 }
 
 .billing_details.checked-box input[type="checkbox"]:checked+label span {
-    border-color: var(--Convade-white);
+    border-color: var(--fistudy-white);
 }
 
 .billing_details .checked-box input[type="checkbox"]:checked+label span:before {
@@ -1754,7 +1754,7 @@ Product Details
 .ship_different_address_title h2 span::before {
     position: relative;
     display: inline-block;
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
     font-size: 19px;
     top: -2px;
     left: 15px;
@@ -1768,10 +1768,10 @@ Product Details
 
 .ship_different_address_form .ship_different_input textarea {
     font-size: 16px;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     height: 120px;
     width: 100%;
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
     padding: 15px 30px 20px;
     border: none;
     outline: none;
@@ -1781,9 +1781,9 @@ Product Details
 }
 
 .billing_details_form .select-box .nice-select {
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
     border-radius: 0px;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     font-size: 16px;
     font-weight: 400;
     height: 60px;
@@ -1816,7 +1816,7 @@ Product Details
 .order_table_box {
     position: relative;
     width: 100%;
-    border-bottom: 1px solid var(--Convade-bdr-color);
+    border-bottom: 1px solid var(--fistudy-bdr-color);
     padding-bottom: 24px;
 }
 
@@ -1828,13 +1828,13 @@ Product Details
 .order_table_head {
     position: relative;
     width: 100%;
-    border-bottom: 1px solid var(--Convade-bdr-color);
-    border-top: 1px solid var(--Convade-bdr-color);
+    border-bottom: 1px solid var(--fistudy-bdr-color);
+    border-top: 1px solid var(--fistudy-bdr-color);
 }
 
 .order_table_head th {
     font-size: 20px;
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
     font-weight: 700;
     margin: 0;
     padding: 23px 0 22px;
@@ -1849,14 +1849,14 @@ Product Details
 }
 
 .order_table_detail tbody td.pro__title {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     font-size: 16px;
     line-height: 18px;
     font-weight: 400;
 }
 
 .order_table_detail tbody td.pro__price {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     font-size: 16px;
     line-height: 18px;
     text-align: right;
@@ -1866,7 +1866,7 @@ Product Details
 }
 
 .checkout__payment {
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
     border-radius: 0;
     padding: 49px 50px 18px;
     margin-bottom: 30px;
@@ -1878,7 +1878,7 @@ Product Details
 
 .checkout__payment__title {
     display: flex;
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
     font-size: 18px;
     font-weight: 400;
     margin: 0;
@@ -1891,14 +1891,14 @@ Product Details
     content: '';
     width: 20px;
     height: 20px;
-    background-color: var(--Convade-white);
+    background-color: var(--fistudy-white);
     border: 2px solid #dddddd;
     border-radius: 50%;
     margin-right: 10px;
     font-family: 'Font Awesome 5 Pro';
     font-weight: 900;
     font-size: 10px;
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1913,15 +1913,15 @@ Product Details
 }
 
 .checkout__payment__item--active .checkout__payment__title::before {
-    background-color: var(--Convade-base);
-    border-color: var(--Convade-base);
+    background-color: var(--fistudy-base);
+    border-color: var(--fistudy-base);
     content: '\f00c';
 }
 
 .checkout__payment__content {
     font-size: 16px;
     line-height: 30px;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     font-weight: 400;
 }
 
@@ -1932,7 +1932,7 @@ Product Details
 .wishlist-page {
     position: relative;
     display: block;
-    background: var(--Convade-white);
+    background: var(--fistudy-white);
     padding: 120px 0px 120px;
 }
 
@@ -1953,7 +1953,7 @@ Product Details
 .wishlist-table {
     min-width: 1170px;
     width: 100%;
-    border: 1px solid var(--Convade-bdr-color);
+    border: 1px solid var(--fistudy-bdr-color);
 }
 
 .wishlist-table tbody tr {
@@ -1961,17 +1961,17 @@ Product Details
 }
 
 .wishlist-table tbody tr:last-child {
-    border-bottom: 1px solid var(--Convade-bdr-color);
+    border-bottom: 1px solid var(--fistudy-bdr-color);
 }
 
 .wishlist-table tbody td {
     font-size: 18px;
     font-weight: 500;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     vertical-align: middle;
-    border-top: 1px solid var(--Convade-bdr-color);
-    border-bottom: 1px solid var(--Convade-bdr-color);
-    border-right: 1px solid var(--Convade-bdr-color);
+    border-top: 1px solid var(--fistudy-bdr-color);
+    border-bottom: 1px solid var(--fistudy-bdr-color);
+    border-right: 1px solid var(--fistudy-bdr-color);
     padding-top: 0;
     padding-bottom: 0;
     padding-left: 0;
@@ -2046,7 +2046,7 @@ Product Details
 .wishlist-table .cross-icon i:before {
     position: relative;
     display: inline-block;
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
     font-size: 16px;
 }
 
@@ -2102,21 +2102,21 @@ Product Details
     transition-delay: 0.1s;
     font-size: 18px;
     line-height: 18px;
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
     background-color: transparent;
     padding: 22px 0px 18px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
     z-index: 1;
-    border: 1px solid var(--Convade-bdr-color);
-    font-family: var(--Convade-font-two);
+    border: 1px solid var(--fistudy-bdr-color);
+    font-family: var(--fistudy-font-two);
     text-transform: capitalize;
     letter-spacing: 0.1em;
 }
 
 .account__main-tab-box .tab-buttons .tab-btn.active-btn span {
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
 }
 
 .account__main-tab-box .tab-buttons .tab-btn span:before {
@@ -2126,7 +2126,7 @@ Product Details
     left: -1px;
     right: -1px;
     content: "";
-    background-color: var(--Convade-base);
+    background-color: var(--fistudy-base);
     transform: scaleY(0.0) rotateX(0deg);
     -webkit-transition: all 0.2s linear;
     -o-transition: all 0.2s linear;
@@ -2152,7 +2152,7 @@ Product Details
 .account__main-tab-box .tabs-content {
     position: relative;
     display: block;
-    border: 1px solid var(--Convade-bdr-color);
+    border: 1px solid var(--fistudy-bdr-color);
     border-top: 0px;
     padding: 60px 80px 75px;
 }
@@ -2200,13 +2200,13 @@ Product Details
     height: 50px;
     width: 100%;
     border: none;
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
     padding-left: 30px;
     padding-right: 30px;
     border-radius: 20px;
     outline: none;
     font-size: 14px;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     display: block;
     font-weight: 500;
 }
@@ -2233,13 +2233,13 @@ Product Details
     padding-left: 30px;
     margin-right: 0px;
     margin-bottom: 0;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     font-size: 16px;
     line-height: 22px;
     font-weight: 500;
     text-transform: none;
     cursor: pointer;
-    font-family: var(--Convade-font);
+    font-family: var(--fistudy-font);
 }
 
 .account__form-btn-box .checked-box input[type="checkbox"] {
@@ -2254,7 +2254,7 @@ Product Details
     height: 20px;
     border-radius: 50%;
     vertical-align: middle;
-    background: var(--Convade-white);
+    background: var(--fistudy-white);
     cursor: pointer;
     -webkit-transition: all 300ms ease;
     -moz-transition: all 300ms ease;
@@ -2303,7 +2303,7 @@ Product Details
 .account__form-forgot-password a {
     font-size: 16px;
     font-weight: 500;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     position: relative;
     display: inline-block;
 }
@@ -2315,7 +2315,7 @@ Product Details
 .sign-up-one {
     position: relative;
     display: block;
-    background-color: var(--Convade-white);
+    background-color: var(--fistudy-white);
     padding: 112px 0px 120px;
     z-index: 1;
 }
@@ -2345,7 +2345,7 @@ Product Details
 .sign-up-one__form form {
     position: relative;
     display: block;
-    background-color: var(--Convade-white);
+    background-color: var(--fistudy-white);
     box-shadow: 0px 0px 80px rgba(0, 0, 0, 0.06);
     padding: 60px 50px 52px;
 }
@@ -2366,13 +2366,13 @@ Product Details
     position: relative;
     display: block;
     border-radius: 10px;
-    border: 1px solid rgba(var(--Convade-bdr-color-rgb), .50);
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
+    border: 1px solid rgba(var(--fistudy-bdr-color-rgb), .50);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
     width: 100%;
     height: 60px;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     font-size: 16px;
-    font-family: var(--Convade-font);
+    font-family: var(--fistudy-font);
     font-weight: 400;
     font-style: normal;
     padding-left: 30px;
@@ -2383,40 +2383,40 @@ Product Details
 
 .sign-up-one__form form input[type="text"]:focus,
 .sign-up-one__form form input[type="email"]:focus {
-    border-color: var(--Convade-base);
-    background-color: var(--Convade-white);
+    border-color: var(--fistudy-base);
+    background-color: var(--fistudy-white);
 }
 
 .sign-up-one__form form input[type="text"]::-webkit-input-placeholder {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
 }
 
 .sign-up-one__form form input[type="text"]:-moz-placeholder {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
 }
 
 .sign-up-one__form form input[type="text"]::-moz-placeholder {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
 }
 
 .sign-up-one__form form input[type="text"]:-ms-input-placeholder {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
 }
 
 .sign-up-one__form form input[type="email"]::-webkit-input-placeholder {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
 }
 
 .sign-up-one__form form input[type="email"]:-moz-placeholder {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
 }
 
 .sign-up-one__form form input[type="email"]::-moz-placeholder {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
 }
 
 .sign-up-one__form form input[type="email"]:-ms-input-placeholder {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
 }
 
 .sign-up-one__form form .thm-btn {
@@ -2440,12 +2440,12 @@ Product Details
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--Convade-gray);
-    background-color: var(--Convade-white);
-    color: var(--Convade-black);
+    border: 1px solid var(--fistudy-gray);
+    background-color: var(--fistudy-white);
+    color: var(--fistudy-black);
     font-size: 16px;
     line-height: 28px;
-    font-family: var(--Convade-font);
+    font-family: var(--fistudy-font);
     font-weight: 500;
     padding: 10px 15px 10px;
     border-radius: 5px;
@@ -2455,8 +2455,8 @@ Product Details
 }
 
 .sign-up-one__form form .google-facebook a:hover {
-    border: 1px solid var(--Convade-base);
-    background-color: var(--Convade-white);
+    border: 1px solid var(--fistudy-base);
+    background-color: var(--fistudy-white);
 }
 
 .sign-up-one__form form .google-facebook a+a {
@@ -2485,7 +2485,7 @@ Product Details
 }
 
 .sign-up-one__form form .create-account p a:hover {
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
 }
 
 
@@ -2496,7 +2496,7 @@ Product Details
 .login-one {
     position: relative;
     display: block;
-    background-color: var(--Convade-white);
+    background-color: var(--fistudy-white);
     padding: 112px 0px 120px;
     z-index: 1;
 }
@@ -2526,10 +2526,12 @@ Product Details
 .login-one__form form {
     position: relative;
     display: block;
-    background-color: var(--Convade-white);
+    background-color: var(--fistudy-white);
     box-shadow: 0px 0px 80px rgba(0, 0, 0, 0.06);
     padding: 60px 50px 52px;
 }
+
+form#login-one__form {}
 
 .login-one__form form .form-group {
     position: relative;
@@ -2547,13 +2549,13 @@ Product Details
     position: relative;
     display: block;
     border-radius: 10px;
-    border: 1px solid rgba(var(--Convade-bdr-color-rgb), .50);
-    background-color: rgba(var(--Convade-bdr-color-rgb), .50);
+    border: 1px solid rgba(var(--fistudy-bdr-color-rgb), .50);
+    background-color: rgba(var(--fistudy-bdr-color-rgb), .50);
     width: 100%;
     height: 60px;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     font-size: 16px;
-    font-family: var(--Convade-font);
+    font-family: var(--fistudy-font);
     font-weight: 400;
     font-style: normal;
     padding-left: 30px;
@@ -2564,40 +2566,40 @@ Product Details
 
 .login-one__form form input[type="text"]:focus,
 .login-one__form form input[type="email"]:focus {
-    border-color: var(--Convade-base);
-    background-color: var(--Convade-white);
+    border-color: var(--fistudy-base);
+    background-color: var(--fistudy-white);
 }
 
 .login-one__form form input[type="text"]::-webkit-input-placeholder {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
 }
 
 .login-one__form form input[type="text"]:-moz-placeholder {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
 }
 
 .login-one__form form input[type="text"]::-moz-placeholder {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
 }
 
 .login-one__form form input[type="text"]:-ms-input-placeholder {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
 }
 
 .login-one__form form input[type="email"]::-webkit-input-placeholder {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
 }
 
 .login-one__form form input[type="email"]:-moz-placeholder {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
 }
 
 .login-one__form form input[type="email"]::-moz-placeholder {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
 }
 
 .login-one__form form input[type="email"]:-ms-input-placeholder {
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
 }
 
 .login-one__form form .thm-btn {
@@ -2632,12 +2634,12 @@ Product Details
     position: relative;
     display: inline-block;
     padding-left: 25px;
-    color: var(--Convade-gray);
+    color: var(--fistudy-gray);
     font-size: 16px;
     line-height: 26px;
     font-weight: 400;
     cursor: pointer;
-    font-family: var(--Convade-font);
+    font-family: var(--fistudy-font);
 }
 
 .login-one__form form .checked-box1 input[type="checkbox"]+label span {
@@ -2668,7 +2670,7 @@ Product Details
     content: "";
     width: 8px;
     height: 8px;
-    background: var(--Convade-base);
+    background: var(--fistudy-base);
     border-radius: 2px;
     margin: 3px auto 0px;
     transform: scale(0);
@@ -2680,7 +2682,7 @@ Product Details
 }
 
 .login-one__form form .checked-box1 input[type="checkbox"]:checked+label span {
-    border-color: var(--Convade-base);
+    border-color: var(--fistudy-base);
 }
 
 .login-one__form form .checked-box1 input[type="checkbox"]:checked+label span:before {
@@ -2694,17 +2696,17 @@ Product Details
 }
 
 .login-one__form form .forget a {
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
     font-size: 16px;
     line-height: 26px;
-    font-family: var(--Convade-font);
+    font-family: var(--fistudy-font);
     font-weight: 400;
     transition: all 200ms linear;
     transition-delay: 0.1s;
 }
 
 .login-one__form form .forget a:hover {
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
 }
 
 .login-one__form form .create-account {
@@ -2714,10 +2716,10 @@ Product Details
 }
 
 .login-one__form form .create-account p {
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
 }
 
 .login-one__form form .create-account p a {
-    color: var(--Convade-base);
+    color: var(--fistudy-base);
     font-weight: 500;
 }
