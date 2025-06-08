@@ -4,7 +4,7 @@
 .counter-one {
     position: relative;
     display: block;
-    background-color: var(--fistudy-base);
+    background-color: var(--Convade-base);
     overflow: hidden;
     z-index: 1;
 }
@@ -30,7 +30,7 @@
     right: 0;
     bottom: -12px;
     left: -12px;
-    border: 12px solid var(--fistudy-white);
+    border: 12px solid var(--Convade-white);
     border-top-left-radius: 147px;
     border-bottom-left-radius: 147px;
     z-index: -1;
@@ -60,8 +60,8 @@
     line-height: 45px;
     text-align: center;
     font-size: 18px;
-    color: var(--fistudy-base);
-    background-color: var(--fistudy-white);
+    color: var(--Convade-base);
+    background-color: var(--Convade-white);
     border-radius: 50%;
     transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -72,8 +72,8 @@
 }
 
 .counter-one__video-icon:hover {
-    background-color: var(--fistudy-black);
-    color: var(--fistudy-white);
+    background-color: var(--Convade-black);
+    color: var(--Convade-white);
 }
 
 .counter-one__video-icon:before {
@@ -83,7 +83,7 @@
     left: -12px;
     right: -12px;
     bottom: -12px;
-    border: 1px solid var(--fistudy-white);
+    border: 1px solid var(--Convade-white);
     border-radius: 50%;
     z-index: -1;
 }
@@ -99,10 +99,10 @@
     border-radius: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    -ms-box-shadow: 0 0 0 0 rgba(var(--fistudy-white-rgb), 0.6);
-    -o-box-shadow: 0 0 0 0 rgba(var(--fistudy-white-rgb), 0.6);
-    -webkit-box-shadow: 0 0 0 0 rgba(var(--fistudy-white-rgb), 0.6);
-    box-shadow: 0 0 0 0 rgba(var(--fistudy-white-rgb), 0.6);
+    -ms-box-shadow: 0 0 0 0 rgba(var(--Convade-white-rgb), 0.6);
+    -o-box-shadow: 0 0 0 0 rgba(var(--Convade-white-rgb), 0.6);
+    -webkit-box-shadow: 0 0 0 0 rgba(var(--Convade-white-rgb), 0.6);
+    box-shadow: 0 0 0 0 rgba(var(--Convade-white-rgb), 0.6);
     -webkit-animation: ripple 3s infinite;
     animation: ripple 3s infinite;
 }
@@ -198,7 +198,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--fistudy-white);
+    background-color: var(--Convade-white);
     opacity: .83;
     z-index: -1;
 }
@@ -215,15 +215,15 @@
     font-weight: 600;
     line-height: 80px;
     letter-spacing: -0.02em;
-    font-family: var(--fistudy-font);
+    font-family: var(--Convade-font);
     color: transparent;
-    -webkit-text-stroke: 1px var(--fistudy-white);
+    -webkit-text-stroke: 1px var(--Convade-white);
     -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
 }
 
 .counter-one__list li:hover .counter-one__count h3 {
-    -webkit-text-stroke: 1px var(--fistudy-black);
+    -webkit-text-stroke: 1px var(--Convade-black);
 }
 
 .counter-one__count span {
@@ -232,29 +232,29 @@
     line-height: 80px;
     line-height: 80px;
     letter-spacing: -0.02em;
-    font-family: var(--fistudy-font);
+    font-family: var(--Convade-font);
     color: transparent;
-    -webkit-text-stroke: 1px var(--fistudy-white);
+    -webkit-text-stroke: 1px var(--Convade-white);
     -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
 }
 
 .counter-one__list li:hover .counter-one__count span {
-    -webkit-text-stroke: 1px var(--fistudy-black);
+    -webkit-text-stroke: 1px var(--Convade-black);
 }
 
 .counter-one__list li p {
     font-size: 20px;
     font-weight: 500;
     line-height: 30px;
-    color: var(--fistudy-white);
+    color: var(--Convade-white);
     margin-top: 7px;
     -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
 }
 
 .counter-one__list li:hover p {
-    color: var(--fistudy-black);
+    color: var(--Convade-black);
 }
 
 
@@ -329,7 +329,7 @@
     justify-content: center;
     height: 80px;
     width: 80px;
-    border: 1px solid var(--fistudy-white);
+    border: 1px solid var(--Convade-white);
     border-radius: 50%;
 }
 
@@ -352,7 +352,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    border: 1px dashed var(--fistudy-white);
+    border: 1px dashed var(--Convade-white);
     border-radius: 40px;
     padding: 15px 38px 15px;
     gap: 10px;
@@ -367,16 +367,16 @@
 
 .counter-two__count-box p {
     font-size: 40px;
-    color: var(--fistudy-white);
+    color: var(--Convade-white);
     font-weight: 700;
     line-height: 40px !important;
-    font-family: var(--fistudy-font) !important;
+    font-family: var(--Convade-font) !important;
     letter-spacing: 0.05em;
 }
 
 .counter-two__count-box span {
     font-size: 40px;
-    color: var(--fistudy-white);
+    color: var(--Convade-white);
     font-weight: 700;
     line-height: 40px;
 }
@@ -384,7 +384,7 @@
 .counter-two__text {
     font-size: 16px;
     line-height: 22px;
-    color: var(--fistudy-white);
+    color: var(--Convade-white);
 }
 
 

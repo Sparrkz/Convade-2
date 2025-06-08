@@ -32,7 +32,7 @@
     bottom: 0;
     transform: translateX(-50%);
     width: 10px;
-    background-color: rgba(var(--fistudy-primary-rgb), .20);
+    background-color: rgba(var(--Convade-primary-rgb), .20);
 }
 
 .process-one__inner-wrap {
@@ -47,7 +47,7 @@
     left: 50%;
     width: 15px;
     height: 15px;
-    background-color: var(--fistudy-primary);
+    background-color: var(--Convade-primary);
     transform: translateX(-50%);
 }
 
@@ -58,7 +58,7 @@
     left: 50%;
     width: 23px;
     height: 23px;
-    background-color: rgba(var(--fistudy-primary-rgb), .20);
+    background-color: rgba(var(--Convade-primary-rgb), .20);
     transform: translateX(-50%);
 }
 
@@ -69,7 +69,7 @@
     left: 50%;
     width: 15px;
     height: 15px;
-    background-color: var(--fistudy-primary);
+    background-color: var(--Convade-primary);
     transform: translateX(-50%);
 }
 
@@ -80,7 +80,7 @@
     left: 50%;
     width: 23px;
     height: 23px;
-    background-color: rgba(var(--fistudy-primary-rgb), .20);
+    background-color: rgba(var(--Convade-primary-rgb), .20);
     transform: translateX(-50%);
 }
 
@@ -112,7 +112,7 @@
     right: -57px;
     width: 25px;
     height: 25px;
-    background-color: var(--fistudy-primary);
+    background-color: var(--Convade-primary);
 }
 
 .process-one__inner ul li:nth-child(2) .process-one__single::before,
@@ -126,7 +126,7 @@
     position: absolute;
     width: 15px;
     height: 15px;
-    background-color: rgba(var(--fistudy-white-rgb), .50);
+    background-color: rgba(var(--Convade-white-rgb), .50);
     top: 5px;
     right: -52px;
 }
@@ -148,7 +148,7 @@
     font-size: 30px;
     line-height: 30px;
     font-weight: 600;
-    color: var(--fistudy-primary);
+    color: var(--Convade-primary);
     counter-increment: count;
     content: "step 0"counter(count);
     transition: all 200ms linear;
@@ -163,8 +163,8 @@
     margin-bottom: 25px;
     position: relative;
     display: inline-block;
-    border-bottom: 1px dashed rgba(var(--fistudy-primary-rgb), .40);
-    color: var(--fistudy-gray);
+    border-bottom: 1px dashed rgba(var(--Convade-primary-rgb), .40);
+    color: var(--Convade-gray);
     padding-bottom: 10px;
 }
 
@@ -184,7 +184,7 @@
     position: relative;
     display: inline-block;
     font-size: 30px;
-    color: var(--fistudy-primary);
+    color: var(--Convade-primary);
 }
 
 
