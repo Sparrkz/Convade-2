@@ -1138,8 +1138,8 @@ ul {
   position: absolute;
   top: 60%;
   right: 0;
-  font-family: "bootstrap-icons" !important;
-  content: "\F282";
+  font-family: "Font Awesome 5 Pro";
+  content: "\f107";
   font-size: 15px;
   color: var(--fistudy-black);
   transform: translateY(-50%);

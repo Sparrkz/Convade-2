@@ -4,7 +4,7 @@
 .site-footer {
     position: relative;
     display: block;
-    background-color: var(--Convade-black);
+    background-color: var(--fistudy-black);
     padding: 60px 0 0;
     z-index: 1;
 }
@@ -25,7 +25,7 @@
 .site-footer__logo-and-contact-box {
     position: relative;
     display: block;
-    background-color: var(--Convade-black);
+    background-color: var(--fistudy-black);
 }
 
 .site-footer__logo-and-contact-box-inner {
@@ -48,7 +48,7 @@
 }
 
 .site-footer__text {
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
     line-height: 23px;
     margin-top: 20px;
 }
@@ -63,7 +63,7 @@
     line-height: 90px;
     font-weight: 600;
     color: transparent;
-    -webkit-text-stroke: 1px var(--Convade-white);
+    -webkit-text-stroke: 1px var(--fistudy-white);
     position: relative;
     display: block;
 }
@@ -121,28 +121,28 @@
     position: relative;
     display: inline-block;
     font-size: 12px;
-    color: var(--Convade-primary);
+    color: var(--fistudy-primary);
 }
 
 .site-footer__contact-info-icon-text {
     font-size: 20px;
     line-height: 20px;
-    color: var(--Convade-primary);
+    color: var(--fistudy-primary);
     font-weight: 500;
 }
 
 .site-footer__contact-info-text {
     font-size: 20px;
     line-height: 30px;
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
 }
 
 .site-footer__contact-info-text a {
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
 }
 
 .site-footer__contact-info-text a:hover {
-    color: var(--Convade-primary);
+    color: var(--fistudy-primary);
 }
 
 .site-footer__app-and-social-box {
@@ -158,7 +158,7 @@
 
 .site-footer__app-and-social-title {
     font-size: 20px;
-    color: var(--Convade-primary);
+    color: var(--fistudy-primary);
     font-weight: 500;
     line-height: 20px;
     margin-bottom: 15px;
@@ -205,10 +205,10 @@
     justify-content: center;
     height: 32px;
     width: 32px;
-    background-color: var(--Convade-base);
+    background-color: var(--fistudy-base);
     border-radius: 50%;
     font-size: 14px;
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
     -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
     z-index: 1;
@@ -221,7 +221,7 @@
     right: 0;
     bottom: 0;
     content: "";
-    background-color: var(--Convade-primary);
+    background-color: var(--fistudy-primary);
     border-radius: 50%;
     transform: scale(0.0);
     transform-origin: center;
@@ -247,7 +247,7 @@
 
 .site-footer__title {
     font-size: 24px;
-    color: var(--Convade-primary);
+    color: var(--fistudy-primary);
     line-height: 24px;
     position: relative;
     display: block;
@@ -276,7 +276,7 @@
     gap: 8px;
     font-size: 18px;
     font-weight: 500;
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
 }
 
 .site-footer__links-list li a span {
@@ -286,7 +286,7 @@
 }
 
 .site-footer__links-list li a:hover {
-    color: var(--Convade-primary);
+    color: var(--fistudy-primary);
 }
 
 .site-footer__useful-links {
@@ -313,12 +313,12 @@
 
 .site-footer__newsletter-input input[type="email"] {
     font-size: 18px;
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
     font-weight: 500;
     height: 62px;
     width: 100%;
     background: transparent;
-    border: 1px solid var(--Convade-white);
+    border: 1px solid var(--fistudy-white);
     border-radius: 31px;
     outline: none;
     padding: 0 25px 0;
@@ -335,11 +335,11 @@
 }
 
 .site-footer__newsletter-form .thm-btn:hover:before {
-    background-color: rgba(var(--Convade-white-rgb), 1);
+    background-color: rgba(var(--fistudy-white-rgb), 1);
 }
 
 .site-footer__newsletter-form .thm-btn:hover {
-    color: var(--Convade-black);
+    color: var(--fistudy-black);
 }
 
 .site-footer__bottom {
@@ -362,15 +362,15 @@
 }
 
 .site-footer__copyright-text {
-    color: rgba(var(--Convade-white-rgb), 1);
+    color: rgba(var(--fistudy-white-rgb), 1);
 }
 
 .site-footer__copyright-text a {
-    color: var(--Convade-primary);
+    color: var(--fistudy-primary);
 }
 
 .site-footer__copyright-text a:hover {
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
 }
 
 .site-footer__bottom-card-box {
@@ -468,7 +468,7 @@
 }
 
 .footer-widget-two__about-text {
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
     margin-top: 23px;
     margin-bottom: 23px;
 }
@@ -489,12 +489,12 @@
     -webkit-box-pack: center;
     justify-content: center;
     text-align: center;
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
     border-radius: 50%;
     font-size: 15px;
     height: 40px;
     width: 40px;
-    border: 1px solid var(--Convade-bdr-color);
+    border: 1px solid var(--fistudy-bdr-color);
     transform: rotate(0);
     -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
@@ -502,8 +502,8 @@
 }
 
 .site-footer-two__social a:hover {
-    color: var(--Convade-white);
-    border: 1px solid var(--Convade-base);
+    color: var(--fistudy-white);
+    border: 1px solid var(--fistudy-base);
 }
 
 .site-footer-two__social a:before {
@@ -513,7 +513,7 @@
     right: 0;
     bottom: 0;
     content: "";
-    background-color: var(--Convade-base);
+    background-color: var(--fistudy-base);
     border-radius: 50%;
     transform: scale(0.0);
     transform-origin: center;
@@ -538,10 +538,10 @@
 
 .footer-widget-two__app-download-title {
     font-size: 24px;
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
     font-weight: 500;
     line-height: 24px;
-    font-family: var(--Convade-font-two);
+    font-family: var(--fistudy-font-two);
     margin-bottom: 12px;
 }
 
@@ -582,7 +582,7 @@
     position: relative;
     display: block;
     font-size: 24px;
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
     font-weight: 500;
     line-height: 24px;
     margin-bottom: 41px;
@@ -616,7 +616,7 @@
     gap: 8px;
     font-size: 18px;
     font-weight: 500;
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
 }
 
 .footer-widget-two__quick-links-list li a span {
@@ -626,7 +626,7 @@
 }
 
 .footer-widget-two__quick-links-list li a:hover {
-    color: var(--Convade-primary);
+    color: var(--fistudy-primary);
 }
 
 .footer-widget-two__support {
@@ -664,16 +664,16 @@
 
 .site-footer-two__copyright-text {
     font-size: 18px;
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
     font-weight: 400;
 }
 
 .site-footer-two__copyright-text a {
-    color: var(--Convade-primary);
+    color: var(--fistudy-primary);
 }
 
 .site-footer-two__copyright-text a:hover {
-    color: var(--Convade-white);
+    color: var(--fistudy-white);
 }
 
 .site-footer-two .site-footer__bottom {
