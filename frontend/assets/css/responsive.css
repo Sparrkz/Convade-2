@@ -600,7 +600,7 @@
     .newsletter-one__title {
         font-size: 50px;
         line-height: 60px;
-        -webkit-text-stroke: 1px var(--fistudy-white);
+        -webkit-text-stroke: 1px var(--Convade-white);
     }
 
     .testimonial-one__inner {
@@ -1100,7 +1100,7 @@
         font-size: 40px;
         font-weight: 400;
         line-height: 50px;
-        -webkit-text-stroke: 1px var(--fistudy-white);
+        -webkit-text-stroke: 1px var(--Convade-white);
     }
 
     .newsletter-one__text br {
@@ -1557,8 +1557,8 @@
     .coming-soon-page {
         height: auto !important;
         padding: 110px 0 120px;
-        border-left: 20px solid rgba(var(--fistudy-base-rgb), .10);
-        border-right: 20px solid rgba(var(--fistudy-base-rgb), .10);
+        border-left: 20px solid rgba(var(--Convade-base-rgb), .10);
+        border-right: 20px solid rgba(var(--Convade-base-rgb), .10);
     }
 
     .coming-soon-page__content .big-title {

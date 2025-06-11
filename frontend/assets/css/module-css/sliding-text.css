@@ -35,7 +35,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    color: var(--fistudy-white);
+    color: var(--Convade-white);
     font-size: 32px;
     line-height: 42px;
     font-weight: 500;
@@ -45,7 +45,7 @@
 
 .sliding-text__title .odometer {
     line-height: 24px !important;
-    font-family: var(--fistudy-font) !important;
+    font-family: var(--Convade-font) !important;
     letter-spacing: 0.05em;
 }
 
@@ -113,13 +113,13 @@
     align-items: center;
     gap: 45px;
     color: transparent;
-    -webkit-text-stroke: 1px var(--fistudy-base);
+    -webkit-text-stroke: 1px var(--Convade-base);
     font-size: 120px;
     line-height: 85px;
     font-weight: 600;
     transition: all 200ms linear;
     transition-delay: 0.1s;
-    font-family: var(--fistudy-font-two);
+    font-family: var(--Convade-font-two);
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
@@ -135,7 +135,7 @@
     top: 0;
     left: 0;
     width: 0;
-    color: var(--fistudy-base);
+    color: var(--Convade-base);
     white-space: nowrap;
     content: attr(data-hover);
     transition: all 0.5s cubic-bezier(0.17, 0.67, 0.32, 0.87);
@@ -143,7 +143,7 @@
 
 .sliding-text-two__list li:hover .sliding-text-two__title:before {
     width: 100%;
-    color: var(--fistudy-base);
+    color: var(--Convade-base);
 }
 
 
@@ -153,7 +153,7 @@
 .sliding-text-three {
     position: relative;
     display: block;
-    background-color: var(--fistudy-base);
+    background-color: var(--Convade-base);
     padding: 11px 0 11px;
     z-index: 1;
 }
@@ -183,13 +183,13 @@
     position: relative;
     display: flex;
     align-items: center;
-    color: var(--fistudy-white);
+    color: var(--Convade-white);
     font-size: 48px;
     line-height: 48px;
     font-weight: 500;
     font-style: normal;
     text-transform: lowercase;
-    font-family: var(--fistudy-font-two);
+    font-family: var(--Convade-font-two);
     font-style: italic;
 }
 

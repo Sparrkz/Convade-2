@@ -39,7 +39,7 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 26px;
-    color: var(--fistudy-white);
+    color: var(--Convade-white);
     text-transform: lowercase;
 }
 
@@ -47,7 +47,7 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 26px;
-    color: var(--fistudy-white);
+    color: var(--Convade-white);
 }
 
 .page-header__inner {
@@ -164,7 +164,7 @@
     font-size: 60px;
     font-weight: 600;
     line-height: 60px;
-    color: var(--fistudy-black);
+    color: var(--Convade-black);
     text-transform: capitalize;
     margin-bottom: 4px;
 }
@@ -187,26 +187,26 @@
     display: inline-block;
     font-size: 15px;
     font-weight: 500;
-    color: var(--fistudy-gray);
+    color: var(--Convade-gray);
     text-transform: capitalize;
     -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
 }
 
 .thm-breadcrumb li span {
-    color: var(--fistudy-base);
+    color: var(--Convade-base);
 }
 
 .thm-breadcrumb li a {
     position: relative;
     display: inline-block;
-    color: var(--fistudy-base);
+    color: var(--Convade-base);
     -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
 }
 
 .thm-breadcrumb li:hover a {
-    color: var(--fistudy-black);
+    color: var(--Convade-black);
 }
 
 
