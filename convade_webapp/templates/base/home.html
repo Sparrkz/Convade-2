@@ -1,0 +1,416 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Home - Convade Learning Management System{% endblock %}
+
+{% block content %}
+<!-- Banner One Start -->
+<section class="banner-one" id="home">
+    <div class="banner-one__bg-shape-1"
+        style="background-image: url({% static 'images/shapes/banner-one-bg-shape-1.png' %});"></div>
+    <div class="banner-one__icon-1 img-bounce">
+        <img src="{% static 'images/icon/idea-bulb.png' %}" alt="">
+    </div>
+    <div class="banner-one__icon-2 float-bob-x">
+        <img src="{% static 'images/icon/3d-alarm.png' %}" alt="">
+    </div>
+    <div class="banner-one__icon-3 float-bob-y">
+        <img src="{% static 'images/icon/linke-icon.png' %}" alt="">
+    </div>
+    <div class="banner-one__shape-4 float-bob-x">
+        <img src="{% static 'images/shapes/banner-one-shape-4.png' %}" alt="">
+    </div>
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-xl-6">
+                <div class="banner-one__right">
+                    <div class="banner-one__img-box">
+                        <div class="banner-one__img">
+                            <img src="{% static 'images/resources/banner-two-img-1.png' %}" alt="">
+                            <div class="banner-one__img-shape-box rotate-me">
+                                <div class="banner-one__img-shape-1">
+                                    <div class="banner-one__img-shape-2"></div>
+                                </div>
+                                <div class="banner-one__shape-1">
+                                    <img src="{% static 'images/shapes/banner-one-shape-1.png' %}" alt="">
+                                </div>
+                                <div class="banner-one__shape-2 rotate-me">
+                                    <img src="{% static 'images/shapes/banner-one-shape-2.png' %}" alt="">
+                                </div>
+                                <div class="banner-one__shape-3">
+                                    <img src="{% static 'images/shapes/banner-one-shape-3.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="banner-one__udemy-review">
+                                <div class="banner-one__udemy-review-img">
+                                    <img src="{% static 'images/resources/banner-one-udemy-review-img.jpg' %}" alt="">
+                                </div>
+                                <div class="banner-one__udemy-review-logo">
+                                    <img src="{% static 'images/resources/banner-one-udemy-review-logo.png' %}" alt="">
+                                </div>
+                                <div class="banner-one__udemy-review-client-info">
+                                    <p class="banner-one__udemy-review-client-name">Alisa Olivia/</p>
+                                    <div class="banner-one__udemy-review-star">
+                                        <span class="icon-star"></span>
+                                        <span class="icon-star"></span>
+                                        <span class="icon-star"></span>
+                                        <span class="icon-star"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="banner-one__student-trained">
+                                <div class="banner-one__student-trained-shape-1 rotate-me">
+                                    <img src="{% static 'images/shapes/banner-one-student-trained-shape-1.png' %}"
+                                        alt="">
+                                </div>
+                                <ul class="list-unstyled banner-one__student-trained-list">
+                                    <li>
+                                        <div class="banner-one__student-trained-img">
+                                            <img src="{% static 'images/resources/banner-one-student-trained-img-1-1.jpg' %}"
+                                                alt="">
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="banner-one__student-trained-img">
+                                            <img src="{% static 'images/resources/banner-one-student-trained-img-1-2.jpg' %}"
+                                                alt="">
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="banner-one__student-trained-count-box">
+                                    <div class="banner-one__student-trained-count-box-inner count-box">
+                                        <p class="count-text" data-stop="2000" data-speed="3000">00</p>
+                                        <span>+</span>
+                                    </div>
+                                    <p class="banner-one__student-trained-text">Success Student</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="banner-one__left">
+                    <div class="banner-one__title-box">
+                        <div class="banner-one__title-box-shape">
+                            <img src="{% static 'images/shapes/banner-one-title-box-shape-1.png' %}" alt="">
+                        </div>
+                        <h2 class="banner-one__title">Our Online Classes <br>
+                            <span class="banner-one__title-clr-1">Will grow</span>
+                            <span class="banner-one__title-clr-2">Your <br> Creativity <br> and boost your success!</span>
+                        </h2>
+                    </div>
+                    <p class="banner-one__text">Convenience of online education, allowing learners to acquire
+                        new <br>
+                        skills at their own pace and from any location.</p>
+                    <div class="banner-one__thm-and-other-btn-box">
+                        <div class="banner-one__btn-box">
+                            <a href="{% url 'courses:list' %}" class="thm-btn"><span
+                                    class="icon-angles-right"></span>Enroll Now</a>
+                        </div>
+                        <div class="banner-one__other-btn-box">
+                            <a href="https://www.youtube.com/watch?v=Get7rqXYrbQ"
+                                class="banner-one__other-btn-1 video-popup"><span
+                                    class="fa-solid fa-thumbs-up"></span>Quality
+                                Video</a>
+                            <a href="{% url 'courses:list' %}" class="banner-one__other-btn-1 banner-one__other-btn-2"><span
+                                    class="fa-solid fa-thumbs-up"></span>Browse
+                                Courses</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="banner-one__category-search-box">
+                    <div class="banner-one__category-search-inner">
+                        <div class="banner-one__category-select-box">
+                            <div class="select-box">
+                                <select class="wide">
+                                    <option data-display="All Categories">All Categories</option>
+                                    <option value="1">All Categories</option>
+                                    <option value="2">Tech & Programming</option>
+                                    <option value="3">Business</option>
+                                    <option value="4">Creative Art</option>
+                                    <option value="5">Design & Art</option>
+                                    <option value="6">Development</option>
+                                    <option value="7">Marketing</option>
+                                    <option value="8">Health & Wellness</option>
+                                </select>
+                            </div>
+                        </div>
+                        <form class="banner-one__category-form" method="get" action="{% url 'courses:list' %}">
+                            <div class="banner-one__category-input">
+                                <input type="search" name="search" placeholder="Find Your Course">
+                            </div>
+                            <button type="submit" class="banner-one__category-btn">Search</button>
+                        </form>
+                    </div>
+                    <div class="banner-one__tags">
+                        <a href="{% url 'courses:list' %}">Programming</a>
+                        <a href="{% url 'courses:list' %}">Business</a>
+                        <a href="{% url 'courses:list' %}">Development</a>
+                        <a href="{% url 'courses:list' %}">Marketing</a>
+                        <a href="{% url 'courses:list' %}">Art & Design</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Banner One End -->
+
+<!-- Sliding Text One Start-->
+<section class="sliding-text-one">
+    <div class="sliding-text-one__wrap">
+        <ul class="sliding-text__list list-unstyled marquee_mode">
+            <li>
+                <h2 data-hover="20+ Instructor" class="sliding-text__title">
+                    <span class="odometer" data-count="20">00</span>+ Instructor
+                    <img src="{% static 'images/shapes/sliding-text-shape-1.png' %}" alt="">
+                </h2>
+            </li>
+            <li>
+                <h2 data-hover="500+ Online Courses" class="sliding-text__title">
+                    <span class="odometer" data-count="500">00</span>+ Online Courses
+                    <img src="{% static 'images/shapes/sliding-text-shape-1.png' %}" alt="">
+                </h2>
+            </li>
+            <li>
+                <h2 data-hover="24 Hours Support" class="sliding-text__title">24 Hours Support
+                    <img src="{% static 'images/shapes/sliding-text-shape-1.png' %}" alt="">
+                </h2>
+            </li>
+            <li>
+                <h2 data-hover="Courses Certificate" class="sliding-text__title">Courses Certificate
+                    <img src="{% static 'images/shapes/sliding-text-shape-1.png' %}" alt="">
+                </h2>
+            </li>
+        </ul>
+    </div>
+</section>
+<!-- Sliding Text One End -->
+
+<!-- Category One Start -->
+<section class="category-one">
+    <div class="category-one__bg-shape"
+        style="background-image: url({% static 'images/shapes/category-one-bg-shape.png' %});"></div>
+    <div class="category-one__shape-1">
+        <img src="{% static 'images/shapes/category-one-shape-1.png' %}" alt="">
+    </div>
+    <div class="category-one__shape-2">
+        <img src="{% static 'images/shapes/category-one-shape-2.png' %}" alt="">
+    </div>
+    <div class="category-one__shape-3">
+        <img src="{% static 'images/shapes/category-one-shape-3.png' %}" alt="">
+    </div>
+    <div class="category-one__social-media">
+        <ul class="category-one__social-media-list list-unstyled">
+            <li>
+                <h3>Art & design</h3>
+            </li>
+            <li>
+                <img src="{% static 'images/shapes/category-one-social-media-shape-1.png' %}" alt="">
+            </li>
+            <li>
+                <h3>Marketing</h3>
+            </li>
+            <li>
+                <img src="{% static 'images/shapes/category-one-social-media-shape-1.png' %}" alt="">
+            </li>
+            <li>
+                <h3>Programming</h3>
+            </li>
+        </ul>
+    </div>
+    <div class="category-one__brand-box">
+        <ul class="category-one__brand-list list-unstyled">
+            <li>
+                <div class="category-one__brand">
+                    <img src="{% static 'images/brand/category-one-brand-1-1.png' %}" alt="">
+                </div>
+            </li>
+            <li>
+                <div class="category-one__brand">
+                    <img src="{% static 'images/brand/category-one-brand-1-2.png' %}" alt="">
+                </div>
+            </li>
+            <li>
+                <div class="category-one__brand">
+                    <img src="{% static 'images/brand/category-one-brand-1-3.png' %}" alt="">
+                </div>
+            </li>
+            <li>
+                <div class="category-one__brand">
+                    <img src="{% static 'images/brand/category-one-brand-1-4.png' %}" alt="">
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-7">
+                <div class="category-one__left">
+                    <div class="section-title text-left sec-title-animation animation-style2">
+                        <div class="section-title__tagline-box">
+                            <div class="section-title__tagline-shape"></div>
+                            <span class="section-title__tagline">Category</span>
+                        </div>
+                        <h2 class="section-title__title title-animation">Browse Our Categories To<br> Find
+                            Exactly <span>Courses <img src="{% static 'images/shapes/section-title-shape-2.png' %}"
+                                    alt=""></span></h2>
+                    </div>
+                    <ul class="category-one__category-list list-unstyled">
+                        <li>
+                            <div class="category-one__count-and-arrow">
+                                <div class="category-one__count-box">
+                                    <div class="category-one__count"></div>
+                                    <div class="category-one__count-content">
+                                        <h3><a href="{% url 'courses:list' %}">Tech & Programming</a></h3>
+                                        <p>10+ Courses</p>
+                                    </div>
+                                </div>
+                                <div class="category-one__count-arrow">
+                                    <a href="{% url 'courses:list' %}"><span
+                                            class="icon-arrow-up-right-2"></span></a>
+                                </div>
+                            </div>
+                            <div class="category-one__hover-icon-and-arrow">
+                                <div class="category-one__hover-icon-box">
+                                    <div class="category-one__hover-icon">
+                                        <img src="{% static 'images/icon/category-one-hover-icon-1-1.png' %}" alt="">
+                                    </div>
+                                    <div class="category-one__hover-content">
+                                        <h3><a href="{% url 'courses:list' %}">Tech & Programming</a></h3>
+                                        <p>10+ Courses</p>
+                                    </div>
+                                </div>
+                                <div class="category-one__hover-arrow">
+                                    <a href="{% url 'courses:list' %}"><span
+                                            class="icon-arrow-up-right-2"></span></a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="category-one__count-and-arrow">
+                                <div class="category-one__count-box">
+                                    <div class="category-one__count"></div>
+                                    <div class="category-one__count-content">
+                                        <h3><a href="{% url 'courses:list' %}">Art & Design</a></h3>
+                                        <p>50+ Courses</p>
+                                    </div>
+                                </div>
+                                <div class="category-one__count-arrow">
+                                    <a href="{% url 'courses:list' %}"><span
+                                            class="icon-arrow-up-right-2"></span></a>
+                                </div>
+                            </div>
+                            <div class="category-one__hover-icon-and-arrow">
+                                <div class="category-one__hover-icon-box">
+                                    <div class="category-one__hover-icon">
+                                        <img src="{% static 'images/icon/category-one-hover-icon-1-1.png' %}" alt="">
+                                    </div>
+                                    <div class="category-one__hover-content">
+                                        <h3><a href="{% url 'courses:list' %}">Art & Design</a></h3>
+                                        <p>50+ Courses</p>
+                                    </div>
+                                </div>
+                                <div class="category-one__hover-arrow">
+                                    <a href="{% url 'courses:list' %}"><span
+                                            class="icon-arrow-up-right-2"></span></a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="category-one__count-and-arrow">
+                                <div class="category-one__count-box">
+                                    <div class="category-one__count"></div>
+                                    <div class="category-one__count-content">
+                                        <h3><a href="{% url 'courses:list' %}">Online Marketing</a></h3>
+                                        <p>12+ Courses</p>
+                                    </div>
+                                </div>
+                                <div class="category-one__count-arrow">
+                                    <a href="{% url 'courses:list' %}"><span
+                                            class="icon-arrow-up-right-2"></span></a>
+                                </div>
+                            </div>
+                            <div class="category-one__hover-icon-and-arrow">
+                                <div class="category-one__hover-icon-box">
+                                    <div class="category-one__hover-icon">
+                                        <img src="{% static 'images/icon/category-one-hover-icon-1-1.png' %}" alt="">
+                                    </div>
+                                    <div class="category-one__hover-content">
+                                        <h3><a href="{% url 'courses:list' %}">Online Marketing</a></h3>
+                                        <p>12+ Courses</p>
+                                    </div>
+                                </div>
+                                <div class="category-one__hover-arrow">
+                                    <a href="{% url 'courses:list' %}"><span
+                                            class="icon-arrow-up-right-2"></span></a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="category-one__count-and-arrow">
+                                <div class="category-one__count-box">
+                                    <div class="category-one__count"></div>
+                                    <div class="category-one__count-content">
+                                        <h3><a href="{% url 'courses:list' %}">Content Creation</a></h3>
+                                        <p>10+ Courses</p>
+                                    </div>
+                                </div>
+                                <div class="category-one__count-arrow">
+                                    <a href="{% url 'courses:list' %}"><span
+                                            class="icon-arrow-up-right-2"></span></a>
+                                </div>
+                            </div>
+                            <div class="category-one__hover-icon-and-arrow">
+                                <div class="category-one__hover-icon-box">
+                                    <div class="category-one__hover-icon">
+                                        <img src="{% static 'images/icon/category-one-hover-icon-1-1.png' %}" alt="">
+                                    </div>
+                                    <div class="category-one__hover-content">
+                                        <h3><a href="{% url 'courses:list' %}">Content Creation</a></h3>
+                                        <p>10+ Courses</p>
+                                    </div>
+                                </div>
+                                <div class="category-one__hover-arrow">
+                                    <a href="{% url 'courses:list' %}"><span
+                                            class="icon-arrow-up-right-2"></span></a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-5">
+                <div class="category-one__right">
+                    <div class="category-one__right-inner">
+                        <div class="category-one__img">
+                            <img src="{% static 'images/resources/category-one-img-1.jpg' %}" alt="">
+                        </div>
+                        <div class="category-one__content-and-video">
+                            <div class="category-one__content">
+                                <h3><a href="{% url 'courses:list' %}">Learn anytime</a></h3>
+                                <p>Convenience of online education, allowing learners to acquire new skills</p>
+                            </div>
+                            <div class="category-one__video-link">
+                                <a href="https://www.youtube.com/watch?v=Get7rqXYrbQ" class="video-popup">
+                                    <div class="category-one__video-icon">
+                                        <span class="icon-play"></span>
+                                        <i class="ripple"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Category One End -->
+{% endblock %} 

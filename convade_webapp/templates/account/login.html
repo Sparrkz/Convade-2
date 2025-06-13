@@ -1,0 +1,253 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load socialaccount %}
+
+{% block title %}Login - Convade Learning Management System{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/module-css/page-header.css' %}" />
+{% endblock %}
+
+{% block content %}
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url({% static 'images/shapes/page-header-bg-shape.png' %});">
+    </div>
+    <div class="page-header__shape-4">
+        <img src="{% static 'images/shapes/page-header-shape-4.png' %}" alt="">
+    </div>
+    <div class="page-header__shape-5">
+        <img src="{% static 'images/shapes/page-header-shape-5.png' %}" alt="">
+    </div>
+    <div class="page-header__social">
+        <a href="#">Facebook</a>
+        <span>//</span>
+        <a href="#">Instagram</a>
+        <span>//</span>
+        <a href="#">LinkedIn</a>
+        <span>//</span>
+        <a href="#">Twitter</a>
+    </div>
+    <div class="container">
+        <div class="page-header__inner">
+            <div class="page-header__img">
+                <img src="{% static 'images/resources/page-header-img-1.png' %}" alt="">
+                <div class="page-header__shape-1">
+                    <img src="{% static 'images/shapes/page-header-shape-1.png' %}" alt="">
+                </div>
+                <div class="page-header__shape-2">
+                    <img src="{% static 'images/shapes/page-header-shape-2.png' %}" alt="">
+                </div>
+                <div class="page-header__shape-3">
+                    <img src="{% static 'images/shapes/page-header-shape-3.png' %}" alt="">
+                </div>
+            </div>
+            <h2>Login</h2>
+            <div class="thm-breadcrumb__box">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><span>//</span></li>
+                    <li>Login</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Page Header End-->
+
+<!--Start Login One-->
+<section class="login-one">
+    <div class="container">
+        <div class="login-one__form">
+            <div class="inner-title text-center">
+                <h2>Login Here</h2>
+                {% if socialaccount_providers %}
+                    <div class="mb-4">
+                        <p class="text-muted">Login with social accounts:</p>
+                        <div class="google-facebook">
+                            {% for provider in socialaccount_providers %}
+                                {% if provider.id == "google" %}
+                                    <a href="{% provider_login_url 'google' %}">
+                                        <div class="icon">
+                                            <img src="{% static 'images/icon/icon-google-2.png' %}" alt="Google">
+                                        </div>
+                                        Continue with Google
+                                    </a>
+                                {% endif %}
+                                {% if provider.id == "facebook" %}
+                                    <a href="{% provider_login_url 'facebook' %}">
+                                        <div class="icon">
+                                            <img src="{% static 'images/icon/icon-facebook.png' %}" alt="Facebook">
+                                        </div>
+                                        Continue with Facebook
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="text-center my-3">
+                            <span class="text-muted">or login with your email</span>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            <form id="login-one__form" name="Login-one_form" method="post">
+                {% csrf_token %}
+                
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+                
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="form-group">
+                            <div class="input-box">
+                                <input type="email" 
+                                       name="{{ form.login.name }}" 
+                                       id="{{ form.login.id_for_label }}" 
+                                       placeholder="Email..." 
+                                       required="" 
+                                       value="{{ form.login.value|default:'' }}"
+                                       class="{% if form.login.errors %}is-invalid{% endif %}">
+                                {% if form.login.errors %}
+                                    <div class="text-danger mt-2">
+                                        {% for error in form.login.errors %}
+                                            <small>{{ error }}</small>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="form-group">
+                            <div class="input-box">
+                                <input type="password" 
+                                       name="{{ form.password.name }}" 
+                                       id="{{ form.password.id_for_label }}" 
+                                       placeholder="Password..." 
+                                       required="" 
+                                       class="{% if form.password.errors %}is-invalid{% endif %}">
+                                {% if form.password.errors %}
+                                    <div class="text-danger mt-2">
+                                        {% for error in form.password.errors %}
+                                            <small>{{ error }}</small>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="form-group">
+                            <button class="thm-btn" type="submit" data-loading-text="Please wait...">Login Here</button>
+                        </div>
+                    </div>
+                    <div class="remember-forget">
+                        <div class="checked-box1">
+                            <input type="checkbox" 
+                                   name="{{ form.remember.name }}" 
+                                   id="{{ form.remember.id_for_label }}" 
+                                   {% if form.remember.value %}checked=""{% endif %}>
+                            <label for="{{ form.remember.id_for_label }}">
+                                <span></span>
+                                Remember me
+                            </label>
+                        </div>
+                        <div class="forget">
+                            <a href="{% url 'account_reset_password' %}">Forget password?</a>
+                        </div>
+                    </div>
+
+                    <div class="create-account text-center">
+                        <p>Not registered yet? <a href="{% url 'account_signup' %}">Create an Account</a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!--End Login One-->
+
+<!--Newsletter Two Start -->
+<section class="newsletter-two">
+    <div class="container">
+        <div class="newsletter-two__inner">
+            <div class="newsletter-two__img">
+                <img src="{% static 'images/resources/newsletter-two-img-1.png' %}" alt="">
+            </div>
+            <div class="newsletter-two__inner-content">
+                <div class="newsletter-two__shape-bg"
+                    style="background-image: url({% static 'images/shapes/newsletter-two-shape-bg.png' %});"></div>
+                <div class="newsletter-two__like">
+                    <img src="{% static 'images/shapes/newsletter-two-like.png' %}" alt="">
+                </div>
+                <div class="newsletter-two__title-box">
+                    <h3 class="newsletter-two__title">Subscribe our <span>Newsletter</span></h3>
+                    <p class="newsletter-two__text">Explore a diverse selection of courses all in one platform,
+                        <br>
+                        designed to cater to various learning</p>
+                </div>
+                <div class="newsletter-two__form-box">
+                    <form class="newsletter-two__form">
+                        {% csrf_token %}
+                        <div class="newsletter-two__input">
+                            <input type="email" placeholder="Enter Your Email">
+                        </div>
+                        <button type="submit" class="newsletter-two__btn"> <span
+                                class="icon-arrow-circle"></span>
+                            Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Newsletter Two End -->
+
+<!--Contact Info One Start -->
+<section class="contact-info-one">
+    <div class="container">
+        <ul class="list-unstyled contact-info-one__list">
+            <li>
+                <div class="contact-info-one__single">
+                    <div class="contact-info-one__icon">
+                        <span class="icon-envelope"></span>
+                    </div>
+                    <div class="contact-info-one__content">
+                        <p class="contact-info-one__sub-title">Email Address:</p>
+                        <h5 class="contact-info-one__email"><a
+                                href="mailto:support@convade.com">support@convade.com</a></h5>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="contact-info-one__single">
+                    <div class="contact-info-one__icon">
+                        <span class="icon-phone"></span>
+                    </div>
+                    <div class="contact-info-one__content">
+                        <p class="contact-info-one__sub-title">Phone Number</p>
+                        <h5 class="contact-info-one__email"><a href="tel:1212345678900">+12 (123) 456 78900</a>
+                        </h5>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="contact-info-one__single">
+                    <div class="contact-info-one__icon">
+                        <span class="icon-location"></span>
+                    </div>
+                    <div class="contact-info-one__content">
+                        <p class="contact-info-one__sub-title">Our Address</p>
+                        <h5 class="contact-info-one__email">684 West College St. Sun City, USA</h5>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+<!--Contact Info One End -->
+{% endblock %} 

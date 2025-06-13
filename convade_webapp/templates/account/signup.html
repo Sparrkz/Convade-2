@@ -1,0 +1,191 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% load socialaccount %}
+
+{% block title %}Sign Up - Convade Learning Management System{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/module-css/page-header.css' %}" />
+{% endblock %}
+
+{% block content %}
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url({% static 'images/shapes/page-header-bg-shape.png' %});">
+    </div>
+    <div class="page-header__shape-4">
+        <img src="{% static 'images/shapes/page-header-shape-4.png' %}" alt="">
+    </div>
+    <div class="page-header__shape-5">
+        <img src="{% static 'images/shapes/page-header-shape-5.png' %}" alt="">
+    </div>
+    <div class="page-header__social">
+        <a href="#">Facebook</a>
+        <span>//</span>
+        <a href="#">Instagram</a>
+        <span>//</span>
+        <a href="#">LinkedIn</a>
+        <span>//</span>
+        <a href="#">Twitter</a>
+    </div>
+    <div class="container">
+        <div class="page-header__inner">
+            <div class="page-header__img">
+                <img src="{% static 'images/resources/page-header-img-1.png' %}" alt="">
+                <div class="page-header__shape-1">
+                    <img src="{% static 'images/shapes/page-header-shape-1.png' %}" alt="">
+                </div>
+                <div class="page-header__shape-2">
+                    <img src="{% static 'images/shapes/page-header-shape-2.png' %}" alt="">
+                </div>
+                <div class="page-header__shape-3">
+                    <img src="{% static 'images/shapes/page-header-shape-3.png' %}" alt="">
+                </div>
+            </div>
+            <h2>Sign Up</h2>
+            <div class="thm-breadcrumb__box">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><span>//</span></li>
+                    <li>Sign Up</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Page Header End-->
+
+<!--Start Sign Up One-->
+<section class="sign-up-one">
+    <div class="container">
+        <div class="sign-up-one__form">
+            <div class="inner-title text-center">
+                <h2>Sign Up</h2>
+            </div>
+            <form id="sign-up-one__form" name="sign-up-one_form" method="post">
+                {% csrf_token %}
+                
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+                
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="form-group">
+                            <div class="input-box">
+                                <input type="text" 
+                                       name="{{ form.username.name }}" 
+                                       id="{{ form.username.id_for_label }}" 
+                                       placeholder="Username..." 
+                                       required="" 
+                                       value="{{ form.username.value|default:'' }}"
+                                       class="{% if form.username.errors %}is-invalid{% endif %}">
+                                {% if form.username.errors %}
+                                    <div class="text-danger mt-2">
+                                        {% for error in form.username.errors %}
+                                            <small>{{ error }}</small>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="form-group">
+                            <div class="input-box">
+                                <input type="email" 
+                                       name="{{ form.email.name }}" 
+                                       id="{{ form.email.id_for_label }}" 
+                                       placeholder="Email..." 
+                                       required="" 
+                                       value="{{ form.email.value|default:'' }}"
+                                       class="{% if form.email.errors %}is-invalid{% endif %}">
+                                {% if form.email.errors %}
+                                    <div class="text-danger mt-2">
+                                        {% for error in form.email.errors %}
+                                            <small>{{ error }}</small>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="form-group">
+                            <div class="input-box">
+                                <input type="password" 
+                                       name="{{ form.password1.name }}" 
+                                       id="{{ form.password1.id_for_label }}" 
+                                       placeholder="Password..." 
+                                       required="" 
+                                       class="{% if form.password1.errors %}is-invalid{% endif %}">
+                                {% if form.password1.errors %}
+                                    <div class="text-danger mt-2">
+                                        {% for error in form.password1.errors %}
+                                            <small>{{ error }}</small>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="form-group">
+                            <div class="input-box">
+                                <input type="password" 
+                                       name="{{ form.password2.name }}" 
+                                       id="{{ form.password2.id_for_label }}" 
+                                       placeholder="Confirm Password..." 
+                                       required="" 
+                                       class="{% if form.password2.errors %}is-invalid{% endif %}">
+                                {% if form.password2.errors %}
+                                    <div class="text-danger mt-2">
+                                        {% for error in form.password2.errors %}
+                                            <small>{{ error }}</small>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="form-group">
+                            <button class="thm-btn" type="submit" data-loading-text="Please wait...">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+                {% if socialaccount_providers %}
+                    <div class="google-facebook">
+                        {% for provider in socialaccount_providers %}
+                            {% if provider.id == "google" %}
+                                <a href="{% provider_login_url 'google' %}">
+                                    <div class="icon">
+                                        <img src="{% static 'images/icon/icon-google-2.png' %}" alt="Google">
+                                    </div>
+                                    Continue with Google
+                                </a>
+                            {% endif %}
+                            {% if provider.id == "facebook" %}
+                                <a href="{% provider_login_url 'facebook' %}">
+                                    <div class="icon">
+                                        <img src="{% static 'images/icon/icon-facebook.png' %}" alt="Facebook">
+                                    </div>
+                                    Continue with Facebook
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="create-account text-center">
+                    <p>Already have an account? <a href="{% url 'account_login' %}">Login Here</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!--End Sign Up One-->
+{% endblock %} 

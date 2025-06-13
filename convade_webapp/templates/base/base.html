@@ -1,0 +1,519 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Convade Learning Management System{% endblock %}</title>
+    <!-- favicons Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicons/PNG LOGO RED.png' %}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/red-logo.png' %}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/red-logo.png' %}" />
+    <link rel="manifest" href="{% static 'images/favicons/site.webmanifest' %}" />
+    <meta name="description" content="Convade Learning Management System" />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/custom-animate.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/font-awesome-all.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/jarallax.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/jquery.magnific-popup.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/odometer.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/module-css/banner.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/module-css/slider.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/module-css/footer.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/module-css/sliding-text.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/module-css/category.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/module-css/about.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/module-css/courses.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/module-css/why-choose.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/module-css/live-class.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/module-css/video-one.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/module-css/blog.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/module-css/counter.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/module-css/team.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/module-css/newsletter.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/module-css/testimonial.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/module-css/contact.css' %}" />
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
+    
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body class="custom-cursor">
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+    <!--Start Preloader-->
+    <div class="loader js-preloader">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <!--End Preloader-->
+
+    <div class="page-wrapper">
+        <header class="main-header">
+            <div class="main-menu__top">
+                <div class="container">
+                    <div class="main-menu__top-inner">
+                        <ul class="list-unstyled main-menu__contact-list">
+                            <li>
+                                <div class="icon">
+                                    <i class="icon-email"></i>
+                                </div>
+                                <div class="text">
+                                    <p><a href="mailto:support@convade.com">support@convade.com</a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <i class="icon-contact"></i>
+                                </div>
+                                <div class="text">
+                                    <p><a href="tel:1212345678900">+12 (123) 456 78900</a></p>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled main-menu__contact-list main-menu__location">
+                            <li>
+                                <div class="icon">
+                                    <i class="icon-location"></i>
+                                </div>
+                                <div class="text">
+                                    <p>684 West College St. Sun City, USA</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <nav class="main-menu">
+                <div class="main-menu__wrapper">
+                    <div class="container">
+                        <div class="main-menu__wrapper-inner">
+                            <div class="main-menu__left">
+                                <div class="main-menu__logo">
+                                    <a href="{% url 'home' %}"><img src="{% static 'images/red-2logo.png' %}" alt="Convade"></a>
+                                </div>
+                                <div class="main-menu__category-box">
+                                    <div class="main-menu__category-btn">
+                                        <i class="fas fa-th"></i>
+                                        <p>Category</p>
+                                        <span class="icon-down-arrow"></span>
+                                    </div>
+                                    <ul class="list-unstyled main-menu__category-sub-menu">
+                                        <li>
+                                            <a href="{% url 'courses:list' %}">
+                                                <div class="main-menu__category-icon">
+                                                    <img src="{% static 'images/icon/categoyr-two-icon-1.png' %}" alt="">
+                                                </div>
+                                                <div class="main-menu__category-content">
+                                                    <h5>Tech & <br> Programming</h5>
+                                                    <p>3+ Courses</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'courses:list' %}">
+                                                <div class="main-menu__category-icon">
+                                                    <img src="{% static 'images/icon/categoyr-two-icon-2.png' %}" alt="">
+                                                </div>
+                                                <div class="main-menu__category-content">
+                                                    <h5>Creative <br> Art</h5>
+                                                    <p>3+ Courses</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'courses:list' %}">
+                                                <div class="main-menu__category-icon">
+                                                    <img src="{% static 'images/icon/categoyr-two-icon-3.png' %}" alt="">
+                                                </div>
+                                                <div class="main-menu__category-content">
+                                                    <h5>Business & <br> Finance</h5>
+                                                    <p>3+ Courses</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'courses:list' %}">
+                                                <div class="main-menu__category-icon">
+                                                    <img src="{% static 'images/icon/categoyr-two-icon-4.png' %}" alt="">
+                                                </div>
+                                                <div class="main-menu__category-content">
+                                                    <h5>Health & <br> Wellness</h5>
+                                                    <p>3+ Courses</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'courses:list' %}">
+                                                <div class="main-menu__category-icon">
+                                                    <img src="{% static 'images/icon/categoyr-two-icon-5.png' %}" alt="">
+                                                </div>
+                                                <div class="main-menu__category-content">
+                                                    <h5>Writing & <br> Communication</h5>
+                                                    <p>3+ Courses</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'courses:list' %}">
+                                                <div class="main-menu__category-icon">
+                                                    <img src="{% static 'images/icon/categoyr-two-icon-6.png' %}" alt="">
+                                                </div>
+                                                <div class="main-menu__category-content">
+                                                    <h5>User Research & <br> Analytics</h5>
+                                                    <p>3+ Courses</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'courses:list' %}">
+                                                <div class="main-menu__category-icon">
+                                                    <img src="{% static 'images/icon/categoyr-two-icon-7.png' %}" alt="">
+                                                </div>
+                                                <div class="main-menu__category-content">
+                                                    <h5>Digital <br> Marketing</h5>
+                                                    <p>3+ Courses</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'courses:list' %}">
+                                                <div class="main-menu__category-icon">
+                                                    <img src="{% static 'images/icon/categoyr-two-icon-8.png' %}" alt="">
+                                                </div>
+                                                <div class="main-menu__category-content">
+                                                    <h5>Lifestyle & <br> Productivity</h5>
+                                                    <p>3+ Courses</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="main-menu__main-menu-box">
+                                <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                                <ul class="main-menu__list one-page-scroll-menu">
+                                    <li class="scrollToLink">
+                                        <a href="{% url 'home' %}">Home</a>
+                                    </li>
+                                    <li class="scrollToLink">
+                                        <a href="{% url 'courses:list' %}">Courses</a>
+                                    </li>
+                                    {% if user.is_authenticated %}
+                                        {% if user.is_student %}
+                                            <li class="scrollToLink">
+                                                <a href="{% url 'courses:my_courses' %}">My Courses</a>
+                                            </li>
+                                            <li class="scrollToLink">
+                                                <a href="{% url 'badges:my_badges' %}">My Badges</a>
+                                            </li>
+                                            <li class="scrollToLink">
+                                                <a href="{% url 'certifications:my_certificates' %}">Certificates</a>
+                                            </li>
+                                        {% elif user.is_teacher %}
+                                            <li class="scrollToLink">
+                                                <a href="{% url 'courses:create' %}">Create Course</a>
+                                            </li>
+                                            <li class="scrollToLink">
+                                                <a href="{% url 'tests:create' %}">Create Test</a>
+                                            </li>
+                                            <li class="scrollToLink">
+                                                <a href="{% url 'analytics:dashboard' %}">Analytics</a>
+                                            </li>
+                                        {% elif user.is_admin %}
+                                            <li class="scrollToLink">
+                                                <a href="{% url 'analytics:dashboard' %}">Analytics</a>
+                                            </li>
+                                            <li class="scrollToLink">
+                                                <a href="/admin/">Admin Panel</a>
+                                            </li>
+                                        {% endif %}
+                                        <li class="scrollToLink">
+                                            <a href="{% url 'accounts:dashboard' %}">Dashboard</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="scrollToLink">
+                                            <a href="{% url 'account_login' %}">Login</a>
+                                        </li>
+                                        <li class="scrollToLink">
+                                            <a href="{% url 'account_signup' %}">Sign-up</a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="main-menu__right">
+                                <div class="main-menu__search-cart-box">
+                                    <div class="main-menu__search-box">
+                                        <a href="#" class="main-menu__search searcher-toggler-box icon-search"></a>
+                                    </div>
+                                    {% if user.is_authenticated %}
+                                        <div class="main-menu__cart">
+                                            <a href="#"><span class="fas fa-user"></span></a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="main-menu__btn-boxes">
+                                    {% if not user.is_authenticated %}
+                                        <div class="main-menu__btn-box-1">
+                                            <a href="{% url 'account_login' %}" class="thm-btn">Login</a>
+                                        </div>
+                                        <div class="main-menu__btn-box-2">
+                                            <a href="{% url 'account_signup' %}" class="thm-btn">Register</a>
+                                        </div>
+                                    {% else %}
+                                        <div class="main-menu__btn-box-1">
+                                            <a href="{% url 'accounts:profile' %}" class="thm-btn">{{ user.username }}</a>
+                                        </div>
+                                        <div class="main-menu__btn-box-2">
+                                            <a href="{% url 'account_logout' %}" class="thm-btn">Logout</a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="stricky-header stricked-menu main-menu">
+            <div class="sticky-header__content"></div>
+        </div>
+
+        <!-- Messages -->
+        {% if messages %}
+            <div class="container mt-3">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Main Content -->
+        {% block content %}{% endblock %}
+
+        <!--Site Footer Start-->
+        <footer class="site-footer">
+            <div class="site-footer__top">
+                <div class="container">
+                    <div class="site-footer__top-inner">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 wow fadeInUp" data-wow-delay="100ms">
+                                <div class="site-footer__top-left">
+                                    <div class="site-footer__logo">
+                                        <a href="{% url 'home' %}"><img src="{% static 'images/resources/footer-logo.png' %}" alt=""></a>
+                                    </div>
+                                    <div class="site-footer__text-box">
+                                        <p class="site-footer__text">Empowering learners worldwide with quality education and innovative learning experiences.</p>
+                                    </div>
+                                    <div class="site-footer__app-and-social-box">
+                                        <div class="site-footer__app-box">
+                                            <h4 class="site-footer__app-and-social-title">Download Our App:</h4>
+                                            <div class="site-footer__app-box-inner">
+                                                <a href="#">
+                                                    <div class="site-footer__app-icon">
+                                                        <img src="{% static 'images/icon/google-play-icon.png' %}" alt="">
+                                                    </div>
+                                                </a>
+                                                <a href="#">
+                                                    <div class="site-footer__app-icon">
+                                                        <img src="{% static 'images/icon/apple-icon.png' %}" alt="">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="site-footer__social-box">
+                                            <h4 class="site-footer__app-and-social-title">Follow Us:</h4>
+                                            <div class="site-footer__social-box-inner">
+                                                <a href="#"><span class="fab fa-linkedin-in"></span></a>
+                                                <a href="#"><span class="fab fa-pinterest-p"></span></a>
+                                                <a href="#"><span class="fab fa-facebook-f"></span></a>
+                                                <a href="#"><span class="fab fa-instagram"></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 wow fadeInUp" data-wow-delay="300ms">
+                                <div class="site-footer__top-right">
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-6 col-md-6">
+                                            <div class="site-footer__links">
+                                                <h4 class="site-footer__title">Quick Link</h4>
+                                                <ul class="site-footer__links-list list-unstyled">
+                                                    <li><a href="{% url 'home' %}"> <span class="icon-plus"></span> Home</a></li>
+                                                    <li><a href="{% url 'courses:list' %}"> <span class="icon-plus"></span> Courses</a></li>
+                                                    <li><a href="{% url 'helpcenter:index' %}"> <span class="icon-plus"></span> Help Center</a></li>
+                                                    <li><a href="{% url 'helpcenter:faq' %}"> <span class="icon-plus"></span> FAQs</a></li>
+                                                    <li><a href="{% url 'helpcenter:support' %}"> <span class="icon-plus"></span> Contact</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6">
+                                            <div class="site-footer__useful-links">
+                                                <h4 class="site-footer__title">Useful Links</h4>
+                                                <ul class="site-footer__links-list list-unstyled">
+                                                    {% if user.is_authenticated %}
+                                                        <li><a href="{% url 'accounts:dashboard' %}"> <span class="icon-plus"></span> Dashboard</a></li>
+                                                        <li><a href="{% url 'accounts:profile' %}"> <span class="icon-plus"></span> Profile</a></li>
+                                                        {% if user.is_student %}
+                                                            <li><a href="{% url 'courses:my_courses' %}"> <span class="icon-plus"></span> My Courses</a></li>
+                                                            <li><a href="{% url 'badges:my_badges' %}"> <span class="icon-plus"></span> My Badges</a></li>
+                                                        {% endif %}
+                                                    {% else %}
+                                                        <li><a href="{% url 'account_login' %}"> <span class="icon-plus"></span> Login</a></li>
+                                                        <li><a href="{% url 'account_signup' %}"> <span class="icon-plus"></span> Register</a></li>
+                                                    {% endif %}
+                                                    <li><a href="#"> <span class="icon-plus"></span> Privacy Policy</a></li>
+                                                    <li><a href="#"> <span class="icon-plus"></span> Terms & Conditions</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="site-footer__newsletter-box">
+                                        <h4 class="site-footer__title">Newsletter</h4>
+                                        <form class="site-footer__newsletter-form">
+                                            {% csrf_token %}
+                                            <div class="site-footer__newsletter-input">
+                                                <input type="email" placeholder="Enter Your Email">
+                                            </div>
+                                            <button type="submit" class="thm-btn"> <span class="icon-angles-right"></span> Subscribe</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="site-footer__bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="site-footer__bottom-inner">
+                                <div class="site-footer__copyright">
+                                    <p class="site-footer__copyright-text">Copyright © 2025 <a href="{% url 'home' %}">Convade</a>. All Rights Reserved</p>
+                                </div>
+                                <div class="site-footer__bottom-card-box">
+                                    <ul class="list-unstyled site-footer__card-menu">
+                                        <li><a href="#"><img src="{% static 'images/icon/card-icon-1.png' %}" alt=""></a></li>
+                                        <li><a href="#"><img src="{% static 'images/icon/card-icon-2.png' %}" alt=""></a></li>
+                                        <li><a href="#"><img src="{% static 'images/icon/card-icon-3.png' %}" alt=""></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--Site Footer End-->
+
+    </div><!-- /.page-wrapper -->
+
+    <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+        <div class="mobile-nav__content">
+            <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+
+            <div class="logo-box">
+                <a href="{% url 'home' %}" aria-label="logo image"><img src="{% static 'images/resources/logo-4.png' %}" width="105" alt="" /></a>
+            </div>
+            <div class="mobile-nav__container"></div>
+
+            <ul class="mobile-nav__contact list-unstyled">
+                <li>
+                    <i class="fa fa-envelope"></i>
+                    <a href="mailto:support@convade.com">support@convade.com</a>
+                </li>
+                <li>
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:1212345678900">+12 (123) 456 78900</a>
+                </li>
+            </ul>
+            <div class="mobile-nav__top">
+                <div class="mobile-nav__social">
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-facebook-square"></a>
+                    <a href="#" class="fab fa-pinterest-p"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Popup -->
+    <div class="search-popup">
+        <div class="color-layer"></div>
+        <button class="close-search"><span class="far fa-times fa-fw"></span></button>
+        <form method="get" action="{% url 'courses:list' %}">
+            <div class="form-group">
+                <input type="search" name="search" value="" placeholder="Search Courses" required="">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </form>
+    </div>
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+        <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
+        <span class="scroll-to-top__text"> Go Back Top</span>
+    </a>
+
+    <!-- JavaScript files -->
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/jarallax.min.js' %}"></script>
+    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'js/jquery.appear.min.js' %}"></script>
+    <script src="{% static 'js/swiper.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/odometer.min.js' %}"></script>
+    <script src="{% static 'js/wNumb.min.js' %}"></script>
+    <script src="{% static 'js/wow.js' %}"></script>
+    <script src="{% static 'js/isotope.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/marquee.min.js' %}"></script>
+    <script src="{% static 'js/aos.js' %}"></script>
+
+    <script src="{% static 'js/gsap/gsap.js' %}"></script>
+    <script src="{% static 'js/gsap/ScrollTrigger.js' %}"></script>
+    <script src="{% static 'js/gsap/SplitText.js' %}"></script>
+
+    <!-- template js -->
+    <script src="{% static 'js/script.js' %}"></script>
+    
+    <!-- Custom Django integration -->
+    <script src="{% static 'js/main.js' %}"></script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
