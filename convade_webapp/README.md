@@ -69,7 +69,8 @@ The application is built with Django and follows a modular architecture with sep
 
 2. **Activate the virtual environment:**
    ```bash
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate  
+   if On Windows: venv\Scripts\activate
    ```
 
 3. **Install dependencies:**
