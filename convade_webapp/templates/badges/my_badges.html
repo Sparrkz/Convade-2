@@ -1,0 +1,455 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}My Badges - Convade LMS{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Badges Header Spacing */
+    .badges-content {
+        padding-top: 180px;
+    }
+    
+    /* Header Section */
+    .badges-header {
+        background: linear-gradient(135deg, var(--Convade-base), var(--Convade-accent));
+        color: white;
+        padding: 3rem 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    .badges-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    
+    .badges-subtitle {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        margin-bottom: 2rem;
+    }
+    
+    .badges-stats {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+    }
+    
+    .stat-box {
+        text-align: center;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+        font-weight: bold;
+        display: block;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+    
+    /* Section Cards */
+    .section-card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+    
+    .section-title {
+        color: var(--Convade-base);
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    /* Badge Grid */
+    .badges-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    /* Badge Card */
+    .badge-card {
+        background: white;
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .badge-card.earned {
+        border-color: var(--Convade-base);
+        background: linear-gradient(135deg, #ffffff, #f8f9ff);
+    }
+    
+    .badge-card.available {
+        border-color: #dee2e6;
+        opacity: 0.7;
+    }
+    
+    .badge-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .badge-card.earned:hover {
+        box-shadow: 0 10px 25px rgba(var(--Convade-base-rgb), 0.2);
+    }
+    
+    /* Badge Icon */
+    .badge-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin: 0 auto 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        position: relative;
+    }
+    
+    .badge-card.earned .badge-icon {
+        background: linear-gradient(135deg, var(--Convade-base), var(--Convade-accent));
+        color: white;
+    }
+    
+    .badge-card.available .badge-icon {
+        background: #f8f9fa;
+        color: var(--Convade-gray);
+        border: 2px dashed #dee2e6;
+    }
+    
+    .badge-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+    
+    /* Earned Badge Shine Effect */
+    .badge-card.earned::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+        transform: rotate(45deg);
+        animation: shine 3s infinite;
+    }
+    
+    @keyframes shine {
+        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    }
+    
+    /* Badge Content */
+    .badge-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--Convade-base);
+    }
+    
+    .badge-card.available .badge-name {
+        color: var(--Convade-gray);
+    }
+    
+    .badge-description {
+        color: var(--Convade-gray);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+    }
+    
+    .badge-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e9ecef;
+    }
+    
+    .badge-points {
+        font-weight: 600;
+        color: var(--Convade-base);
+    }
+    
+    .badge-card.available .badge-points {
+        color: var(--Convade-gray);
+    }
+    
+    .badge-date {
+        font-size: 0.8rem;
+        color: var(--Convade-gray);
+    }
+    
+    .badge-type {
+        background: var(--Convade-light);
+        color: var(--Convade-base);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+    
+    .badge-card.available .badge-type {
+        background: #f8f9fa;
+        color: var(--Convade-gray);
+    }
+    
+    /* Related Course */
+    .badge-course {
+        background: #f8f9fa;
+        padding: 0.5rem;
+        border-radius: 6px;
+        margin-top: 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .badge-course-title {
+        font-weight: 500;
+        color: var(--Convade-base);
+    }
+    
+    /* Empty State */
+    .empty-state {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: var(--Convade-gray);
+    }
+    
+    .empty-state i {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+    }
+    
+    .empty-state h3 {
+        margin-bottom: 1rem;
+    }
+    
+    .empty-state p {
+        margin-bottom: 2rem;
+    }
+    
+    .action-btn {
+        background: var(--Convade-base);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .action-btn:hover {
+        background: var(--Convade-accent);
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    /* Progress Bar */
+    .progress-section {
+        margin-bottom: 2rem;
+    }
+    
+    .progress-label {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+    }
+    
+    .progress-text {
+        font-weight: 500;
+        color: var(--Convade-base);
+    }
+    
+    .progress-percentage {
+        color: var(--Convade-gray);
+    }
+    
+    .progress-bar-container {
+        background: #e9ecef;
+        border-radius: 10px;
+        height: 8px;
+        overflow: hidden;
+    }
+    
+    .progress-bar-fill {
+        background: linear-gradient(90deg, var(--Convade-base), var(--Convade-accent));
+        height: 100%;
+        border-radius: 10px;
+        transition: width 0.3s ease;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .badges-content {
+            padding-top: 120px;
+        }
+        
+        .badges-header {
+            padding: 2rem 1rem;
+        }
+        
+        .badges-title {
+            font-size: 2rem;
+        }
+        
+        .badges-stats {
+            gap: 1.5rem;
+        }
+        
+        .badges-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="badges-content">
+    <div class="container">
+        <!-- Header -->
+        <div class="badges-header">
+            <h1 class="badges-title">My Badges</h1>
+            <p class="badges-subtitle">Track your achievements and unlock new badges as you learn</p>
+            
+            <div class="badges-stats">
+                <div class="stat-box">
+                    <span class="stat-number">{{ earned_count }}</span>
+                    <span class="stat-label">Earned Badges</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">{{ total_points }}</span>
+                    <span class="stat-label">Total Points</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">{{ total_badges }}</span>
+                    <span class="stat-label">Available Badges</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Section -->
+        {% if total_badges > 0 %}
+        <div class="section-card">
+            <div class="progress-section">
+                <div class="progress-label">
+                    <span class="progress-text">Badge Collection Progress</span>
+                    <span class="progress-percentage">{{ earned_count }}/{{ total_badges }} ({% widthratio earned_count total_badges 100 %}%)</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: {% widthratio earned_count total_badges 100 %}%"></div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Earned Badges -->
+        {% if earned_badges %}
+        <div class="section-card">
+            <h2 class="section-title">
+                <i class="fas fa-trophy"></i>
+                Earned Badges
+            </h2>
+            <div class="badges-grid">
+                {% for earned_badge in earned_badges %}
+                <div class="badge-card earned">
+                    <div class="badge-icon">
+                        {% if earned_badge.badge.icon %}
+                            <img src="{{ earned_badge.badge.icon.url }}" alt="{{ earned_badge.badge.name }}">
+                        {% else %}
+                            <i class="fas fa-medal"></i>
+                        {% endif %}
+                    </div>
+                    <h3 class="badge-name">{{ earned_badge.badge.name }}</h3>
+                    <p class="badge-description">{{ earned_badge.badge.description }}</p>
+                    
+                    {% if earned_badge.related_course %}
+                    <div class="badge-course">
+                        <div class="badge-course-title">{{ earned_badge.related_course.title }}</div>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="badge-meta">
+                        <span class="badge-points">{{ earned_badge.badge.points }} pts</span>
+                        <span class="badge-date">{{ earned_badge.earned_at|date:"M d, Y" }}</span>
+                    </div>
+                    <div class="badge-type">{{ earned_badge.badge.get_badge_type_display }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Available Badges -->
+        {% if available_badges %}
+        <div class="section-card">
+            <h2 class="section-title">
+                <i class="fas fa-target"></i>
+                Available Badges
+            </h2>
+            <div class="badges-grid">
+                {% for badge in available_badges %}
+                <div class="badge-card available">
+                    <div class="badge-icon">
+                        {% if badge.icon %}
+                            <img src="{{ badge.icon.url }}" alt="{{ badge.name }}">
+                        {% else %}
+                            <i class="fas fa-medal"></i>
+                        {% endif %}
+                    </div>
+                    <h3 class="badge-name">{{ badge.name }}</h3>
+                    <p class="badge-description">{{ badge.description }}</p>
+                    
+                    <div class="badge-meta">
+                        <span class="badge-points">{{ badge.points }} pts</span>
+                    </div>
+                    <div class="badge-type">{{ badge.get_badge_type_display }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Empty State -->
+        {% if not earned_badges and not available_badges %}
+        <div class="section-card">
+            <div class="empty-state">
+                <i class="fas fa-medal"></i>
+                <h3>No badges yet</h3>
+                <p>Start learning and completing courses to earn your first badge!</p>
+                <a href="{% url 'courses:list' %}" class="action-btn">
+                    <i class="fas fa-graduation-cap"></i>
+                    Browse Courses
+                </a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 

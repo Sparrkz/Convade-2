@@ -1,0 +1,397 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}{{ course.title }} - Convade LMS{% endblock %}
+
+{% block extra_css %}
+<style>
+  
+    
+    .course-header {
+        background: linear-gradient(135deg, var(--Convade-base), var(--Convade-accent));
+        color: white;
+        padding: 180px 0;
+        margin-bottom: 3rem;
+    }
+    
+    .course-thumbnail {
+        width: 100%;
+        height: 300px;
+        border-radius: 12px;
+        object-fit: cover;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    
+    .course-placeholder {
+        height: 300px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    
+    .course-info-card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 2rem;
+    }
+    
+    .course-price {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--Convade-base);
+        margin-bottom: 1rem;
+    }
+    
+    .course-price.free {
+        color: #2e7d32;
+    }
+    
+    .course-meta-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        color: var(--Convade-gray);
+    }
+    
+    .course-meta-item i {
+        margin-right: 0.5rem;
+        width: 20px;
+    }
+    
+    .difficulty-badge {
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+    
+    .difficulty-beginner { background: #e8f5e8; color: #2e7d32; }
+    .difficulty-intermediate { background: #fff3e0; color: #f57c00; }
+    .difficulty-advanced { background: #ffebee; color: #d32f2f; }
+    
+    .enroll-btn {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+    
+    .enrolled-status {
+        background: #e8f5e8;
+        color: #2e7d32;
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .course-content {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+    
+    .content-header {
+        background: var(--Convade-light);
+        padding: 1.5rem;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .content-item {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #f0f0f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .content-item:last-child {
+        border-bottom: none;
+    }
+    
+    .content-item i {
+        margin-right: 0.8rem;
+        color: var(--Convade-base);
+    }
+    
+    .content-type {
+        color: var(--Convade-gray);
+        font-size: 0.9rem;
+    }
+    
+    .free-badge {
+        background: #e8f5e8;
+        color: #2e7d32;
+        padding: 0.2rem 0.5rem;
+        border-radius: 12px;
+        font-size: 0.8rem;
+    }
+    
+    .instructor-card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+    
+    .instructor-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: var(--Convade-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: var(--Convade-base);
+        margin-right: 1.5rem;
+    }
+    
+    .similar-courses {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .similar-course-item {
+        padding: 1rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .similar-course-item:hover {
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transform: translateY(-2px);
+    }
+    
+    .progress-bar-wrapper {
+        margin-top: 1rem;
+    }
+    
+    .progress-text {
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--Convade-gray);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Course Header -->
+<div class="course-header">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-5 fw-bold mb-3">{{ course.title }}</h1>
+                <p class="lead mb-4">{{ course.description|truncatewords:25 }}</p>
+                <div class="course-badges mb-3">
+                    <span class="difficulty-badge difficulty-{{ course.difficulty }}">
+                        {{ course.get_difficulty_display }}
+                    </span>
+                    {% for category in course.categories.all %}
+                        <span class="badge bg-light text-dark me-2">{{ category.name }}</span>
+                    {% endfor %}
+                </div>
+                <div class="course-meta d-flex flex-wrap">
+                    <div class="me-4 mb-2">
+                        <i class="fas fa-user"></i> {{ course.instructor.get_full_name }}
+                    </div>
+                    <div class="me-4 mb-2">
+                        <i class="fas fa-clock"></i> {{ course.duration_hours }} hours
+                    </div>
+                    <div class="me-4 mb-2">
+                        <i class="fas fa-users"></i> {{ course.enrolled_students_count }} students
+                    </div>
+                    <div class="me-4 mb-2">
+                        <i class="fas fa-calendar"></i> {{ course.created_at|date:"M d, Y" }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                {% if course.thumbnail %}
+                    <img src="{{ course.thumbnail.url }}" alt="{{ course.title }}" class="course-thumbnail">
+                {% else %}
+                    <div class="course-placeholder">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <!-- Main Content -->
+        <div class="col-lg-8">
+            <!-- Course Description -->
+            <div class="course-content">
+                <div class="content-header">
+                    <h3>About This Course</h3>
+                </div>
+                <div class="p-4">
+                    <p>{{ course.description }}</p>
+                </div>
+            </div>
+
+            <!-- Course Content -->
+            <div class="course-content">
+                <div class="content-header">
+                    <h3>Course Content</h3>
+                    <p class="mb-0 text-muted">{{ contents|length }} lesson{{ contents|length|pluralize }}</p>
+                </div>
+                {% for content in contents %}
+                <div class="content-item">
+                    <div>
+                        {% if content.content_type == 'video' %}
+                            <i class="fas fa-play-circle"></i>
+                        {% elif content.content_type == 'text' %}
+                            <i class="fas fa-file-text"></i>
+                        {% elif content.content_type == 'quiz' %}
+                            <i class="fas fa-question-circle"></i>
+                        {% elif content.content_type == 'assignment' %}
+                            <i class="fas fa-tasks"></i>
+                        {% endif %}
+                        <strong>{{ content.title }}</strong>
+                        <div class="content-type">{{ content.get_content_type_display }}</div>
+                    </div>
+                    <div>
+                        {% if content.is_free %}
+                            <span class="free-badge">Free</span>
+                        {% elif is_enrolled %}
+                            <i class="fas fa-check-circle text-success"></i>
+                        {% else %}
+                            <i class="fas fa-lock text-muted"></i>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Instructor -->
+            <div class="instructor-card">
+                <h3 class="mb-3">Meet Your Instructor</h3>
+                <div class="d-flex">
+                    <div class="instructor-avatar">
+                        {% if course.instructor.profile_picture %}
+                            <img src="{{ course.instructor.profile_picture.url }}" alt="{{ course.instructor.get_full_name }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                        {% else %}
+                            <i class="fas fa-user"></i>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h4>{{ course.instructor.get_full_name }}</h4>
+                        <p class="text-muted mb-2">{{ course.instructor.get_role_display }}</p>
+                        {% if course.instructor.bio %}
+                            <p>{{ course.instructor.bio }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="course-info-card">
+                <div class="course-price {% if course.price == 0 %}free{% endif %}">
+                    {% if course.price == 0 %}
+                        Free
+                    {% else %}
+                        ${{ course.price }}
+                    {% endif %}
+                </div>
+
+                {% if user.is_authenticated %}
+                    {% if is_enrolled %}
+                        <div class="enrolled-status">
+                            <i class="fas fa-check-circle me-2"></i>
+                            You are enrolled in this course
+                            
+                            {% if enrollment.progress > 0 %}
+                                <div class="progress-bar-wrapper">
+                                    <div class="progress-text">
+                                        Progress: {{ enrollment.progress }}%
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ enrollment.progress }}%" aria-valuenow="{{ enrollment.progress }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <a href="{% url 'courses:content' course.pk %}" class="btn btn-success enroll-btn">
+                            <i class="fas fa-play me-2"></i>Continue Learning
+                        </a>
+                    {% else %}
+                        <form method="POST" action="{% url 'courses:enroll' course.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary enroll-btn">
+                                <i class="fas fa-plus me-2"></i>Enroll Now
+                            </button>
+                        </form>
+                    {% endif %}
+                {% else %}
+                    <a href="{% url 'account_login' %}" class="btn btn-primary enroll-btn">
+                        <i class="fas fa-sign-in-alt me-2"></i>Login to Enroll
+                    </a>
+                {% endif %}
+
+                <div class="course-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>{{ course.duration_hours }} hours of content</span>
+                </div>
+                <div class="course-meta-item">
+                    <i class="fas fa-users"></i>
+                    <span>{{ course.enrolled_students_count }} students enrolled</span>
+                </div>
+                <div class="course-meta-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Certificate upon completion</span>
+                </div>
+                <div class="course-meta-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Access on mobile and desktop</span>
+                </div>
+                <div class="course-meta-item">
+                    <i class="fas fa-infinity"></i>
+                    <span>Lifetime access</span>
+                </div>
+            </div>
+
+            <!-- Similar Courses -->
+            {% if similar_courses %}
+            <div class="similar-courses">
+                <h4 class="mb-3">You might also like</h4>
+                {% for similar in similar_courses %}
+                <div class="similar-course-item">
+                    <h6><a href="{% url 'courses:detail' similar.pk %}" class="text-decoration-none">{{ similar.title }}</a></h6>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">{{ similar.instructor.get_full_name }}</small>
+                        <strong class="text-primary">
+                            {% if similar.price == 0 %}Free{% else %}${{ similar.price }}{% endif %}
+                        </strong>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %} 

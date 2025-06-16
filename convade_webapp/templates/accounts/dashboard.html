@@ -1,0 +1,448 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard - Convade LMS{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Dashboard Header Spacing */
+    .dashboard-content {
+        padding-top: 180px;
+    }
+    
+    /* Dashboard Cards */
+    .dashboard-card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        height: 100%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .dashboard-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    
+    .stat-card {
+        text-align: center;
+        border: none;
+        background: linear-gradient(135deg, var(--Convade-base), var(--Convade-accent));
+        color: white;
+    }
+    
+    .stat-card .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+    
+    .stat-card .stat-label {
+        font-size: 1rem;
+        opacity: 0.9;
+    }
+    
+    /* Welcome Section */
+    .welcome-section {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        border-radius: 15px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        border-left: 5px solid var(--Convade-base);
+    }
+    
+    .welcome-title {
+        color: var(--Convade-base);
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .welcome-subtitle {
+        color: var(--Convade-gray);
+        font-size: 1.1rem;
+    }
+    
+    /* Quick Actions */
+    .quick-actions {
+        margin-bottom: 2rem;
+    }
+    
+    .action-btn {
+        background: white;
+        border: 2px solid var(--Convade-base);
+        color: var(--Convade-base);
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .action-btn:hover {
+        background: var(--Convade-base);
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    .action-btn.primary {
+        background: var(--Convade-base);
+        color: white;
+    }
+    
+    .action-btn.primary:hover {
+        background: var(--Convade-accent);
+        border-color: var(--Convade-accent);
+    }
+    
+    /* Course Cards */
+    .course-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        border: 1px solid #e0e0e0;
+        height: 100%;
+    }
+    
+    .course-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    
+    .course-thumbnail {
+        height: 150px;
+        background: linear-gradient(135deg, var(--Convade-base), var(--Convade-accent));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+    }
+    
+    .course-info {
+        padding: 1.5rem;
+    }
+    
+    .course-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--Convade-base);
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+    }
+    
+    .course-meta {
+        color: var(--Convade-gray);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    .progress-section {
+        margin-top: 1rem;
+    }
+    
+    .progress-bar {
+        background-color: #e9ecef;
+        border-radius: 10px;
+        height: 6px;
+        overflow: hidden;
+    }
+    
+    .progress-fill {
+        background: linear-gradient(90deg, var(--Convade-base), var(--Convade-accent));
+        height: 100%;
+        border-radius: 10px;
+        transition: width 0.3s ease;
+    }
+    
+    .progress-text {
+        font-size: 0.8rem;
+        color: var(--Convade-gray);
+        margin-top: 0.5rem;
+    }
+    
+    /* Section Headers */
+    .section-header {
+        margin-bottom: 1.5rem;
+    }
+    
+    .section-title {
+        color: var(--Convade-base);
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .section-subtitle {
+        color: var(--Convade-gray);
+        font-size: 1rem;
+    }
+    
+    /* Empty State */
+    .empty-state {
+        text-align: center;
+        padding: 3rem 2rem;
+        color: var(--Convade-gray);
+    }
+    
+    .empty-state i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+    }
+    
+    /* Edit Button Override */
+    .edit-btn-single {
+        margin: 0 !important;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .dashboard-content {
+            padding-top: 120px;
+        }
+        
+        .welcome-section {
+            padding: 1.5rem;
+        }
+        
+        .welcome-title {
+            font-size: 1.5rem;
+        }
+        
+        .action-btn {
+            margin-right: 0.5rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-content">
+    <div class="container-fluid">
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+            <h1 class="welcome-title">
+                Welcome back, {{ user.get_full_name|default:user.username }}!
+            </h1>
+            <p class="welcome-subtitle">
+                {% if user.is_student %}
+                    Continue your learning journey and explore new courses
+                {% elif user.is_teacher %}
+                    Manage your courses and track your students' progress
+                {% else %}
+                    Your dashboard overview
+                {% endif %}
+            </p>
+        </div>
+
+        {% if user.is_student %}
+        <!-- Student Dashboard -->
+        <div class="row mb-4">
+            <!-- Stats Cards -->
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="dashboard-card stat-card">
+                    <div class="stat-number">{{ total_courses }}</div>
+                    <div class="stat-label">Enrolled Courses</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="dashboard-card stat-card">
+                    <div class="stat-number">{{ in_progress_courses }}</div>
+                    <div class="stat-label">In Progress</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="dashboard-card stat-card">
+                    <div class="stat-number">{{ completed_courses }}</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="dashboard-card stat-card">
+                    <div class="stat-number">{{ user.badges.count|default:0 }}</div>
+                    <div class="stat-label">Badges Earned</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <h3 class="section-title">Quick Actions</h3>
+            <a href="{% url 'courses:list' %}" class="action-btn primary">
+                <i class="fas fa-search"></i> Browse Courses
+            </a>
+            <a href="{% url 'courses:my_courses' %}" class="action-btn">
+                <i class="fas fa-book"></i> My Courses
+            </a>
+            <a href="{% url 'badges:my_badges' %}" class="action-btn">
+                <i class="fas fa-medal"></i> My Badges
+            </a>
+            <a href="{% url 'accounts:profile' %}" class="action-btn">
+                <i class="fas fa-user"></i> Profile
+            </a>
+        </div>
+
+        <!-- Recent Courses -->
+        {% if recent_courses %}
+        <div class="section-header">
+            <h3 class="section-title">Continue Learning</h3>
+            <p class="section-subtitle">Pick up where you left off</p>
+        </div>
+        <div class="row">
+            {% for enrollment in recent_courses %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="course-card">
+                    <div class="course-thumbnail">
+                        {% if enrollment.course.thumbnail %}
+                            <img src="{{ enrollment.course.thumbnail.url }}" alt="{{ enrollment.course.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        {% else %}
+                            <i class="fas fa-graduation-cap"></i>
+                        {% endif %}
+                    </div>
+                    <div class="course-info">
+                        <h4 class="course-title">
+                            <a href="{% url 'courses:detail' enrollment.course.pk %}" class="text-decoration-none">
+                                {{ enrollment.course.title }}
+                            </a>
+                        </h4>
+                        <div class="course-meta">
+                            <i class="fas fa-user"></i> {{ enrollment.course.instructor.get_full_name }}
+                        </div>
+                        <div class="progress-section">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: {{ enrollment.progress }}%"></div>
+                            </div>
+                            <div class="progress-text">{{ enrollment.progress }}% Complete</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <i class="fas fa-book-open"></i>
+            <h4>No courses yet</h4>
+            <p>Start your learning journey by enrolling in a course</p>
+            <a href="{% url 'courses:list' %}" class="action-btn primary">Browse Courses</a>
+        </div>
+        {% endif %}
+
+        {% elif user.is_teacher %}
+        <!-- Teacher Dashboard -->
+        <div class="row mb-4">
+            <!-- Stats Cards -->
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="dashboard-card stat-card">
+                    <div class="stat-number">{{ total_courses }}</div>
+                    <div class="stat-label">Total Courses</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="dashboard-card stat-card">
+                    <div class="stat-number">{{ published_courses }}</div>
+                    <div class="stat-label">Published</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="dashboard-card stat-card">
+                    <div class="stat-number">{{ draft_courses }}</div>
+                    <div class="stat-label">Drafts</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="dashboard-card stat-card">
+                    <div class="stat-number">{{ total_students }}</div>
+                    <div class="stat-label">Total Students</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <h3 class="section-title">Quick Actions</h3>
+            <a href="{% url 'courses:create' %}" class="action-btn primary">
+                <i class="fas fa-plus"></i> Create Course
+            </a>
+            <a href="{% url 'analytics:dashboard' %}" class="action-btn">
+                <i class="fas fa-chart-bar"></i> Analytics
+            </a>
+            <a href="{% url 'accounts:profile' %}" class="action-btn">
+                <i class="fas fa-user"></i> Profile
+            </a>
+        </div>
+
+        <!-- Recent Courses -->
+        {% if recent_courses %}
+        <div class="section-header">
+            <h3 class="section-title">Your Courses</h3>
+            <p class="section-subtitle">Manage and track your course performance</p>
+        </div>
+        <div class="row">
+            {% for course in recent_courses %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="course-card">
+                    <div class="course-thumbnail">
+                        {% if course.thumbnail %}
+                            <img src="{{ course.thumbnail.url }}" alt="{{ course.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        {% else %}
+                            <i class="fas fa-graduation-cap"></i>
+                        {% endif %}
+                    </div>
+                    <div class="course-info">
+                        <h4 class="course-title">
+                            <a href="{% url 'courses:detail' course.pk %}" class="text-decoration-none">
+                                {{ course.title }}
+                            </a>
+                        </h4>
+                        <div class="course-meta">
+                            <i class="fas fa-users"></i> {{ course.student_count }} student{{ course.student_count|pluralize }}
+                            <br>
+                            <i class="fas fa-circle {% if course.is_published %}text-success{% else %}text-warning{% endif %}"></i>
+                            {% if course.is_published %}Published{% else %}Draft{% endif %}
+                        </div>
+                                                 <div class="mt-2">
+                             <a href="{% url 'courses:edit' course.pk %}" class="action-btn edit-btn-single">
+                                 <i class="fas fa-edit"></i> Edit
+                             </a>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <h4>No courses yet</h4>
+            <p>Start teaching by creating your first course</p>
+            <a href="{% url 'courses:create' %}" class="action-btn primary">Create Course</a>
+        </div>
+        {% endif %}
+
+        {% else %}
+        <!-- Admin Dashboard -->
+        <div class="quick-actions">
+            <h3 class="section-title">Admin Actions</h3>
+            <a href="/admin/" class="action-btn primary">
+                <i class="fas fa-cog"></i> Admin Panel
+            </a>
+            <a href="{% url 'analytics:dashboard' %}" class="action-btn">
+                <i class="fas fa-chart-bar"></i> Analytics
+            </a>
+            <a href="{% url 'courses:list' %}" class="action-btn">
+                <i class="fas fa-book"></i> All Courses
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 

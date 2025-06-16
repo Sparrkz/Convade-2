@@ -1,0 +1,518 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}My Certificates - Convade LMS{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Certificates Header Spacing */
+    .certificates-content {
+        padding-top: 180px;
+    }
+    
+    /* Header Section */
+    .certificates-header {
+        background: linear-gradient(135deg, var(--Convade-base), var(--Convade-accent));
+        color: white;
+        padding: 3rem 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    .certificates-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    
+    .certificates-subtitle {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        margin-bottom: 2rem;
+    }
+    
+    .certificates-stats {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+    }
+    
+    .stat-box {
+        text-align: center;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+        font-weight: bold;
+        display: block;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+    
+    /* Section Cards */
+    .section-card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+    
+    .section-title {
+        color: var(--Convade-base);
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    /* Certificate Grid */
+    .certificates-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+    
+    /* Certificate Card */
+    .certificate-card {
+        background: white;
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .certificate-card.issued {
+        border-color: var(--Convade-base);
+        background: linear-gradient(135deg, #ffffff, #f8f9ff);
+    }
+    
+    .certificate-card.pending {
+        border-color: #ffc107;
+        background: linear-gradient(135deg, #ffffff, #fffbf0);
+    }
+    
+    .certificate-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .certificate-card.issued:hover {
+        box-shadow: 0 10px 25px rgba(var(--Convade-base-rgb), 0.2);
+    }
+    
+    /* Certificate Header */
+    .certificate-header {
+        padding: 1.5rem;
+        border-bottom: 1px solid #e9ecef;
+        position: relative;
+    }
+    
+    .certificate-card.issued .certificate-header {
+        background: linear-gradient(135deg, var(--Convade-base), var(--Convade-accent));
+        color: white;
+        border-bottom: none;
+    }
+    
+    .certificate-card.pending .certificate-header {
+        background: linear-gradient(135deg, #ffc107, #ffca2c);
+        color: white;
+        border-bottom: none;
+    }
+    
+    .certificate-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .certificate-course-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+    }
+    
+    .certificate-instructor {
+        opacity: 0.9;
+        font-size: 0.9rem;
+    }
+    
+    .certificate-status {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        background: rgba(255,255,255,0.2);
+        color: white;
+    }
+    
+    /* Certificate Body */
+    .certificate-body {
+        padding: 1.5rem;
+    }
+    
+    .certificate-details {
+        margin-bottom: 1.5rem;
+    }
+    
+    .detail-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #f1f3f4;
+    }
+    
+    .detail-row:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    
+    .detail-label {
+        font-weight: 500;
+        color: var(--Convade-gray);
+        font-size: 0.9rem;
+    }
+    
+    .detail-value {
+        font-weight: 600;
+        color: var(--Convade-black);
+        text-align: right;
+    }
+    
+    .verification-code {
+        background: #f8f9fa;
+        padding: 0.5rem;
+        border-radius: 6px;
+        font-family: monospace;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+    
+    /* Certificate Actions */
+    .certificate-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+    
+    .action-btn {
+        background: var(--Convade-base);
+        color: white;
+        border: none;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        flex: 1;
+        justify-content: center;
+        min-width: 120px;
+    }
+    
+    .action-btn:hover {
+        background: var(--Convade-accent);
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    .action-btn.secondary {
+        background: white;
+        color: var(--Convade-base);
+        border: 2px solid var(--Convade-base);
+    }
+    
+    .action-btn.secondary:hover {
+        background: var(--Convade-base);
+        color: white;
+    }
+    
+    .action-btn:disabled {
+        background: #e9ecef;
+        color: #6c757d;
+        cursor: not-allowed;
+        transform: none;
+    }
+    
+    /* Achievement Badge */
+    .achievement-badge {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        width: 30px;
+        height: 30px;
+        background: #28a745;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.8rem;
+        border: 3px solid white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    /* Empty State */
+    .empty-state {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: var(--Convade-gray);
+    }
+    
+    .empty-state i {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+    }
+    
+    .empty-state h3 {
+        margin-bottom: 1rem;
+    }
+    
+    .empty-state p {
+        margin-bottom: 2rem;
+    }
+    
+    /* Verification Modal */
+    .verification-info {
+        background: #e3f2fd;
+        border: 1px solid #2196f3;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .verification-title {
+        font-weight: 600;
+        color: #1976d2;
+        margin-bottom: 0.5rem;
+    }
+    
+    .verification-text {
+        color: #1976d2;
+        font-size: 0.9rem;
+        margin: 0;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .certificates-content {
+            padding-top: 120px;
+        }
+        
+        .certificates-header {
+            padding: 2rem 1rem;
+        }
+        
+        .certificates-title {
+            font-size: 2rem;
+        }
+        
+        .certificates-stats {
+            gap: 1.5rem;
+        }
+        
+        .certificates-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .certificate-actions {
+            flex-direction: column;
+        }
+        
+        .action-btn {
+            flex: none;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="certificates-content">
+    <div class="container">
+        <!-- Header -->
+        <div class="certificates-header">
+            <h1 class="certificates-title">My Certificates</h1>
+            <p class="certificates-subtitle">Your verified achievements and course completions</p>
+            
+            <div class="certificates-stats">
+                <div class="stat-box">
+                    <span class="stat-number">{{ issued_count }}</span>
+                    <span class="stat-label">Issued Certificates</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">{{ pending_count }}</span>
+                    <span class="stat-label">Pending Certificates</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">{{ total_certificates }}</span>
+                    <span class="stat-label">Total Certificates</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Issued Certificates -->
+        {% if issued_certificates %}
+        <div class="section-card">
+            <h2 class="section-title">
+                <i class="fas fa-certificate"></i>
+                Issued Certificates
+            </h2>
+            <div class="certificates-grid">
+                {% for certificate in issued_certificates %}
+                <div class="certificate-card issued">
+                    <div class="achievement-badge">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    
+                    <div class="certificate-header">
+                        <div class="certificate-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 class="certificate-course-title">{{ certificate.course.title }}</h3>
+                        <p class="certificate-instructor">by {{ certificate.course.instructor.get_full_name }}</p>
+                        <div class="certificate-status">Verified</div>
+                    </div>
+                    
+                    <div class="certificate-body">
+                        <div class="certificate-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Completion Date</span>
+                                <span class="detail-value">{{ certificate.completion_date|date:"F d, Y" }}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Issued Date</span>
+                                <span class="detail-value">{{ certificate.issued_at|date:"F d, Y" }}</span>
+                            </div>
+                            {% if certificate.final_score %}
+                            <div class="detail-row">
+                                <span class="detail-label">Final Score</span>
+                                <span class="detail-value">{{ certificate.final_score }}%</span>
+                            </div>
+                            {% endif %}
+                            <div class="detail-row">
+                                <span class="detail-label">Certificate ID</span>
+                                <span class="detail-value verification-code">{{ certificate.verification_code }}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="certificate-actions">
+                            <a href="{% url 'certifications:download' certificate.pk %}" class="action-btn">
+                                <i class="fas fa-download"></i>
+                                Download
+                            </a>
+                            <a href="{% url 'certifications:verify' certificate.verification_code %}" class="action-btn secondary">
+                                <i class="fas fa-check-circle"></i>
+                                Verify
+                            </a>
+                        </div>
+                        
+                        <div class="verification-info">
+                            <div class="verification-title">Certificate Verification</div>
+                            <p class="verification-text">
+                                Use the verification code above to verify this certificate's authenticity.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Pending Certificates -->
+        {% if pending_certificates %}
+        <div class="section-card">
+            <h2 class="section-title">
+                <i class="fas fa-hourglass-half"></i>
+                Pending Certificates
+            </h2>
+            <div class="certificates-grid">
+                {% for certificate in pending_certificates %}
+                <div class="certificate-card pending">
+                    <div class="certificate-header">
+                        <div class="certificate-icon">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <h3 class="certificate-course-title">{{ certificate.course.title }}</h3>
+                        <p class="certificate-instructor">by {{ certificate.course.instructor.get_full_name }}</p>
+                        <div class="certificate-status">Pending</div>
+                    </div>
+                    
+                    <div class="certificate-body">
+                        <div class="certificate-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Completion Date</span>
+                                <span class="detail-value">{{ certificate.completion_date|date:"F d, Y" }}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Status</span>
+                                <span class="detail-value">Under Review</span>
+                            </div>
+                            {% if certificate.final_score %}
+                            <div class="detail-row">
+                                <span class="detail-label">Final Score</span>
+                                <span class="detail-value">{{ certificate.final_score }}%</span>
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="certificate-actions">
+                            <button class="action-btn" disabled>
+                                <i class="fas fa-clock"></i>
+                                Awaiting Issue
+                            </button>
+                        </div>
+                        
+                        <div class="verification-info">
+                            <div class="verification-title">Certificate Processing</div>
+                            <p class="verification-text">
+                                Your certificate is being prepared and will be available for download once issued.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Empty State -->
+        {% if not issued_certificates and not pending_certificates %}
+        <div class="section-card">
+            <div class="empty-state">
+                <i class="fas fa-certificate"></i>
+                <h3>No certificates yet</h3>
+                <p>Complete courses to earn your first certificate!</p>
+                <a href="{% url 'courses:list' %}" class="action-btn">
+                    <i class="fas fa-graduation-cap"></i>
+                    Browse Courses
+                </a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 

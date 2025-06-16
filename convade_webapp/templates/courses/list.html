@@ -1,0 +1,350 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}All Courses - Convade LMS{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Header spacing fix */
+    .courses-content {
+        padding-top: 180px; /* Account for header height */
+    }
+    
+    .course-card {
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        height: 100%;
+        background: white;
+    }
+    
+    .course-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .course-thumbnail {
+        height: 200px;
+        background: linear-gradient(135deg, var(--Convade-base), var(--Convade-accent));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    
+    .course-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .course-info {
+        padding: 1.5rem;
+    }
+    
+    .course-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--Convade-base);
+        line-height: 1.4;
+    }
+    
+    .course-instructor {
+        color: var(--Convade-gray);
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .course-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    
+    .difficulty-badge {
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+    
+    .difficulty-beginner { background: #e8f5e8; color: #2e7d32; }
+    .difficulty-intermediate { background: #fff3e0; color: #f57c00; }
+    .difficulty-advanced { background: #ffebee; color: #d32f2f; }
+    
+    .course-price {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--Convade-base);
+    }
+    
+    .course-price.free {
+        color: #2e7d32;
+    }
+    
+    .course-stats {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        color: var(--Convade-gray);
+        font-size: 0.9rem;
+    }
+    
+    .search-filters {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .filter-row {
+        display: flex;
+        gap: 1rem;
+        align-items: end;
+    }
+    
+    .filter-group {
+        flex: 1;
+    }
+    
+    .filter-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: var(--Convade-base);
+    }
+    
+    .btn-filter {
+        background: var(--Convade-base);
+        color: white;
+        border: none;
+        padding: 0.6rem 1.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    
+    .btn-filter:hover {
+        background: var(--Convade-accent);
+    }
+    
+    .results-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+    
+    .course-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .pagination-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 3rem;
+    }
+    
+    .no-results {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: var(--Convade-gray);
+    }
+    
+    .no-results i {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="container-fluid courses-content">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-5 fw-bold text-center mb-2">Explore Our Courses</h1>
+            <p class="text-center text-muted">Discover new skills and advance your career</p>
+        </div>
+    </div>
+
+    <!-- Search and Filters -->
+    <div class="search-filters">
+        <form method="GET" class="search-form">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="search">Search Courses</label>
+                    {{ search_form.search }}
+                </div>
+                <div class="filter-group">
+                    <label for="category">Category</label>
+                    {{ search_form.category }}
+                </div>
+                <div class="filter-group">
+                    <label for="difficulty">Difficulty</label>
+                    {{ search_form.difficulty }}
+                </div>
+                <div class="filter-group">
+                    <label for="price">Price</label>
+                    {{ search_form.price }}
+                </div>
+                <div class="filter-group">
+                    <label for="sort">Sort By</label>
+                    {{ search_form.sort }}
+                </div>
+                <div class="filter-group">
+                    <label>&nbsp;</label>
+                    <button type="submit" class="btn-filter">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Results Info -->
+    <div class="results-info">
+        <div>
+            <strong>{{ courses|length }}</strong> course{{ courses|length|pluralize }} found
+            {% if current_filters.search %}
+                for "<strong>{{ current_filters.search }}</strong>"
+            {% endif %}
+        </div>
+        
+        <!-- Active Filters -->
+        {% if current_filters.category or current_filters.difficulty or current_filters.price %}
+        <div class="active-filters">
+            <small class="text-muted">Filters: </small>
+            {% if current_filters.category %}
+                <span class="badge bg-primary">{{ current_filters.category }}</span>
+            {% endif %}
+            {% if current_filters.difficulty %}
+                <span class="badge bg-secondary">{{ current_filters.difficulty|title }}</span>
+            {% endif %}
+            {% if current_filters.price %}
+                <span class="badge bg-success">{{ current_filters.price|title }}</span>
+            {% endif %}
+            <a href="{% url 'courses:list' %}" class="btn btn-sm btn-outline-secondary ms-2">Clear All</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Courses Grid -->
+    {% if courses %}
+    <div class="course-grid">
+        {% for course in courses %}
+        <div class="course-card">
+            <div class="course-thumbnail">
+                {% if course.thumbnail %}
+                    <img src="{{ course.thumbnail.url }}" alt="{{ course.title }}">
+                {% else %}
+                    <i class="fas fa-graduation-cap"></i>
+                {% endif %}
+            </div>
+            <div class="course-info">
+                <h3 class="course-title">
+                    <a href="{% url 'courses:detail' course.pk %}" class="text-decoration-none">
+                        {{ course.title }}
+                    </a>
+                </h3>
+                <div class="course-instructor">
+                    <i class="fas fa-user"></i> {{ course.instructor.get_full_name }}
+                </div>
+                <div class="course-meta">
+                    <span class="difficulty-badge difficulty-{{ course.difficulty }}">
+                        {{ course.get_difficulty_display }}
+                    </span>
+                    <span class="course-price {% if course.price == 0 %}free{% endif %}">
+                        {% if course.price == 0 %}
+                            Free
+                        {% else %}
+                            ${{ course.price }}
+                        {% endif %}
+                    </span>
+                </div>
+                <div class="course-stats">
+                    <span><i class="fas fa-clock"></i> {{ course.duration_hours }}h</span>
+                    <span><i class="fas fa-users"></i> {{ course.student_count }} student{{ course.student_count|pluralize }}</span>
+                </div>
+                <p class="course-description text-muted mb-3">
+                    {{ course.description|truncatewords:15 }}
+                </p>
+                <div class="course-categories">
+                    {% for category in course.categories.all %}
+                        <span class="badge bg-light text-dark me-1">{{ category.name }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-results">
+        <i class="fas fa-search"></i>
+        <h3>No courses found</h3>
+        <p>Try adjusting your search criteria or browse all courses.</p>
+        <a href="{% url 'courses:list' %}" class="btn btn-primary">View All Courses</a>
+    </div>
+    {% endif %}
+
+    <!-- Pagination -->
+    {% if is_paginated %}
+    <div class="pagination-wrapper">
+        <nav aria-label="Course pagination">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value }}&{% endif %}{% endfor %}page={{ page_obj.previous_page_number }}">Previous</a>
+                </li>
+                {% endif %}
+                
+                {% for num in page_obj.paginator.page_range %}
+                <li class="page-item {% if num == page_obj.number %}active{% endif %}">
+                    <a class="page-link" href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value }}&{% endif %}{% endfor %}page={{ num }}">{{ num }}</a>
+                </li>
+                {% endfor %}
+                
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value }}&{% endif %}{% endfor %}page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Auto-submit form when filters change
+    document.querySelectorAll('select').forEach(select => {
+        select.addEventListener('change', function() {
+            this.form.submit();
+        });
+    });
+    
+    // Search input with debounce
+    let searchTimeout;
+    const searchInput = document.querySelector('input[name="search"]');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                this.form.submit();
+            }, 800);
+        });
+    }
+</script>
+{% endblock %} 

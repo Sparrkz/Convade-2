@@ -1,0 +1,269 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Confirm Email Address - Convade LMS{% endblock %}
+
+{% block extra_css %}
+<style>
+    .confirmation-container {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--Convade-light) 0%, #f8f9fa 100%);
+    }
+    
+    .confirmation-card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        overflow: hidden;
+        max-width: 500px;
+        width: 100%;
+        margin: 2rem;
+    }
+    
+    .confirmation-header {
+        background: linear-gradient(135deg, var(--Convade-base), var(--Convade-accent));
+        color: white;
+        text-align: center;
+        padding: 3rem 2rem 2rem;
+    }
+    
+    .confirmation-icon {
+        width: 80px;
+        height: 80px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 2.5rem;
+    }
+    
+    .confirmation-body {
+        padding: 2.5rem;
+        text-align: center;
+    }
+    
+    .confirmation-title {
+        color: var(--Convade-base);
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    
+    .confirmation-message {
+        color: var(--Convade-gray);
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+    
+    .btn-confirm {
+        background: var(--Convade-base);
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        margin-right: 1rem;
+    }
+    
+    .btn-confirm:hover {
+        background: var(--Convade-accent);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .btn-secondary {
+        background: transparent;
+        color: var(--Convade-gray);
+        border: 2px solid #e0e0e0;
+        padding: 0.9rem 2rem;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-secondary:hover {
+        border-color: var(--Convade-base);
+        color: var(--Convade-base);
+        text-decoration: none;
+    }
+    
+    .alert-warning {
+        background: #fff3cd;
+        border: 1px solid #ffeaa7;
+        color: #856404;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .alert-success {
+        background: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .email-badge {
+        background: var(--Convade-light);
+        color: var(--Convade-base);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: inline-block;
+        margin: 0.5rem 0;
+    }
+    
+    .already-confirmed {
+        text-align: center;
+        color: var(--Convade-gray);
+        font-style: italic;
+        margin-top: 1rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="confirmation-container">
+    <div class="confirmation-card">
+        <div class="confirmation-header">
+            <div class="confirmation-icon">
+                <i class="fas fa-envelope-open"></i>
+            </div>
+            <h1>Email Confirmation</h1>
+            <p class="mb-0">Verify your email address to activate your account</p>
+        </div>
+        
+        <div class="confirmation-body">
+            {% if confirmation %}
+                {% if confirmation.email_address.verified %}
+                    <!-- Email Already Confirmed -->
+                    <div class="alert-success">
+                        <i class="fas fa-check-circle me-2"></i>
+                        <strong>Email Already Confirmed!</strong>
+                    </div>
+                    
+                    <h2 class="confirmation-title">Welcome to Convade LMS!</h2>
+                    <div class="email-badge">
+                        <i class="fas fa-envelope me-2"></i>{{ confirmation.email_address.email }}
+                    </div>
+                    <p class="confirmation-message">
+                        Your email address has already been verified. You can now access all features of your Convade LMS account.
+                    </p>
+                    
+                    <div class="mt-4">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'courses:list' %}" class="btn-confirm">
+                                <i class="fas fa-graduation-cap me-2"></i>Browse Courses
+                            </a>
+                            <a href="{% url 'courses:my_courses' %}" class="btn-secondary">
+                                <i class="fas fa-user me-2"></i>My Dashboard
+                            </a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}" class="btn-confirm">
+                                <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                            </a>
+                            <a href="{% url 'courses:list' %}" class="btn-secondary">
+                                <i class="fas fa-search me-2"></i>Browse Courses
+                            </a>
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <!-- Confirm Email -->
+                    <h2 class="confirmation-title">Confirm Your Email</h2>
+                    <div class="email-badge">
+                        <i class="fas fa-envelope me-2"></i>{{ confirmation.email_address.email }}
+                    </div>
+                    <p class="confirmation-message">
+                        Please confirm that this is your email address by clicking the button below. 
+                        This will activate your Convade LMS account and give you access to all our learning resources.
+                    </p>
+                    
+                    <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-confirm">
+                            <i class="fas fa-check me-2"></i>Confirm Email Address
+                        </button>
+                    </form>
+                    
+                    <div class="mt-4">
+                        <a href="{% url 'account_email' %}" class="btn-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Back to Email Settings
+                        </a>
+                    </div>
+                    
+                    <div class="already-confirmed">
+                        <small>
+                            <i class="fas fa-info-circle me-1"></i>
+                            If you've already confirmed this email, you can 
+                            <a href="{% url 'account_login' %}">sign in here</a>
+                        </small>
+                    </div>
+                {% endif %}
+            {% else %}
+                <!-- Invalid Confirmation Link -->
+                <div class="alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>Invalid Confirmation Link</strong>
+                </div>
+                
+                <h2 class="confirmation-title">Oops! Something went wrong</h2>
+                <p class="confirmation-message">
+                    This email confirmation link is invalid or has expired. This can happen if:
+                </p>
+                <ul class="text-start confirmation-message">
+                    <li>The link has already been used</li>
+                    <li>The link has expired (links are valid for 3 days)</li>
+                    <li>The link was copied incorrectly</li>
+                </ul>
+                
+                <div class="mt-4">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'account_email' %}" class="btn-confirm">
+                            <i class="fas fa-envelope me-2"></i>Resend Confirmation
+                        </a>
+                    {% else %}
+                        <a href="{% url 'account_signup' %}" class="btn-confirm">
+                            <i class="fas fa-user-plus me-2"></i>Sign Up Again
+                        </a>
+                    {% endif %}
+                    <a href="{% url 'account_login' %}" class="btn-secondary">
+                        <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Newsletter Section -->
+<div class="container-fluid bg-light py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h4 class="mb-2">Ready to start learning?</h4>
+                <p class="text-muted mb-0">Explore our comprehensive course library and advance your skills today.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{% url 'courses:list' %}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-graduation-cap me-2"></i>Browse Courses
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

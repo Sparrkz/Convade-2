@@ -1,0 +1,98 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}{{ course.title }} - Course Content{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Course Content Sidebar -->
+        <div class="col-lg-3 bg-light p-4">
+            <h5>{{ course.title }}</h5>
+            <p class="text-muted">{{ course.instructor.get_full_name }}</p>
+            
+            <!-- Progress -->
+            <div class="mb-4">
+                <div class="d-flex justify-content-between">
+                    <small>Progress</small>
+                    <small>{{ enrollment.progress }}%</small>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" style="width: {{ enrollment.progress }}%"></div>
+                </div>
+            </div>
+            
+            <!-- Course Contents -->
+            <h6>Course Contents</h6>
+            <div class="list-group">
+                {% for content in contents %}
+                <div class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            {% if content.content_type == 'video' %}
+                                <i class="fas fa-play-circle text-primary"></i>
+                            {% elif content.content_type == 'text' %}
+                                <i class="fas fa-file-text text-info"></i>
+                            {% elif content.content_type == 'quiz' %}
+                                <i class="fas fa-question-circle text-warning"></i>
+                            {% elif content.content_type == 'assignment' %}
+                                <i class="fas fa-tasks text-success"></i>
+                            {% endif %}
+                            <span class="ms-2">{{ content.title }}</span>
+                        </div>
+                        <small class="text-muted">{{ content.get_content_type_display }}</small>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Main Content Area -->
+        <div class="col-lg-9 p-4">
+            <div class="course-content-main">
+                <h2>Welcome to {{ course.title }}</h2>
+                <p class="lead">{{ course.description }}</p>
+                
+                <!-- Sample Content Display -->
+                {% if contents %}
+                    {% for content in contents %}
+                    <div class="content-section mb-5">
+                        <h4>{{ content.title }}</h4>
+                        <div class="content-body">
+                            {% if content.content_type == 'video' %}
+                                <div class="video-placeholder bg-dark text-white p-5 text-center">
+                                    <i class="fas fa-play-circle fa-3x mb-3"></i>
+                                    <p>Video Content: {{ content.content }}</p>
+                                </div>
+                            {% elif content.content_type == 'text' %}
+                                <div class="text-content bg-light p-4 rounded">
+                                    <p>{{ content.content }}</p>
+                                </div>
+                            {% elif content.content_type == 'quiz' %}
+                                <div class="quiz-content bg-warning bg-opacity-10 p-4 rounded">
+                                    <i class="fas fa-question-circle me-2"></i>
+                                    <strong>Quiz:</strong> {{ content.content }}
+                                </div>
+                            {% elif content.content_type == 'assignment' %}
+                                <div class="assignment-content bg-success bg-opacity-10 p-4 rounded">
+                                    <i class="fas fa-tasks me-2"></i>
+                                    <strong>Assignment:</strong> {{ content.content }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+                
+                <!-- Course Completion -->
+                {% if enrollment.progress == 100 %}
+                <div class="alert alert-success">
+                    <h4><i class="fas fa-trophy me-2"></i>Congratulations!</h4>
+                    <p>You have successfully completed this course. Your certificate is being prepared.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

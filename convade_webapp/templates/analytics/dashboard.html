@@ -1,0 +1,538 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Analytics Dashboard - Convade LMS{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url({% static 'images/backgrounds/page-header-bg.jpg' %});"></div>
+    <div class="container">
+        <div class="page-header__inner">
+            <h2>Analytics Dashboard</h2>
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'accounts:dashboard' %}">Dashboard</a></li>
+                <li><span>Analytics</span></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="analytics-content" style="padding-top: 180px;">
+    <div class="container">
+        <!-- Header -->
+        <div class="analytics-header mb-5">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h3 class="analytics-title">
+                        <i class="fas fa-chart-line me-3"></i>
+                        {% if user.is_teacher %}Teaching Analytics{% else %}System Analytics{% endif %}
+                    </h3>
+                    <p class="analytics-subtitle">
+                        {% if user.is_teacher %}
+                            Track your teaching performance, student engagement, and course success metrics.
+                        {% else %}
+                            Monitor system-wide performance and user activity across the platform.
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="analytics-actions">
+                        <a href="{% url 'analytics:reports' %}" class="btn btn-outline-primary me-2">
+                            <i class="fas fa-file-alt me-2"></i>Reports
+                        </a>
+                        <button class="btn btn-primary" onclick="window.print()">
+                            <i class="fas fa-download me-2"></i>Export
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Metrics Cards -->
+        <div class="row mb-5">
+            {% if user.is_teacher %}
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+                    <div class="metric-card">
+                        <div class="metric-icon courses">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3 class="metric-number">{{ total_courses }}</h3>
+                            <p class="metric-label">Total Courses</p>
+                            <small class="metric-detail">{{ published_courses }} published</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+                    <div class="metric-card">
+                        <div class="metric-icon students">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3 class="metric-number">{{ total_students }}</h3>
+                            <p class="metric-label">Total Students</p>
+                            <small class="metric-detail">{{ total_enrollments }} enrollments</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+                    <div class="metric-card">
+                        <div class="metric-icon tests">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3 class="metric-number">{{ total_tests }}</h3>
+                            <p class="metric-label">Tests Created</p>
+                            <small class="metric-detail">{{ total_test_submissions }} submissions</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+                    <div class="metric-card">
+                        <div class="metric-icon revenue">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3 class="metric-number">${{ total_revenue|floatformat:0 }}</h3>
+                            <p class="metric-label">Total Revenue</p>
+                            <small class="metric-detail">From course sales</small>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <!-- Admin metrics -->
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+                    <div class="metric-card">
+                        <div class="metric-icon users">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3 class="metric-number">{{ total_users }}</h3>
+                            <p class="metric-label">Total Users</p>
+                            <small class="metric-detail">{{ total_students }} students, {{ total_teachers }} teachers</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+                    <div class="metric-card">
+                        <div class="metric-icon courses">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3 class="metric-number">{{ total_courses }}</h3>
+                            <p class="metric-label">Total Courses</p>
+                            <small class="metric-detail">{{ published_courses }} published</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+                    <div class="metric-card">
+                        <div class="metric-icon tests">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3 class="metric-number">{{ total_tests }}</h3>
+                            <p class="metric-label">Total Tests</p>
+                            <small class="metric-detail">System-wide</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+                    <div class="metric-card">
+                        <div class="metric-icon enrollments">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3 class="metric-number">{{ total_enrollments }}</h3>
+                            <p class="metric-label">Active Enrollments</p>
+                            <small class="metric-detail">Currently learning</small>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        {% if user.is_teacher %}
+            <!-- Teacher-specific content -->
+            <div class="row">
+                <!-- Course Performance -->
+                <div class="col-lg-8 mb-4">
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h4 class="card-title">
+                                <i class="fas fa-chart-bar me-2"></i>
+                                Top Performing Courses
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            {% if course_stats %}
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Course</th>
+                                                <th>Enrollments</th>
+                                                <th>Completion Rate</th>
+                                                <th>Rating</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for course in course_stats %}
+                                            <tr>
+                                                <td>
+                                                    <div class="course-info">
+                                                        <strong>{{ course.title }}</strong>
+                                                        <small class="d-block text-muted">{{ course.get_difficulty_display }}</small>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="badge bg-primary">{{ course.enrollment_count }}</span>
+                                                </td>
+                                                <td>
+                                                    <div class="progress" style="height: 8px;">
+                                                        <div class="progress-bar" style="width: {{ course.completion_rate|default:0 }}%"></div>
+                                                    </div>
+                                                    <small>{{ course.completion_rate|default:0|floatformat:1 }}%</small>
+                                                </td>
+                                                <td>
+                                                    <small class="text-muted">Rating system not implemented</small>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <div class="empty-state">
+                                    <i class="fas fa-chart-bar fa-3x text-muted mb-3"></i>
+                                    <h5>No course data available</h5>
+                                    <p class="text-muted">Create and publish courses to see performance metrics.</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="col-lg-4 mb-4">
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h4 class="card-title">
+                                <i class="fas fa-clock me-2"></i>
+                                Recent Activity
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="activity-list">
+                                {% for enrollment in recent_enrollments|slice:":5" %}
+                                <div class="activity-item">
+                                    <div class="activity-icon enrollment">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p class="activity-text">
+                                            <strong>{{ enrollment.student.get_full_name|default:enrollment.student.username }}</strong>
+                                            enrolled in <strong>{{ enrollment.course.title }}</strong>
+                                        </p>
+                                        <small class="activity-time">{{ enrollment.enrolled_at|timesince }} ago</small>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                
+                                {% for submission in recent_submissions|slice:":3" %}
+                                <div class="activity-item">
+                                    <div class="activity-icon submission">
+                                        <i class="fas fa-clipboard-check"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p class="activity-text">
+                                            <strong>{{ submission.student.get_full_name|default:submission.student.username }}</strong>
+                                            submitted <strong>{{ submission.test.title }}</strong>
+                                        </p>
+                                        <small class="activity-time">{{ submission.submitted_at|timesince }} ago</small>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test Performance -->
+            {% if test_stats %}
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h4 class="card-title">
+                                <i class="fas fa-clipboard-list me-2"></i>
+                                Test Performance Overview
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                {% for test in test_stats %}
+                                <div class="col-lg-4 col-md-6 mb-3">
+                                    <div class="test-performance-card">
+                                        <h5 class="test-title">{{ test.title }}</h5>
+                                        <div class="test-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-label">Submissions</span>
+                                                <span class="stat-value">{{ test.submission_count }}</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-label">Avg Score</span>
+                                                <span class="stat-value">{{ test.avg_score|default:0|floatformat:1 }}%</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-label">Pass Rate</span>
+                                                <span class="stat-value">{{ test.pass_rate|default:0|floatformat:1 }}%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</section>
+
+<style>
+.analytics-content {
+    background: linear-gradient(135deg, #f8f9ff 0%, #e8f2ff 100%);
+    min-height: 100vh;
+}
+
+.analytics-header {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.analytics-title {
+    color: var(--Convade-base);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.analytics-subtitle {
+    color: #6b7280;
+    margin-bottom: 0;
+}
+
+.metric-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.metric-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.5rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.metric-icon.courses { background: linear-gradient(135deg, #3b82f6, #1e40af); }
+.metric-icon.students { background: linear-gradient(135deg, #10b981, #059669); }
+.metric-icon.tests { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.metric-icon.revenue { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+.metric-icon.users { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+.metric-icon.enrollments { background: linear-gradient(135deg, #ef4444, #dc2626); }
+
+.metric-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--Convade-base);
+    margin-bottom: 0.25rem;
+}
+
+.metric-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.25rem;
+}
+
+.metric-detail {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.analytics-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    height: 100%;
+}
+
+.card-header {
+    background: linear-gradient(135deg, #f8f9ff 0%, #e8f2ff 100%);
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.card-title {
+    color: var(--Convade-base);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.activity-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    font-size: 1rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.activity-icon.enrollment { background: linear-gradient(135deg, #10b981, #059669); }
+.activity-icon.submission { background: linear-gradient(135deg, #3b82f6, #1e40af); }
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-text {
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.activity-time {
+    color: #6b7280;
+    font-size: 0.8rem;
+}
+
+.test-performance-card {
+    background: #f8f9ff;
+    border-radius: 15px;
+    padding: 1.5rem;
+    border-left: 4px solid var(--Convade-base);
+}
+
+.test-title {
+    color: var(--Convade-base);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.test-stats {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--Convade-base);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.progress {
+    background-color: #e5e7eb;
+}
+
+.progress-bar {
+    background: linear-gradient(135deg, var(--Convade-base), #1e40af);
+}
+
+.rating .fa-star {
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .analytics-header {
+        text-align: center;
+    }
+    
+    .analytics-actions {
+        margin-top: 1rem;
+    }
+    
+    .metric-card {
+        text-align: center;
+        flex-direction: column;
+    }
+    
+    .metric-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}
+</style>
+{% endblock %} 

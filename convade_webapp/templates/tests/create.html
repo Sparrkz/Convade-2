@@ -1,0 +1,338 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Create Test - Convade LMS{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url({% static 'images/backgrounds/page-header-bg.jpg' %});"></div>
+    <div class="container">
+        <div class="page-header__inner">
+            <h2>Create New Test</h2>
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'tests:list' %}">Tests</a></li>
+                <li><span>Create Test</span></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="create-test-content" style="padding-top: 180px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12">
+                <div class="create-test-form-wrapper">
+                    <div class="create-test-header">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h3 class="create-test-title">
+                                    <i class="fas fa-clipboard-list me-3"></i>
+                                    Create New Test
+                                </h3>
+                                <p class="create-test-subtitle">Set up a new test for your students with customizable settings and questions.</p>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <a href="{% url 'tests:list' %}" class="btn btn-outline-secondary">
+                                    <i class="fas fa-arrow-left me-2"></i>Back to Tests
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form method="post" class="create-test-form">
+                        {% csrf_token %}
+                        
+                        <div class="row">
+                            <!-- Basic Information -->
+                            <div class="col-lg-8">
+                                <div class="form-section">
+                                    <h4 class="form-section-title">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        Basic Information
+                                    </h4>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12 mb-3">
+                                            <label for="{{ form.title.id_for_label }}" class="form-label">Test Title *</label>
+                                            {{ form.title }}
+                                            {% if form.title.errors %}
+                                                <div class="text-danger small">{{ form.title.errors.0 }}</div>
+                                            {% endif %}
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <label for="{{ form.course.id_for_label }}" class="form-label">Course *</label>
+                                            {{ form.course }}
+                                            {% if form.course.errors %}
+                                                <div class="text-danger small">{{ form.course.errors.0 }}</div>
+                                            {% endif %}
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <label for="{{ form.test_type.id_for_label }}" class="form-label">Test Type *</label>
+                                            {{ form.test_type }}
+                                            {% if form.test_type.errors %}
+                                                <div class="text-danger small">{{ form.test_type.errors.0 }}</div>
+                                            {% endif %}
+                                        </div>
+                                        
+                                        <div class="col-md-12 mb-3">
+                                            <label for="{{ form.description.id_for_label }}" class="form-label">Description</label>
+                                            {{ form.description }}
+                                            {% if form.description.errors %}
+                                                <div class="text-danger small">{{ form.description.errors.0 }}</div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Test Settings -->
+                                <div class="form-section">
+                                    <h4 class="form-section-title">
+                                        <i class="fas fa-cogs me-2"></i>
+                                        Test Settings
+                                    </h4>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <label for="{{ form.duration_minutes.id_for_label }}" class="form-label">Duration (minutes) *</label>
+                                            {{ form.duration_minutes }}
+                                            {% if form.duration_minutes.errors %}
+                                                <div class="text-danger small">{{ form.duration_minutes.errors.0 }}</div>
+                                            {% endif %}
+                                        </div>
+                                        
+                                        <div class="col-md-4 mb-3">
+                                            <label for="{{ form.max_attempts.id_for_label }}" class="form-label">Max Attempts *</label>
+                                            {{ form.max_attempts }}
+                                            {% if form.max_attempts.errors %}
+                                                <div class="text-danger small">{{ form.max_attempts.errors.0 }}</div>
+                                            {% endif %}
+                                        </div>
+                                        
+                                        <div class="col-md-4 mb-3">
+                                            <label for="{{ form.passing_score.id_for_label }}" class="form-label">Passing Score (%) *</label>
+                                            {{ form.passing_score }}
+                                            {% if form.passing_score.errors %}
+                                                <div class="text-danger small">{{ form.passing_score.errors.0 }}</div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Schedule -->
+                                <div class="form-section">
+                                    <h4 class="form-section-title">
+                                        <i class="fas fa-calendar-alt me-2"></i>
+                                        Schedule (Optional)
+                                    </h4>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="{{ form.start_time.id_for_label }}" class="form-label">Start Time</label>
+                                            {{ form.start_time }}
+                                            {% if form.start_time.errors %}
+                                                <div class="text-danger small">{{ form.start_time.errors.0 }}</div>
+                                            {% endif %}
+                                            <small class="form-text text-muted">Leave empty for immediate availability</small>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <label for="{{ form.end_time.id_for_label }}" class="form-label">End Time</label>
+                                            {{ form.end_time }}
+                                            {% if form.end_time.errors %}
+                                                <div class="text-danger small">{{ form.end_time.errors.0 }}</div>
+                                            {% endif %}
+                                            <small class="form-text text-muted">Leave empty for no end date</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sidebar -->
+                            <div class="col-lg-4">
+                                <div class="create-test-sidebar">
+                                    <!-- Publish Settings -->
+                                    <div class="sidebar-section">
+                                        <h5 class="sidebar-section-title">
+                                            <i class="fas fa-eye me-2"></i>
+                                            Visibility
+                                        </h5>
+                                        <div class="form-check">
+                                            {{ form.is_published }}
+                                            <label class="form-check-label" for="{{ form.is_published.id_for_label }}">
+                                                Publish immediately
+                                            </label>
+                                        </div>
+                                        <small class="form-text text-muted">
+                                            Unpublished tests are only visible to you and can be edited freely.
+                                        </small>
+                                    </div>
+
+                                    <!-- Quick Tips -->
+                                    <div class="sidebar-section">
+                                        <h5 class="sidebar-section-title">
+                                            <i class="fas fa-lightbulb me-2"></i>
+                                            Quick Tips
+                                        </h5>
+                                        <ul class="tips-list">
+                                            <li><i class="fas fa-check text-success me-2"></i>Start with a clear, descriptive title</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>Set appropriate time limits</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>Consider multiple attempts for practice tests</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>Add questions after creating the test</li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Action Buttons -->
+                                    <div class="sidebar-section">
+                                        <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">
+                                            <i class="fas fa-plus me-2"></i>Create Test
+                                        </button>
+                                        <a href="{% url 'tests:list' %}" class="btn btn-outline-secondary w-100">
+                                            <i class="fas fa-times me-2"></i>Cancel
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.create-test-content {
+    background: linear-gradient(135deg, #f8f9ff 0%, #e8f2ff 100%);
+    min-height: 100vh;
+}
+
+.create-test-form-wrapper {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.create-test-header {
+    background: linear-gradient(135deg, var(--Convade-base) 0%, #1e40af 100%);
+    color: white;
+    padding: 2rem;
+}
+
+.create-test-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.create-test-subtitle {
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+.create-test-form {
+    padding: 2rem;
+}
+
+.form-section {
+    background: #f8f9ff;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--Convade-base);
+}
+
+.form-section-title {
+    color: var(--Convade-base);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.create-test-sidebar {
+    position: sticky;
+    top: 2rem;
+}
+
+.sidebar-section {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-section-title {
+    color: var(--Convade-base);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.tips-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tips-list li {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+}
+
+.form-control, .form-select {
+    border-radius: 10px;
+    border: 2px solid #e5e7eb;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--Convade-base);
+    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.15);
+}
+
+.btn {
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--Convade-base) 0%, #1e40af 100%);
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+}
+
+.form-check-input:checked {
+    background-color: var(--Convade-base);
+    border-color: var(--Convade-base);
+}
+
+@media (max-width: 768px) {
+    .create-test-header {
+        text-align: center;
+    }
+    
+    .create-test-sidebar {
+        position: static;
+        margin-top: 2rem;
+    }
+}
+</style>
+{% endblock %} 

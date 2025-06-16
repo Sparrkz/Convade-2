@@ -216,49 +216,49 @@
                             <div class="main-menu__main-menu-box">
                                 <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                                 <ul class="main-menu__list one-page-scroll-menu">
-                                    <li class="scrollToLink">
+                                    <li class="scrollToLink{% if nav_home_active %} current{% endif %}">
                                         <a href="{% url 'home' %}">Home</a>
                                     </li>
-                                    <li class="scrollToLink">
+                                    <li class="scrollToLink{% if nav_courses_active %} current{% endif %}">
                                         <a href="{% url 'courses:list' %}">Courses</a>
                                     </li>
                                     {% if user.is_authenticated %}
                                         {% if user.is_student %}
-                                            <li class="scrollToLink">
+                                            <li class="scrollToLink{% if nav_my_courses_active %} current{% endif %}">
                                                 <a href="{% url 'courses:my_courses' %}">My Courses</a>
                                             </li>
-                                            <li class="scrollToLink">
+                                            <li class="scrollToLink{% if nav_badges_active %} current{% endif %}">
                                                 <a href="{% url 'badges:my_badges' %}">My Badges</a>
                                             </li>
-                                            <li class="scrollToLink">
+                                            <li class="scrollToLink{% if nav_certificates_active %} current{% endif %}">
                                                 <a href="{% url 'certifications:my_certificates' %}">Certificates</a>
                                             </li>
                                         {% elif user.is_teacher %}
-                                            <li class="scrollToLink">
+                                            <li class="scrollToLink{% if nav_create_course_active %} current{% endif %}">
                                                 <a href="{% url 'courses:create' %}">Create Course</a>
                                             </li>
-                                            <li class="scrollToLink">
+                                            <li class="scrollToLink{% if nav_create_test_active %} current{% endif %}">
                                                 <a href="{% url 'tests:create' %}">Create Test</a>
                                             </li>
-                                            <li class="scrollToLink">
+                                            <li class="scrollToLink{% if nav_analytics_active %} current{% endif %}">
                                                 <a href="{% url 'analytics:dashboard' %}">Analytics</a>
                                             </li>
                                         {% elif user.is_admin %}
-                                            <li class="scrollToLink">
+                                            <li class="scrollToLink{% if nav_analytics_active %} current{% endif %}">
                                                 <a href="{% url 'analytics:dashboard' %}">Analytics</a>
                                             </li>
-                                            <li class="scrollToLink">
+                                            <li class="scrollToLink{% if nav_admin_active %} current{% endif %}">
                                                 <a href="/admin/">Admin Panel</a>
                                             </li>
                                         {% endif %}
-                                        <li class="scrollToLink">
+                                        <li class="scrollToLink{% if nav_dashboard_active %} current{% endif %}">
                                             <a href="{% url 'accounts:dashboard' %}">Dashboard</a>
                                         </li>
                                     {% else %}
-                                        <li class="scrollToLink">
+                                        <li class="scrollToLink{% if nav_login_active %} current{% endif %}">
                                             <a href="{% url 'account_login' %}">Login</a>
                                         </li>
-                                        <li class="scrollToLink">
+                                        <li class="scrollToLink{% if nav_signup_active %} current{% endif %}">
                                             <a href="{% url 'account_signup' %}">Sign-up</a>
                                         </li>
                                     {% endif %}

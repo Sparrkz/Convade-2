@@ -1,0 +1,511 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}My Profile - Convade LMS{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Profile Header Spacing */
+    .profile-content {
+        padding-top: 180px;
+    }
+    
+    /* Profile Cards */
+    .profile-card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .profile-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    
+    /* Profile Header */
+    .profile-header {
+        text-align: center;
+        padding: 3rem 2rem;
+        background: linear-gradient(135deg, var(--Convade-base), var(--Convade-accent));
+        color: white;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+    }
+    
+    .profile-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 4px solid rgba(255,255,255,0.3);
+        margin: 0 auto 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.2);
+        font-size: 3rem;
+        overflow: hidden;
+    }
+    
+    .profile-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+    
+    .profile-name {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .profile-role {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        margin-bottom: 1rem;
+    }
+    
+    .profile-stats {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 1.5rem;
+    }
+    
+    .stat-item {
+        text-align: center;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: block;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+    
+    /* Info Sections */
+    .info-section {
+        margin-bottom: 2rem;
+    }
+    
+    .section-title {
+        color: var(--Convade-base);
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .info-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+    
+    .info-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--Convade-base);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+    }
+    
+    .info-details h4 {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--Convade-gray);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .info-details p {
+        margin: 0;
+        font-size: 1.1rem;
+        color: var(--Convade-black);
+        font-weight: 500;
+    }
+    
+    /* Activity Timeline */
+    .activity-timeline {
+        position: relative;
+        padding-left: 2rem;
+    }
+    
+    .timeline-item {
+        position: relative;
+        padding-bottom: 2rem;
+        border-left: 2px solid #e9ecef;
+        padding-left: 2rem;
+    }
+    
+    .timeline-item:last-child {
+        border-left: none;
+    }
+    
+    .timeline-dot {
+        position: absolute;
+        left: -8px;
+        top: 0;
+        width: 16px;
+        height: 16px;
+        background: var(--Convade-base);
+        border-radius: 50%;
+    }
+    
+    .timeline-content {
+        background: #f8f9fa;
+        padding: 1rem;
+        border-radius: 8px;
+    }
+    
+    .timeline-date {
+        font-size: 0.8rem;
+        color: var(--Convade-gray);
+        margin-bottom: 0.5rem;
+    }
+    
+    .timeline-title {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+    
+    .timeline-desc {
+        font-size: 0.9rem;
+        color: var(--Convade-gray);
+        margin: 0;
+    }
+    
+    /* Action Buttons */
+    .action-btn {
+        background: var(--Convade-base);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .action-btn:hover {
+        background: var(--Convade-accent);
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    .action-btn.secondary {
+        background: white;
+        color: var(--Convade-base);
+        border: 2px solid var(--Convade-base);
+    }
+    
+    .action-btn.secondary:hover {
+        background: var(--Convade-base);
+        color: white;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .profile-content {
+            padding-top: 120px;
+        }
+        
+        .profile-header {
+            padding: 2rem 1rem;
+        }
+        
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            font-size: 2rem;
+        }
+        
+        .profile-name {
+            font-size: 1.5rem;
+        }
+        
+        .profile-stats {
+            gap: 1rem;
+        }
+        
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="profile-content">
+    <div class="container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-avatar">
+                {% if user.profile_picture %}
+                    <img src="{{ user.profile_picture.url }}" alt="{{ user.get_full_name }}">
+                {% else %}
+                    <i class="fas fa-user"></i>
+                {% endif %}
+            </div>
+            <h1 class="profile-name">{{ user.get_full_name|default:user.username }}</h1>
+            <p class="profile-role">{{ user.get_role_display }}</p>
+            
+            <div class="profile-stats">
+                {% if user.is_student %}
+                    <div class="stat-item">
+                        <span class="stat-number">{{ user.enrollments.count }}</span>
+                        <span class="stat-label">Courses</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">{{ user.earned_badges.count }}</span>
+                        <span class="stat-label">Badges</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">{{ user.certificates.count }}</span>
+                        <span class="stat-label">Certificates</span>
+                    </div>
+                {% elif user.is_teacher %}
+                    <div class="stat-item">
+                        <span class="stat-number">{{ user.taught_courses.count }}</span>
+                        <span class="stat-label">Courses Created</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">{{ user.taught_courses.published.count|default:0 }}</span>
+                        <span class="stat-label">Published</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Total Students</span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Personal Information -->
+                <div class="profile-card">
+                    <div class="info-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-user"></i>
+                            Personal Information
+                        </h2>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="info-details">
+                                    <h4>Email</h4>
+                                    <p>{{ user.email }}</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-user-tag"></i>
+                                </div>
+                                <div class="info-details">
+                                    <h4>Username</h4>
+                                    <p>{{ user.username }}</p>
+                                </div>
+                            </div>
+                            {% if user.phone_number %}
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="info-details">
+                                    <h4>Phone</h4>
+                                    <p>{{ user.phone_number }}</p>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if user.date_of_birth %}
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-birthday-cake"></i>
+                                </div>
+                                <div class="info-details">
+                                    <h4>Date of Birth</h4>
+                                    <p>{{ user.date_of_birth|date:"F d, Y" }}</p>
+                                </div>
+                            </div>
+                            {% endif %}
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-calendar"></i>
+                                </div>
+                                <div class="info-details">
+                                    <h4>Member Since</h4>
+                                    <p>{{ user.date_joined|date:"F Y" }}</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="info-details">
+                                    <h4>Account Status</h4>
+                                    <p>{% if user.is_active %}Active{% else %}Inactive{% endif %}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if user.bio %}
+                    <div class="info-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-info-circle"></i>
+                            About
+                        </h2>
+                        <p>{{ user.bio }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="profile-card">
+                    <div class="info-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-clock"></i>
+                            Recent Activity
+                        </h2>
+                        <div class="activity-timeline">
+                            {% if user.is_student %}
+                                {% for enrollment in user.enrollments.all|slice:":5" %}
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-date">{{ enrollment.enrolled_at|date:"M d, Y" }}</div>
+                                        <div class="timeline-title">Enrolled in Course</div>
+                                        <p class="timeline-desc">{{ enrollment.course.title }}</p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            {% elif user.is_teacher %}
+                                {% for course in user.taught_courses.all|slice:":5" %}
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-date">{{ course.created_at|date:"M d, Y" }}</div>
+                                        <div class="timeline-title">Created Course</div>
+                                        <p class="timeline-desc">{{ course.title }}</p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            {% endif %}
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-date">{{ user.date_joined|date:"M d, Y" }}</div>
+                                    <div class="timeline-title">Joined Convade</div>
+                                    <p class="timeline-desc">Welcome to the learning community!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <!-- Quick Actions -->
+                <div class="profile-card">
+                    <h3 class="section-title">
+                        <i class="fas fa-cog"></i>
+                        Quick Actions
+                    </h3>
+                    <a href="{% url 'accounts:settings' %}" class="action-btn">
+                        <i class="fas fa-edit"></i>
+                        Edit Profile
+                    </a>
+                    <a href="{% url 'accounts:dashboard' %}" class="action-btn secondary">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Dashboard
+                    </a>
+                    {% if user.is_student %}
+                        <a href="{% url 'courses:my_courses' %}" class="action-btn secondary">
+                            <i class="fas fa-book"></i>
+                            My Courses
+                        </a>
+                        <a href="{% url 'badges:my_badges' %}" class="action-btn secondary">
+                            <i class="fas fa-medal"></i>
+                            My Badges
+                        </a>
+                        <a href="{% url 'certifications:my_certificates' %}" class="action-btn secondary">
+                            <i class="fas fa-certificate"></i>
+                            Certificates
+                        </a>
+                    {% elif user.is_teacher %}
+                        <a href="{% url 'courses:create' %}" class="action-btn secondary">
+                            <i class="fas fa-plus"></i>
+                            Create Course
+                        </a>
+                        <a href="{% url 'analytics:dashboard' %}" class="action-btn secondary">
+                            <i class="fas fa-chart-bar"></i>
+                            Analytics
+                        </a>
+                    {% endif %}
+                </div>
+
+                <!-- Account Security -->
+                <div class="profile-card">
+                    <h3 class="section-title">
+                        <i class="fas fa-shield-alt"></i>
+                        Account Security
+                    </h3>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4>Password</h4>
+                            <p>Last changed {{ user.last_login|timesince }} ago</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope-check"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4>Email Verification</h4>
+                            <p>{% if user.emailaddress_set.first.verified %}Verified{% else %}Pending{% endif %}</p>
+                        </div>
+                    </div>
+                    <a href="{% url 'account_change_password' %}" class="action-btn secondary">
+                        <i class="fas fa-lock"></i>
+                        Change Password
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

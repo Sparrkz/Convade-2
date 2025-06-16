@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Your Email - Convade LMS</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .email-header {
+            background: linear-gradient(135deg, #5A72FF 0%, #687EFF 100%);
+            color: #ffffff;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .email-header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        .email-header p {
+            margin: 10px 0 0;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        .email-body {
+            padding: 40px 30px;
+        }
+        .welcome-message {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .welcome-message h2 {
+            color: #2c3e50;
+            font-size: 24px;
+            margin: 0 0 15px;
+        }
+        .welcome-message p {
+            color: #6c757d;
+            font-size: 16px;
+            margin: 0;
+        }
+        .confirmation-button {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #5A72FF 0%, #687EFF 100%);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(90, 114, 255, 0.4);
+        }
+        .info-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #5A72FF;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+        .info-box h3 {
+            color: #5A72FF;
+            margin: 0 0 10px;
+            font-size: 16px;
+        }
+        .info-box p {
+            color: #6c757d;
+            margin: 0;
+            font-size: 14px;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+        }
+        .footer p {
+            color: #6c757d;
+            margin: 0;
+            font-size: 14px;
+        }
+        .footer a {
+            color: #5A72FF;
+            text-decoration: none;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="email-header">
+            <div class="logo">Convade LMS</div>
+            <h1>Welcome to Our Learning Community!</h1>
+            <p>You're just one step away from unlocking unlimited learning opportunities</p>
+        </div>
+
+        <!-- Body -->
+        <div class="email-body">
+            <div class="welcome-message">
+                <h2>Hello {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}!</h2>
+                <p>Thank you for joining Convade LMS. To complete your registration and start your learning journey, please confirm your email address.</p>
+            </div>
+
+            <div class="confirmation-button">
+                <a href="{{ activate_url }}" class="btn">Confirm My Email Address</a>
+            </div>
+
+            <div class="info-box">
+                <h3>🚀 What's Next?</h3>
+                <p>After confirming your email, you'll be able to:</p>
+                <ul style="margin: 10px 0 0 20px; color: #6c757d;">
+                    <li>Access thousands of courses</li>
+                    <li>Track your learning progress</li>
+                    <li>Earn certificates and badges</li>
+                    <li>Join our vibrant learning community</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin: 30px 0; padding: 20px; background-color: #fff8e1; border-radius: 5px;">
+                <p style="margin: 0; color: #f57c00; font-size: 14px;">
+                    <strong>⏰ Important:</strong> This confirmation link will expire in 3 days for security reasons.
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>If you didn't create an account with us, please ignore this email.</p>
+            <p>
+                Need help? Contact our support team at 
+                <a href="mailto:support@convade.com">support@convade.com</a>
+            </p>
+            <p style="margin-top: 20px;">
+                © 2024 Convade LMS. All rights reserved.<br>
+                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html> 
