@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ passenger_wsgi.py/$1 [QSA,PT,L]
+
+# Static files handling
+RewriteCond %{REQUEST_URI} ^/static/
+RewriteRule ^static/(.*)$ /static/$1 [L]
+
+# Media files handling
+RewriteCond %{REQUEST_URI} ^/media/
+RewriteRule ^media/(.*)$ /media/$1 [L] 
