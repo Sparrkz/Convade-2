@@ -9,7 +9,7 @@ pymysql.install_as_MySQLdb()
 DEBUG = False
 
 # Add your domain here
-ALLOWED_HOSTS = ['convade.org', 'www.convade.org']
+ALLOWED_HOSTS = ['convade.org', 'www.convade.org', "198.54.112.114"]
 
 # Database configuration for cPanel
 # You'll need to update these with your actual database credentials
