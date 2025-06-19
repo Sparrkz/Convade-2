@@ -15,7 +15,7 @@ from .models import UserActivity, CourseAnalytics, TestAnalytics, SystemAnalytic
 
 class AnalyticsDashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = 'analytics/dashboard.html'
-    
+
     def test_func(self):
         return self.request.user.is_teacher or self.request.user.is_admin
     
@@ -155,7 +155,7 @@ class AnalyticsDashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateVi
 
 class CourseAnalyticsView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = 'analytics/courses.html'
-    
+
     def test_func(self):
         return self.request.user.is_teacher or self.request.user.is_admin
     
@@ -185,7 +185,7 @@ class CourseAnalyticsView(LoginRequiredMixin, UserPassesTestMixin, TemplateView)
 
 class TestAnalyticsView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = 'analytics/tests.html'
-    
+
     def test_func(self):
         return self.request.user.is_teacher or self.request.user.is_admin
     
@@ -215,7 +215,7 @@ class TestAnalyticsView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
 
 class UserAnalyticsView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = 'analytics/users.html'
-    
+
     def test_func(self):
         return self.request.user.is_admin
     
