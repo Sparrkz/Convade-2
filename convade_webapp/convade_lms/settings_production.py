@@ -19,13 +19,14 @@ DATABASES = {
         'NAME': 'convknva_lms',
         'USER': 'convknva_daniel',
         'PASSWORD': 'Freshkido7$',
-        'HOST': 'server184.web-hosting.com',
+        'HOST': '104.21.16.1',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         },
     }
 }
+
 
 # Static files configuration for cPanel
 STATIC_URL = '/static/'
