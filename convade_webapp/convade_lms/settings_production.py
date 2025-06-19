@@ -16,10 +16,10 @@ ALLOWED_HOSTS = ['convade.org', 'www.convade.org']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'convknva_lms',
-        'USER': 'convknva_daniel',
-        'PASSWORD': 'Freshkido7$',
-        'HOST': '104.21.16.1',
+        'NAME': 'convadedb',
+        'USER': 'conavdedaniel',
+        'PASSWORD': 'gJ#8wPz7!mTc2L@q9FbK',
+        'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
