@@ -19,7 +19,7 @@ DATABASES = {
         'NAME': 'convknva_lms',
         'USER': 'convknva_daniel',
         'PASSWORD': 'Freshkido7$',
-        'HOST': 'localhost',
+        'HOST': 'server184.web-hosting.com',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
