@@ -1,6 +1,6 @@
 certifi==2025.4.26
 cffi
-charset-normalizer==3.4.2
+charset-normalizer
 crispy-bootstrap5==2025.6
 cryptography==45.0.4
 Django==5.2.3
