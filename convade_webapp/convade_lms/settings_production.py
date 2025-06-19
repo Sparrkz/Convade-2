@@ -2,6 +2,8 @@ import os
 from .settings import *
 
 # Production settings for cPanel deployment
+import pymysql
+pymysql.install_as_MySQLdb()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
