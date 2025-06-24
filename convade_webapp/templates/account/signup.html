@@ -130,7 +130,7 @@
     <div class="page-header__shape-5">
         <img src="{% static 'images/shapes/page-header-shape-5.png' %}" alt="">
     </div>
-    <div class="page-header__social">
+    <div class="page-header__social style="margin-left:70rem">
         <a href="#">Facebook</a>
         <span>//</span>
         <a href="#">Instagram</a>
@@ -153,8 +153,8 @@
                     <img src="{% static 'images/shapes/page-header-shape-3.png' %}" alt="">
                 </div>
             </div>
-            <h2>Sign Up</h2>
-            <div class="thm-breadcrumb__box">
+            <h2 style="text-align: center;">Sign Up</h2>
+            <div class="thm-breadcrumb__box" style="display: flex; justify-content: center; margin-top: 30px;">
                 <ul class="thm-breadcrumb list-unstyled">
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><span>//</span></li>
@@ -178,7 +178,7 @@
                         <div class="google-facebook">
                             {% for provider in socialaccount_providers %}
                                 {% if provider.id == "google" %}
-                                    <a href="{% provider_login_url 'google' %}">
+                                    <a href="{% provider_login_url 'google' %}" target="_blank" rel="noopener">
                                         <div class="icon">
                                             <img src="{% static 'images/icon/icon-google-2.png' %}" alt="Google">
                                         </div>
@@ -186,7 +186,7 @@
                                     </a>
                                 {% endif %}
                                 {% if provider.id == "facebook" %}
-                                    <a href="{% provider_login_url 'facebook' %}">
+                                    <a href="{% provider_login_url 'facebook' %}" target="_blank" rel="noopener">
                                         <div class="icon">
                                             <img src="{% static 'images/icon/icon-facebook.png' %}" alt="Facebook">
                                         </div>
@@ -205,14 +205,14 @@
                 {% csrf_token %}
                 
                 {% if form.non_field_errors %}
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger mb-3">
                         {{ form.non_field_errors }}
                     </div>
                 {% endif %}
                 
                 <div class="row">
                     <!-- Role Selection -->
-                    <div class="col-xl-12">
+                    <div class="col-xl-12 mb-3">
                         <div class="form-group role-selection-box">
                             <label for="{{ form.role.id_for_label }}">{{ form.role.label }}</label>
                             <div class="input-box">
@@ -236,7 +236,7 @@
                     </div>
                     
                     <!-- Username -->
-                    <div class="col-xl-12">
+                    <div class="col-xl-12 mb-3">
                         <div class="form-group">
                             <div class="input-box">
                                 <input type="text" 
@@ -258,7 +258,7 @@
                     </div>
                     
                     <!-- Email -->
-                    <div class="col-xl-12">
+                    <div class="col-xl-12 mb-3">
                         <div class="form-group">
                             <div class="input-box">
                                 <input type="email" 
@@ -280,7 +280,7 @@
                     </div>
                     
                     <!-- Password -->
-                    <div class="col-xl-12">
+                    <div class="col-xl-12 mb-3">
                         <div class="form-group">
                             <div class="input-box">
                                 <input type="password" 
@@ -301,7 +301,7 @@
                     </div>
                     
                     <!-- Confirm Password -->
-                    <div class="col-xl-12">
+                    <div class="col-xl-12 mb-3">
                         <div class="form-group">
                             <div class="input-box">
                                 <input type="password" 
@@ -322,14 +322,14 @@
                     </div>
                     
                     <!-- Submit Button -->
-                    <div class="col-xl-12">
+                    <div class="col-xl-12 mb-3">
                         <div class="form-group">
                             <button class="thm-btn" type="submit" data-loading-text="Please wait...">Sign Up</button>
                         </div>
                     </div>
                 </div>
                 
-                <div class="create-account text-center">
+                <div class="create-account text-center mt-3">
                     <p>Already have an account? <a href="{% url 'account_login' %}">Login Here</a></p>
                 </div>
             </form>

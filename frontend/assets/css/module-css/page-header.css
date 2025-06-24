@@ -7,6 +7,7 @@
     overflow: hidden;
     background: linear-gradient(92.7deg, #F1F3FF 0.48%, #F4FEF3 56.21%, #FFF3FC 100%);
     z-index: 1;
+    /* padding: 70rem; */
 }
 
 .page-header__bg {
@@ -30,9 +31,10 @@
     justify-content: center;
     top: 186px;
     left: -187px;
-    transform: rotate(-90deg);
+    transform: rotate(-30deg);
     background-color: #465EFC;
     padding: 11px 40px 11px;
+    /* margin-left: 10rem; */
 }
 
 .page-header__social a {

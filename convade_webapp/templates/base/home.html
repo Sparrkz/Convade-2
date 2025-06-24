@@ -149,11 +149,11 @@
                         </form>
                     </div>
                     <div class="banner-one__tags">
-                        <a href="{% url 'courses:list' %}">Programming</a>
+                        <a href="{% url 'courses:list' %}">Technology & IT</a>
                         <a href="{% url 'courses:list' %}">Business & Finance</a>
                         <a href="{% url 'courses:list' %}">Entrepreneurship</a>
-                        <a href="{% url 'courses:list' %}">Marketing</a>
-                        <a href="{% url 'courses:list' %}">Artisanship</a>
+                        {% comment %} <a href="{% url 'courses:list' %}">Marketing</a> {% endcomment %}
+                        <a href="{% url 'courses:list' %}">Technical and mechanical</a>
                     </div>
                 </div>
             </div>
@@ -561,7 +561,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="courses-one__title"><a href="course-details.html">Graphic Design
+                                <h3 class="courses-one__title"><a href="{% url 'courses:list' %}">Graphic Design
                                         Essentials From Concept to Creation</a></h3>
                                 <div class="courses-one__ratting-and-heart-box">
                                     <div class="courses-one__ratting-box">
@@ -585,12 +585,12 @@
                                         <p class="courses-one__ratting-text">250 Reviews</p>
                                     </div>
                                     <div class="courses-one__heart">
-                                        <a href="course-details.html"><span class="icon-heart"></span></a>
+                                        <a href="{% url 'courses:list' %}"><span class="icon-heart"></span></a>
                                     </div>
                                 </div>
                                 <div class="courses-one__btn-and-doller-box">
                                     <div class="courses-one__btn-box">
-                                        <a href="course-details.html" class="courses-one__btn thm-btn"><span
+                                        <a href="{% url 'courses:list' %}" class="courses-one__btn thm-btn"><span
                                                 class="icon-angles-right"></span>Enroll Now</a>
                                     </div>
                                     <span>$260.00</span>
@@ -627,7 +627,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="courses-one__title"><a href="course-details.html">UI/UX Design Enhancing User
+                                <h3 class="courses-one__title"><a href="{% url 'courses:list' %}">UI/UX Design Enhancing User
                                         Experience Effectively</a></h3>
                                 <div class="courses-one__ratting-and-heart-box">
                                     <div class="courses-one__ratting-box">
@@ -651,12 +651,12 @@
                                         <p class="courses-one__ratting-text">45 Reviews</p>
                                     </div>
                                     <div class="courses-one__heart">
-                                        <a href="course-details.html"><span class="icon-heart"></span></a>
+                                        <a href="{% url 'courses:list' %}"><span class="icon-heart"></span></a>
                                     </div>
                                 </div>
                                 <div class="courses-one__btn-and-doller-box">
                                     <div class="courses-one__btn-box">
-                                        <a href="course-details.html" class="courses-one__btn thm-btn"><span
+                                        <a href="{% url 'courses:list' %}" class="courses-one__btn thm-btn"><span
                                                 class="icon-angles-right"></span>Enroll Now</a>
                                     </div>
                                     <span>$150.00</span>
@@ -693,7 +693,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="courses-one__title"><a href="course-details.html">Modern Web Design Aesthetic
+                                <h3 class="courses-one__title"><a href="{% url 'courses:list' %}">Modern Web Design Aesthetic
                                         and Functional Websites</a></h3>
                                 <div class="courses-one__ratting-and-heart-box">
                                     <div class="courses-one__ratting-box">
@@ -717,12 +717,12 @@
                                         <p class="courses-one__ratting-text">32 Reviews</p>
                                     </div>
                                     <div class="courses-one__heart">
-                                        <a href="course-details.html"><span class="icon-heart"></span></a>
+                                        <a href="{% url 'courses:list' %}"><span class="icon-heart"></span></a>
                                     </div>
                                 </div>
                                 <div class="courses-one__btn-and-doller-box">
                                     <div class="courses-one__btn-box">
-                                        <a href="course-details.html" class="courses-one__btn thm-btn"><span
+                                        <a href="{% url 'courses:list' %}" class="courses-one__btn thm-btn"><span
                                                 class="icon-angles-right"></span>Enroll Now</a>
                                     </div>
                                     <span>$240.00</span>
@@ -759,7 +759,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="courses-one__title"><a href="course-details.html">Graphic Design
+                                <h3 class="courses-one__title"><a href="{% url 'courses:list' %}">Graphic Design
                                         Essentials From Concept to Creation</a></h3>
                                 <div class="courses-one__ratting-and-heart-box">
                                     <div class="courses-one__ratting-box">
@@ -783,12 +783,12 @@
                                         <p class="courses-one__ratting-text">250 Reviews</p>
                                     </div>
                                     <div class="courses-one__heart">
-                                        <a href="course-details.html"><span class="icon-heart"></span></a>
+                                        <a href="{% url 'courses:list' %}"><span class="icon-heart"></span></a>
                                     </div>
                                 </div>
                                 <div class="courses-one__btn-and-doller-box">
                                     <div class="courses-one__btn-box">
-                                        <a href="course-details.html" class="courses-one__btn thm-btn"><span
+                                        <a href="{% url 'courses:list' %}" class="courses-one__btn thm-btn"><span
                                                 class="icon-angles-right"></span>Enroll Now</a>
                                     </div>
                                     <span>$260.00</span>
@@ -825,7 +825,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="courses-one__title"><a href="course-details.html">UI/UX Design Enhancing User
+                                <h3 class="courses-one__title"><a href="{% url 'courses:list' %}">UI/UX Design Enhancing User
                                         Experience Effectively</a></h3>
                                 <div class="courses-one__ratting-and-heart-box">
                                     <div class="courses-one__ratting-box">
@@ -849,12 +849,12 @@
                                         <p class="courses-one__ratting-text">45 Reviews</p>
                                     </div>
                                     <div class="courses-one__heart">
-                                        <a href="course-details.html"><span class="icon-heart"></span></a>
+                                        <a href="{% url 'courses:list' %}"><span class="icon-heart"></span></a>
                                     </div>
                                 </div>
                                 <div class="courses-one__btn-and-doller-box">
                                     <div class="courses-one__btn-box">
-                                        <a href="course-details.html" class="courses-one__btn thm-btn"><span
+                                        <a href="{% url 'courses:list' %}" class="courses-one__btn thm-btn"><span
                                                 class="icon-angles-right"></span>Enroll Now</a>
                                     </div>
                                     <span>$150.00</span>
@@ -891,7 +891,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="courses-one__title"><a href="course-details.html">Modern Web Design Aesthetic
+                                <h3 class="courses-one__title"><a href="{% url 'courses:list' %}">Modern Web Design Aesthetic
                                         and Functional Websites</a></h3>
                                 <div class="courses-one__ratting-and-heart-box">
                                     <div class="courses-one__ratting-box">
@@ -915,12 +915,12 @@
                                         <p class="courses-one__ratting-text">32 Reviews</p>
                                     </div>
                                     <div class="courses-one__heart">
-                                        <a href="course-details.html"><span class="icon-heart"></span></a>
+                                        <a href="{% url 'courses:list' %}"><span class="icon-heart"></span></a>
                                     </div>
                                 </div>
                                 <div class="courses-one__btn-and-doller-box">
                                     <div class="courses-one__btn-box">
-                                        <a href="course-details.html" class="courses-one__btn thm-btn"><span
+                                        <a href="{% url 'courses:list' %}" class="courses-one__btn thm-btn"><span
                                                 class="icon-angles-right"></span>Enroll Now</a>
                                     </div>
                                     <span>$240.00</span>
@@ -957,7 +957,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="courses-one__title"><a href="course-details.html">Graphic Design
+                                <h3 class="courses-one__title"><a href="{% url 'courses:list' %}">Graphic Design
                                         Essentials From Concept to Creation</a></h3>
                                 <div class="courses-one__ratting-and-heart-box">
                                     <div class="courses-one__ratting-box">
@@ -981,12 +981,12 @@
                                         <p class="courses-one__ratting-text">250 Reviews</p>
                                     </div>
                                     <div class="courses-one__heart">
-                                        <a href="course-details.html"><span class="icon-heart"></span></a>
+                                        <a href="{% url 'courses:list' %}"><span class="icon-heart"></span></a>
                                     </div>
                                 </div>
                                 <div class="courses-one__btn-and-doller-box">
                                     <div class="courses-one__btn-box">
-                                        <a href="course-details.html" class="courses-one__btn thm-btn"><span
+                                        <a href="{% url 'courses:list' %}" class="courses-one__btn thm-btn"><span
                                                 class="icon-angles-right"></span>Enroll Now</a>
                                     </div>
                                     <span>$260.00</span>
@@ -1023,7 +1023,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="courses-one__title"><a href="course-details.html">UI/UX Design Enhancing User
+                                <h3 class="courses-one__title"><a href="{% url 'courses:list' %}">UI/UX Design Enhancing User
                                         Experience Effectively</a></h3>
                                 <div class="courses-one__ratting-and-heart-box">
                                     <div class="courses-one__ratting-box">
@@ -1047,12 +1047,12 @@
                                         <p class="courses-one__ratting-text">45 Reviews</p>
                                     </div>
                                     <div class="courses-one__heart">
-                                        <a href="course-details.html"><span class="icon-heart"></span></a>
+                                        <a href="{% url 'courses:list' %}"><span class="icon-heart"></span></a>
                                     </div>
                                 </div>
                                 <div class="courses-one__btn-and-doller-box">
                                     <div class="courses-one__btn-box">
-                                        <a href="course-details.html" class="courses-one__btn thm-btn"><span
+                                        <a href="{% url 'courses:list' %}" class="courses-one__btn thm-btn"><span
                                                 class="icon-angles-right"></span>Enroll Now</a>
                                     </div>
                                     <span>$150.00</span>
@@ -1089,7 +1089,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <h3 class="courses-one__title"><a href="course-details.html">Modern Web Design Aesthetic
+                                <h3 class="courses-one__title"><a href="{% url 'courses:list' %}">Modern Web Design Aesthetic
                                         and Functional Websites</a></h3>
                                 <div class="courses-one__ratting-and-heart-box">
                                     <div class="courses-one__ratting-box">
@@ -1113,12 +1113,12 @@
                                         <p class="courses-one__ratting-text">32 Reviews</p>
                                     </div>
                                     <div class="courses-one__heart">
-                                        <a href="course-details.html"><span class="icon-heart"></span></a>
+                                        <a href="{% url 'courses:list' %}"><span class="icon-heart"></span></a>
                                     </div>
                                 </div>
                                 <div class="courses-one__btn-and-doller-box">
                                     <div class="courses-one__btn-box">
-                                        <a href="course-details.html" class="courses-one__btn thm-btn"><span
+                                        <a href="{% url 'courses:list' %}" class="courses-one__btn thm-btn"><span
                                                 class="icon-angles-right"></span>Enroll Now</a>
                                     </div>
                                     <span>$240.00</span>
@@ -1402,7 +1402,7 @@
                     </div>
                     <!--Team One Single End-->
                     <!--Team One Single Start-->
-                    <div class="item">
+                    <div class="item"  style="width: 90%;">
                         <div class="team-one__single">
                             <div class="team-one__img-box">
                                 <div class="team-one__img">
@@ -2039,11 +2039,11 @@
                                         <div class="live-class-one__img">
                                             <img src="{% static "images/resources/live-class-1-1.jpg" %}" alt="">
                                             <div class="live-class-one__btn-box">
-                                                <a href="course-details.html" class="thm-btn">Join Class</a>
+                                                <a href="{% url 'courses:list' %}" class="thm-btn">Join Class</a>
                                             </div>
                                         </div>
                                         <div class="live-class-one__content">
-                                            <h4 class="live-class-one__title"><a href="course-details.html">Master
+                                            <h4 class="live-class-one__title"><a href="{% url 'courses:list' %}">Master
                                                     Python Programming for
                                                     Beginners and Beyond</a></h4>
                                             <div class="live-class-one__class-time">
@@ -2060,11 +2060,11 @@
                                         <div class="live-class-one__img">
                                             <img src="{% static "images/resources/live-class-1-2.jpg" %}" alt="">
                                             <div class="live-class-one__btn-box">
-                                                <a href="course-details.html" class="thm-btn">Join Class</a>
+                                                <a href="{% url 'courses:list' %}" class="thm-btn">Join Class</a>
                                             </div>
                                         </div>
                                         <div class="live-class-one__content">
-                                            <h4 class="live-class-one__title"><a href="course-details.html">AI
+                                            <h4 class="live-class-one__title"><a href="{% url 'courses:list' %}">AI
                                                     Foundations: Machine
                                                     Learning Networks</a></h4>
                                             <div class="live-class-one__class-time">
@@ -2081,11 +2081,11 @@
                                         <div class="live-class-one__img">
                                             <img src="{% static "images/resources/live-class-1-3.jpg" %}" alt="">
                                             <div class="live-class-one__btn-box">
-                                                <a href="course-details.html" class="thm-btn">Join Class</a>
+                                                <a href="{% url 'courses:list' %}" class="thm-btn">Join Class</a>
                                             </div>
                                         </div>
                                         <div class="live-class-one__content">
-                                            <h4 class="live-class-one__title"><a href="course-details.html">Front end
+                                            <h4 class="live-class-one__title"><a href="{% url 'courses:list' %}">Front end
                                                     development with
                                                     React js & Next js</a></h4>
                                             <div class="live-class-one__class-time">
@@ -2102,11 +2102,11 @@
                                         <div class="live-class-one__img">
                                             <img src="{% static "images/resources/live-class-1-1.jpg" %}" alt="">
                                             <div class="live-class-one__btn-box">
-                                                <a href="course-details.html" class="thm-btn">Join Class</a>
+                                                <a href="{% url 'courses:list' %}" class="thm-btn">Join Class</a>
                                             </div>
                                         </div>
                                         <div class="live-class-one__content">
-                                            <h4 class="live-class-one__title"><a href="course-details.html">Master
+                                            <h4 class="live-class-one__title"><a href="{% url 'courses:list' %}">Master
                                                     Python Programming for
                                                     Beginners and Beyond</a></h4>
                                             <div class="live-class-one__class-time">
@@ -2123,11 +2123,11 @@
                                         <div class="live-class-one__img">
                                             <img src="{% static "images/resources/live-class-1-2.jpg" %}" alt="">
                                             <div class="live-class-one__btn-box">
-                                                <a href="course-details.html" class="thm-btn">Join Class</a>
+                                                <a href="{% url 'courses:list' %}" class="thm-btn">Join Class</a>
                                             </div>
                                         </div>
                                         <div class="live-class-one__content">
-                                            <h4 class="live-class-one__title"><a href="course-details.html">AI
+                                            <h4 class="live-class-one__title"><a href="{% url 'courses:list' %}">AI
                                                     Foundations: Machine
                                                     Learning Networks</a></h4>
                                             <div class="live-class-one__class-time">
@@ -2144,11 +2144,11 @@
                                         <div class="live-class-one__img">
                                             <img src="{% static "images/resources/live-class-1-3.jpg" %}" alt="">
                                             <div class="live-class-one__btn-box">
-                                                <a href="course-details.html" class="thm-btn">Join Class</a>
+                                                <a href="{% url 'courses:list' %}" class="thm-btn">Join Class</a>
                                             </div>
                                         </div>
                                         <div class="live-class-one__content">
-                                            <h4 class="live-class-one__title"><a href="course-details.html">Front end
+                                            <h4 class="live-class-one__title"><a href="{% url 'courses:list' %}">Front end
                                                     development with
                                                     React js & Next js</a></h4>
                                             <div class="live-class-one__class-time">
