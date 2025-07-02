@@ -237,11 +237,11 @@
                     <img src="{% static 'images/brand/category-one-brand-1-2.png' %}" alt="">
                 </div>
             </li>
-            <li>
+            {% comment %} <li>
                 <div class="category-one__brand">
                     <img src="{% static 'images/brand/category-one-brand-1-3.png' %}" alt="">
                 </div>
-            </li>
+            </li> {% endcomment %}
             <li>
                 <div class="category-one__brand">
                     <img src="{% static 'images/brand/category-one-brand-1-4.png' %}" alt="">
@@ -269,12 +269,12 @@
                                     <div class="category-one__count"></div>
                                     <div class="category-one__count-content">
                                         <h3><a href="{% url 'courses:list' %}">Tech & Programming</a></h3>
-                                        <p>10+ Courses</p>
+                                        <p>view Courses</p>
                                     </div>
                                 </div>
                                 <div class="category-one__count-arrow">
                                     <a href="{% url 'courses:list' %}"><span
-                                            class="icon-arrow-up-right-2"></span></a>
+                                            class="fa fa-chevron-right"></span></a>
                                 </div>
                             </div>
                             <div class="category-one__hover-icon-and-arrow">
@@ -284,12 +284,12 @@
                                     </div>
                                     <div class="category-one__hover-content">
                                         <h3><a href="{% url 'courses:list' %}">Tech & Programming</a></h3>
-                                        <p>10+ Courses</p>
+                                        <p>view Courses</p>
                                     </div>
                                 </div>
                                 <div class="category-one__hover-arrow">
                                     <a href="{% url 'courses:list' %}"><span
-                                            class="icon-arrow-up-right-2"></span></a>
+                                            class="fa fa-chevron-right"></span></a>
                                 </div>
                             </div>
                         </li>
@@ -299,12 +299,12 @@
                                     <div class="category-one__count"></div>
                                     <div class="category-one__count-content">
                                         <h3><a href="{% url 'courses:list' %}">Art & Design</a></h3>
-                                        <p>50+ Courses</p>
+                                        <p>view Courses</p>
                                     </div>
                                 </div>
                                 <div class="category-one__count-arrow">
                                     <a href="{% url 'courses:list' %}"><span
-                                            class="icon-arrow-up-right-2"></span></a>
+                                            class="fa fa-chevron-right"></span></a>
                                 </div>
                             </div>
                             <div class="category-one__hover-icon-and-arrow">
@@ -314,12 +314,12 @@
                                     </div>
                                     <div class="category-one__hover-content">
                                         <h3><a href="{% url 'courses:list' %}">Art & Design</a></h3>
-                                        <p>50+ Courses</p>
+                                        <p>view Courses</p>
                                     </div>
                                 </div>
                                 <div class="category-one__hover-arrow">
                                     <a href="{% url 'courses:list' %}"><span
-                                            class="icon-arrow-up-right-2"></span></a>
+                                            class="fa fa-chevron-right"></span></a>
                                 </div>
                             </div>
                         </li>
@@ -329,12 +329,12 @@
                                     <div class="category-one__count"></div>
                                     <div class="category-one__count-content">
                                         <h3><a href="{% url 'courses:list' %}">Online Marketing</a></h3>
-                                        <p>12+ Courses</p>
+                                        <p>view Courses</p>
                                     </div>
                                 </div>
                                 <div class="category-one__count-arrow">
                                     <a href="{% url 'courses:list' %}"><span
-                                            class="icon-arrow-up-right-2"></span></a>
+                                            class="fa fa-chevron-right"></span></a>
                                 </div>
                             </div>
                             <div class="category-one__hover-icon-and-arrow">
@@ -344,12 +344,12 @@
                                     </div>
                                     <div class="category-one__hover-content">
                                         <h3><a href="{% url 'courses:list' %}">Online Marketing</a></h3>
-                                        <p>12+ Courses</p>
+                                        <p>view Courses</p>
                                     </div>
                                 </div>
                                 <div class="category-one__hover-arrow">
                                     <a href="{% url 'courses:list' %}"><span
-                                            class="icon-arrow-up-right-2"></span></a>
+                                            class="fa fa-chevron-right"></span></a>
                                 </div>
                             </div>
                         </li>
@@ -359,12 +359,12 @@
                                     <div class="category-one__count"></div>
                                     <div class="category-one__count-content">
                                         <h3><a href="{% url 'courses:list' %}">Content Creation</a></h3>
-                                        <p>10+ Courses</p>
+                                        <p>view Courses</p>
                                     </div>
                                 </div>
                                 <div class="category-one__count-arrow">
                                     <a href="{% url 'courses:list' %}"><span
-                                            class="icon-arrow-up-right-2"></span></a>
+                                            class="fa fa-chevron-right"></span></a>
                                 </div>
                             </div>
                             <div class="category-one__hover-icon-and-arrow">
@@ -374,12 +374,12 @@
                                     </div>
                                     <div class="category-one__hover-content">
                                         <h3><a href="{% url 'courses:list' %}">Content Creation</a></h3>
-                                        <p>10+ Courses</p>
+                                        <p>view Courses</p>
                                     </div>
                                 </div>
                                 <div class="category-one__hover-arrow">
                                     <a href="{% url 'courses:list' %}"><span
-                                            class="icon-arrow-up-right-2"></span></a>
+                                            class="fa fa-chevron-right"></span></a>
                                 </div>
                             </div>
                         </li>
@@ -1228,7 +1228,7 @@
                                                 </div>
                                                 <div class="why-choose-one__points-content">
                                                     <h3>24 Hours Support</h3>
-                                                    <p>Our assistance is available to give support our students for 24
+                                                    <p>Our assistance is available to give our students support for 24
                                                         hours
                                                         7days in week.</p>
                                                 </div>
