@@ -267,16 +267,7 @@
                                 </ul>
                             </div>
                             <div class="main-menu__right">
-                                <div class="main-menu__search-cart-box">
-                                    <div class="main-menu__search-box">
-                                        <a href="#" class="main-menu__search searcher-toggler-box icon-search"></a>
-                                    </div>
-                                    {% if user.is_authenticated %}
-                                        <div class="main-menu__cart">
-                                            <a href="#"><span class="fas fa-user"></span></a>
-                                        </div>
-                                    {% endif %}
-                                </div>
+                                
                                 <div class="main-menu__btn-boxes">
                                     {% if not user.is_authenticated %}
                                         <div class="main-menu__btn-box-1">
@@ -392,8 +383,8 @@
                                                         <li><a href="{% url 'account_login' %}"> <span class="icon-plus"></span> Login</a></li>
                                                         <li><a href="{% url 'account_signup' %}"> <span class="icon-plus"></span> Register</a></li>
                                                     {% endif %}
-                                                    <li><a href="#"> <span class="icon-plus"></span> Privacy Policy</a></li>
-                                                    <li><a href="#"> <span class="icon-plus"></span> Terms & Conditions</a></li>
+                                                    <li><a href="{% url 'helpcenter:policy' %}"> <span class="icon-plus"></span> Privacy Policy</a></li>
+                                                    <li><a href="{% url 'helpcenter:terms' %}"> <span class="icon-plus"></span> Terms & Conditions</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -445,7 +436,7 @@
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
             <div class="logo-box">
-                <a href="{% url 'home' %}" aria-label="logo image"><img src="{% static 'images/xemm1svg.svg' %}" width="105" alt="" /></a>
+                <a href="{% url 'home' %}" aria-label="logo image"><img src="{% static 'images/xem2.svg' %}" width="105" alt="" /></a>
             </div>
             <div class="mobile-nav__container"></div>
 

@@ -7,6 +7,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class HelpCenterView(TemplateView):
     template_name = 'helpcenter/index.html'
 
+class TermsAndConditionsView(TemplateView):
+    template_name = 'helpcenter/terms.html'
+
+class PolicyView(TemplateView):
+    template_name = 'helpcenter/policy.html'
+
 class ArticleListView(ListView):
     template_name = 'helpcenter/articles.html'
 
