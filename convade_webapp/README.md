@@ -207,6 +207,7 @@ API documentation available at `/api/docs/` when running in development mode.
 - [ ] Configure email backend for notifications
 - [ ] Set up SSL certificates
 - [ ] Configure domain and ALLOWED_HOSTS
+- [ ] Create Superuser with `python manage.py createsuperuser --settings=convade_lms.settings_production`
 
 ### Recommended Deployment Platforms
 - **Heroku**: Easy deployment with PostgreSQL addon
