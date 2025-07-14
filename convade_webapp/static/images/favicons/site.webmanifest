@@ -1,0 +1,17 @@
+{
+  "name": "Convade Learning Management System",
+  "short_name": "Convade",
+  "description": "Explore affordable online certificate courses for professional development. Boost your career with skill development programs from top online education platforms.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#cc3300",
+  "icons": [
+    {
+      "src": "/static/images/favicons/ico.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "lang": "en"
+}
