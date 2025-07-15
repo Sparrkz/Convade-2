@@ -27,6 +27,7 @@ class Course(models.Model):
     
     class Meta:
         ordering = ['-created_at']
+        default_permissions = ('add', 'change', 'delete', 'view')
     
     def __str__(self):
         return self.title
