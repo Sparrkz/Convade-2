@@ -5,6 +5,8 @@ app_name = 'helpcenter'
 
 urlpatterns = [
     path('', views.HelpCenterView.as_view(), name='index'),
+    path('terms/', views.TermsAndConditionsView.as_view(), name='terms'),
+    path('policy/', views.PolicyView.as_view(), name='policy'),
     path('articles/', views.ArticleListView.as_view(), name='articles'),
     path('articles/<int:pk>/', views.ArticleDetailView.as_view(), name='article_detail'),
     path('faq/', views.FAQView.as_view(), name='faq'),

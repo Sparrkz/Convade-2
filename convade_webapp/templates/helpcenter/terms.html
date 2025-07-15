@@ -1,0 +1,221 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Terms & Conditions - Convade Learning Management System{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/module-css/page-header.css' %}" />
+<style>
+.terms-one {
+    position: relative;
+    display: block;
+    padding: 80px 0 80px;
+    z-index: 1;
+}
+.terms-one__content {
+    position: relative;
+    display: block;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--Convade-white);
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+.terms-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.terms-title h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--Convade-black);
+    margin-bottom: 10px;
+}
+.terms-title p {
+    font-size: 18px;
+    color: var(--Convade-gray);
+    margin-bottom: 0;
+    line-height: 28px;
+}
+.terms-content h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: var(--Convade-base);
+}
+.terms-content p, .terms-content ul {
+    font-size: 16px;
+    color: var(--Convade-gray);
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+.terms-content ul {
+    padding-left: 20px;
+}
+.terms-content li {
+    margin-bottom: 8px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url({% static 'images/shapes/page-header-bg-shape.png' %});"></div>
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 140px;">
+        <div class="page-header__inner text-center" style="margin-top: 40px;">
+            <h2>Terms & Conditions</h2>
+            <div class="thm-breadcrumb__box">
+                <ul class="thm-breadcrumb list-unstyled d-inline-flex justify-content-center align-items-center">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><span>//</span></li>
+                    <li>Terms & Conditions</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Page Header End-->
+
+<!--Start Terms One-->
+<section class="terms-one">
+    <div class="container">
+        <div class="terms-one__content">
+            <div class="terms-title">
+                <h2>Terms and Conditions</h2>
+                <p>Effective Date: 25/06/2025<br>
+                Applies to all users of Convade Education’s online learning platform</p>
+            </div>
+            <div class="terms-content">
+                <h3>1. Acceptance of Terms</h3>
+                <p>By accessing or using our website and services, including all courses, you agree to be bound by these Terms, our Privacy Policy, and any other guidelines published by Convade Education.</p>
+
+                <h3>2. Eligibility</h3>
+                <ul>
+                    <li>You must be at least 16 years old to use our services.</li>
+                    <li>If under 18, consent from a parent or guardian is required.</li>
+                </ul>
+
+                <h3>3. Course Enrollment and Access</h3>
+                <ul>
+                    <li>Enrollment grants you limited, non-transferable access to specific course materials.</li>
+                    <li>Access periods vary; some programs may have lifetime access, others may expire after a set time.</li>
+                    <li>We reserve the right to update course content to meet current industry standards.</li>
+                </ul>
+
+                <h3>4. Fees and Payments</h3>
+                <ul>
+                    <li>Full payment is required before gaining access to a course.</li>
+                    <li>We accept payments via secure online platforms and bank transfers.</li>
+                    <li>All charges are in (insert currency) and inclusive of applicable taxes.</li>
+                </ul>
+
+                <h3>5. Refund Policy</h3>
+                <ul>
+                    <li><strong>Full Refund:</strong> If a refund request is made within 48 hours of payment and the course has not been accessed.</li>
+                    <li><strong>Partial Refund:</strong> A refund of 50% may be granted if the request is made within 7 days and less than 20% of the course has been completed.</li>
+                    <li><strong>No Refund:</strong> Refunds will not be issued after 7 days of course access or for completed courses.</li>
+                </ul>
+                <p>To request a refund, email us at <a href="mailto:support@convade.org">support@convade.org</a> with your full name, course title, and reason for the request.</p>
+
+                <h3>6. Certificates and Assessments</h3>
+                <ul>
+                    <li>Certificates are awarded upon successful completion of a course and all required assessments or projects.</li>
+                    <li>Convade Education reserves the right to deny a certificate if academic dishonesty is suspected.</li>
+                </ul>
+
+                <h3>7. Code of Conduct</h3>
+                <ul>
+                    <li>Participate actively and respectfully.</li>
+                    <li>Avoid any form of plagiarism or cheating.</li>
+                    <li>Not share or distribute course content without permission.</li>
+                </ul>
+                <p>Violation of these rules may result in suspension or permanent removal.</p>
+
+                <h3>8. Intellectual Property</h3>
+                <p>All course content (videos, PDFs, quizzes, designs, etc.) is the intellectual property of Convade Education and its instructors. Unauthorized use or distribution is strictly prohibited.</p>
+
+                <h3>9. Technology Requirements</h3>
+                <p>You are responsible for ensuring that your device and internet connection support access to our online courses.</p>
+
+                <h3>10. Data Protection and Privacy</h3>
+                <p>We are committed to protecting your personal data in compliance with Nigeria’s Data Protection Regulation (NDPR) and international standards (e.g., GDPR where applicable).</p>
+                <ul>
+                    <li>We collect minimal data necessary for course delivery, communication, and certification.</li>
+                    <li>We do not sell or share your data with third parties without your consent.</li>
+                    <li>You have the right to request, review, or delete your personal data at any time by contacting <a href="mailto:support@convade.org">support@convade.org</a>.</li>
+                </ul>
+                <p>See our full Privacy Policy at: <a href="#">insert URL</a></p>
+
+                <h3>11. Modifications</h3>
+                <p>We may revise these Terms from time to time. Changes become effective immediately upon being posted. Continued use of the platform means acceptance of the new Terms.</p>
+
+                <h3>12. Dispute Resolution</h3>
+                <ul>
+                    <li>We encourage informal resolution via email communication within 7 business days.</li>
+                    <li>If unresolved, disputes will be settled through mediation under the laws of the Federal Republic of Nigeria, preferably within Lagos jurisdiction.</li>
+                    <li>If mediation fails, parties may escalate to arbitration in accordance with the Arbitration and Conciliation Act of Nigeria.</li>
+                </ul>
+
+                <h3>13. Limitation of Liability</h3>
+                <p>Convade Education is not liable for any indirect, incidental, or consequential losses arising from your use of the platform. We do not guarantee specific outcomes, job placements, or business success.</p>
+
+                <h3>14. Termination</h3>
+                <p>We reserve the right to suspend or terminate your account for breach of any terms, unethical conduct, or misuse of the platform.</p>
+
+                <h3>15. Contact Us</h3>
+                <ul>
+                    <li>Email: <a href="mailto:support@convade.org">support@convade.org</a></li>
+                    <li>Website: <a href="https://www.convade.org">www.convade.org</a></li>
+                    <li>Address: 100 Felixstowe road ABBEYWOOD, London.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Terms One-->
+
+<!--Contact Info One Start -->
+<section class="contact-info-one">
+    <div class="container">
+        <ul class="list-unstyled contact-info-one__list">
+            <li>
+                <div class="contact-info-one__single">
+                    <div class="contact-info-one__icon">
+                        <span class="icon-envelope"></span>
+                    </div>
+                    <div class="contact-info-one__content">
+                        <p class="contact-info-one__sub-title">Email Address:</p>
+                        <h5 class="contact-info-one__email"><a href="mailto:support@convade.org">support@convade.org</a></h5>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="contact-info-one__single">
+                    <div class="contact-info-one__icon">
+                        <span class="icon-phone"></span>
+                    </div>
+                    <div class="contact-info-one__content">
+                        <p class="contact-info-one__sub-title">Phone Number</p>
+                        <h5 class="contact-info-one__email"><a href="tel:1212345678900">+447836675410</a></h5>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="contact-info-one__single">
+                    <div class="contact-info-one__icon">
+                        <span class="icon-location"></span>
+                    </div>
+                    <div class="contact-info-one__content">
+                        <p class="contact-info-one__sub-title">Our Address</p>
+                        <h5 class="contact-info-one__email">100 Felixstowe road ABBEYWOOD, London.</h5>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+<!--Contact Info One End -->
+{% endblock %}

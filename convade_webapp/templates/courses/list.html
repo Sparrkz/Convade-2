@@ -181,31 +181,31 @@
     <!-- Search and Filters -->
     <div class="search-filters">
         <form method="GET" class="search-form">
-            <div class="filter-row">
-                <div class="filter-group">
+            <div class="filter-row" style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end;">
+                <div class="filter-group" style="flex: 1 1 180px; min-width: 180px;">
                     <label for="search">Search Courses</label>
                     {{ search_form.search }}
                 </div>
-                <div class="filter-group">
+                <div class="filter-group" style="flex: 1 1 140px; min-width: 140px;">
                     <label for="category">Category</label>
                     {{ search_form.category }}
                 </div>
-                <div class="filter-group">
+                <div class="filter-group" style="flex: 1 1 140px; min-width: 140px;">
                     <label for="difficulty">Difficulty</label>
                     {{ search_form.difficulty }}
                 </div>
-                <div class="filter-group">
+                <div class="filter-group" style="flex: 1 1 120px; min-width: 120px;">
                     <label for="price">Price</label>
                     {{ search_form.price }}
                 </div>
-                <div class="filter-group">
+                <div class="filter-group" style="flex: 1 1 120px; min-width: 120px;">
                     <label for="sort">Sort By</label>
                     {{ search_form.sort }}
                 </div>
-                <div class="filter-group">
+                <div class="filter-group" style="flex: 0 0 auto;">
                     <label>&nbsp;</label>
                     <button type="submit" class="btn-filter">
-                        <i class="fas fa-search"></i> Search
+                        <i class="fas fa-search"></i> 
                     </button>
                 </div>
             </div>
