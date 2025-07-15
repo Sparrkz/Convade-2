@@ -95,3 +95,11 @@ class CourseSearchForm(forms.Form):
         required=False,
         widget=forms.Select(attrs={'class': 'form-control'})
     ) 
+
+class CourseAdminForm(forms.ModelForm):
+    class Meta:
+        model = Course
+        fields = '__all__'
+        widgets = {
+            'categories': forms.CheckboxSelectMultiple()
+        }

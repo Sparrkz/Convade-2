@@ -2,6 +2,16 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 
+class CourseCategory(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    description = models.TextField(blank=True)
+
+    class Meta:
+        verbose_name_plural = 'Course Categories'
+
+    def __str__(self):
+        return self.name
+
 class Course(models.Model):
     DIFFICULTY_CHOICES = [
         ('beginner', 'Beginner'),
@@ -17,6 +27,7 @@ class Course(models.Model):
         related_name='taught_courses',
         limit_choices_to={'role': 'teacher'}
     )
+    categories = models.ManyToManyField(CourseCategory, related_name='courses', blank=True)  # ← Moved here
     difficulty = models.CharField(max_length=12, choices=DIFFICULTY_CHOICES, default='beginner')
     duration_hours = models.PositiveIntegerField(default=1)
     price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
@@ -83,14 +94,3 @@ class Enrollment(models.Model):
         self.progress = 100
         self.completed_at = timezone.now()
         self.save()
-
-class CourseCategory(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    description = models.TextField(blank=True)
-    courses = models.ManyToManyField(Course, related_name='categories', blank=True)
-    
-    class Meta:
-        verbose_name_plural = 'Course Categories'
-    
-    def __str__(self):
-        return self.name

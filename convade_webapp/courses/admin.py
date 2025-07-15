@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Course, CourseContent, Enrollment, CourseCategory
+from .forms import CourseAdminForm
 
 class CourseContentInline(admin.TabularInline):
     model = CourseContent
@@ -8,20 +9,25 @@ class CourseContentInline(admin.TabularInline):
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
+    form = CourseAdminForm
     list_display = ['title', 'instructor', 'difficulty', 'price', 'is_published', 'created_at']
     list_filter = ['difficulty', 'is_published', 'created_at', 'instructor']
     search_fields = ['title', 'description', 'instructor__username']
     ordering = ['-created_at']
     inlines = [CourseContentInline]
-    
+
     fieldsets = (
         ('Basic Information', {
             'fields': ('title', 'description', 'instructor', 'thumbnail')
         }),
         ('Course Details', {
-            'fields': ('difficulty', 'duration_hours', 'price', 'is_published')
+            'fields': ('difficulty', 'duration_hours', 'price', 'categories', 'is_published')
         }),
     )
+
+    # Ensure this is empty so the default widget (multi-select dropdown) is used
+    filter_horizontal = []
+
 
 @admin.register(CourseContent)
 class CourseContentAdmin(admin.ModelAdmin):
@@ -41,4 +47,4 @@ class EnrollmentAdmin(admin.ModelAdmin):
 class CourseCategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'description']
     search_fields = ['name']
-    filter_horizontal = ['courses']
+    # filter_horizontal = ['courses']
