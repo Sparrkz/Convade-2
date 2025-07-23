@@ -1,4 +1,4 @@
-// Main JavaScript file for Convade LMS
+// Main JavaScript file for Convade
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize tooltips

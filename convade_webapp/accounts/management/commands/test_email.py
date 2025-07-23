@@ -8,7 +8,7 @@ from allauth.account.models import EmailAddress, EmailConfirmation
 User = get_user_model()
 
 class Command(BaseCommand):
-    help = 'Test email functionality for Convade LMS'
+    help = 'Test email functionality for Convade'
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -27,7 +27,7 @@ class Command(BaseCommand):
         test_email = "youngkhito@gmail.com"
         
         self.stdout.write(
-            self.style.SUCCESS('🚀 Starting Convade LMS Email Tests\n')
+            self.style.SUCCESS('🚀 Starting Convade Email Tests\n')
         )
         
         self.print_email_settings()
@@ -59,7 +59,7 @@ class Command(BaseCommand):
         self.stdout.write(self.style.WARNING('\n🧪 Testing basic email sending...'))
         try:
             send_mail(
-                'Test Email from Convade LMS',
+                'Test Email from Convade',
                 'This is a test email to verify email configuration.',
                 settings.DEFAULT_FROM_EMAIL,
                 [test_email],
@@ -76,8 +76,8 @@ class Command(BaseCommand):
         self.stdout.write(self.style.WARNING('\n🧪 Testing HTML email...'))
         try:
             email = EmailMessage(
-                subject='Test HTML Email from Convade LMS',
-                body='<h1>Test Email</h1><p>This is a <strong>test HTML email</strong> from Convade LMS.</p>',
+                subject='Test HTML Email from Convade',
+                body='<h1>Test Email</h1><p>This is a <strong>test HTML email</strong> from Convade.</p>',
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 to=[test_email],
             )

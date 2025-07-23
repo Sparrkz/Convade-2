@@ -234,8 +234,8 @@ EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
-DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='Convade LMS <noreply@convade.com>')
-SERVER_EMAIL = config('SERVER_EMAIL', default='Convade LMS <server@convade.com>')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='Convade <noreply@convade.com>')
+SERVER_EMAIL = config('SERVER_EMAIL', default='Convade <server@convade.com>')
 
 # Email verification and password reset settings
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # Require email verification for new accounts
@@ -244,7 +244,7 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3  # Email confirmation links expire af
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True  # Auto login after email confirmation
 
 # Email template settings
-ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Convade LMS] '
+ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Convade] '
 
 # For development - print emails to console instead of sending
 if DEBUG:

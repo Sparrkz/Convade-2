@@ -57,8 +57,8 @@ EMAIL_PORT=587
 EMAIL_USE_SSL=False
 EMAIL_HOST_USER="hello@convade.org"
 EMAIL_HOST_PASSWORD="Freshkido7$"
-DEFAULT_FROM_EMAIL="Convade LMS <hello@convade.org>"
-SERVER_EMAIL="Convade LMS <hello@convade.org>"
+DEFAULT_FROM_EMAIL="Convade <hello@convade.org>"
+SERVER_EMAIL="Convade <hello@convade.org>"
 
 # Django Allauth Configuration
 SITE_ID = 1
@@ -142,7 +142,7 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3  # Email confirmation links expire af
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True  # Auto login after email confirmation
 
 # Email template settings
-ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Convade LMS] '
+ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Convade] '
 
 
 # Logging configuration
