@@ -1,8 +1,8 @@
-Welcome to Convade LMS!
+Welcome to Convade!
 
 Hello {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %},
 
-Thank you for joining Convade LMS. To complete your registration and start your learning journey, please confirm your email address by clicking the link below:
+Thank you for joining Convade. To complete your registration and start your learning journey, please confirm your email address by clicking the link below:
 
 {{ activate_url }}
 
@@ -19,4 +19,4 @@ If you didn't create an account with us, please ignore this email.
 
 Need help? Contact our support team at support@convade.com
 
-© 2024 Convade LMS. All rights reserved. 
+© 2024 Convade. All rights reserved.

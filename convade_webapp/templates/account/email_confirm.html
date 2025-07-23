@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 {% load static %}
 
-{% block title %}Confirm Email Address - Convade LMS{% endblock %}
+{% block title %}Confirm Email Address - Convade{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -157,12 +157,12 @@
                         <strong>Email Already Confirmed!</strong>
                     </div>
                     
-                    <h2 class="confirmation-title">Welcome to Convade LMS!</h2>
+                    <h2 class="confirmation-title">Welcome to Convade!</h2>
                     <div class="email-badge">
                         <i class="fas fa-envelope me-2"></i>{{ confirmation.email_address.email }}
                     </div>
                     <p class="confirmation-message">
-                        Your email address has already been verified. You can now access all features of your Convade LMS account.
+                        Your email address has already been verified. You can now access all features of your Convade account.
                     </p>
                     
                     <div class="mt-4">
@@ -190,7 +190,7 @@
                     </div>
                     <p class="confirmation-message">
                         Please confirm that this is your email address by clicking the button below. 
-                        This will activate your Convade LMS account and give you access to all our learning resources.
+                        This will activate your Convade account and give you access to all our learning resources.
                     </p>
                     
                     <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
