@@ -231,7 +231,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 📞 Support
 
 For support and questions:
-- Email: support@convade.com
+- Email: support@convade.org
 - Create an issue in the repository
 - Check the help center within the application
 
