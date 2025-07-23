@@ -219,9 +219,11 @@
             </div>
             
             <div class="mt-4">
+                {% if user.is_authenticated %}
                 <a href="{% url 'courses:list' %}" class="btn-primary-convade">
                     <i class="fas fa-graduation-cap me-2"></i>Browse Courses
                 </a>
+                {% endif %}
                 <a href="{% url 'account_login' %}" class="btn-outline-convade">
                     <i class="fas fa-sign-in-alt me-2"></i>Sign In
                 </a>
