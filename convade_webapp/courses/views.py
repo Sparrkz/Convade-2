@@ -34,7 +34,7 @@ class CourseListView(ListView):
         # Category filter
         category = self.request.GET.get('category')
         if category:
-            queryset = queryset.filter(categories__name=category)
+            queryset = queryset.filter(categories=category)
         
         # Difficulty filter
         difficulty = self.request.GET.get('difficulty')
