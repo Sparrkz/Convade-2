@@ -1,4 +1,4 @@
-# Convade Learning Management System (LMS)
+# Convade (LMS)
 
 Welcome to Convade - a comprehensive learning management system built with Django that supports different user roles and provides a complete educational platform.
 

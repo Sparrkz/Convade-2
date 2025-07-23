@@ -244,7 +244,7 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3  # Email confirmation links expire af
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True  # Auto login after email confirmation
 
 # Email template settings
-ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Convade] '
+# ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Convade] '
 
 # For development - print emails to console instead of sending
 if DEBUG:
