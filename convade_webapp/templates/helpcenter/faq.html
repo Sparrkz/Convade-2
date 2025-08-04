@@ -1,0 +1,271 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Frequently Asked Questions - Convade{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/module-css/page-header.css' %}" />
+<style>
+.terms-one {
+    position: relative;
+    display: block;
+    padding: 80px 0 80px;
+    z-index: 1;
+}
+.terms-one__content {
+    position: relative;
+    display: block;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--Convade-white);
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+.terms-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.terms-title h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--Convade-black);
+    margin-bottom: 10px;
+}
+.terms-title p {
+    font-size: 18px;
+    color: var(--Convade-gray);
+    margin-bottom: 0;
+    line-height: 28px;
+}
+.terms-content h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: var(--Convade-base);
+}
+.terms-content p, .terms-content ul {
+    font-size: 16px;
+    color: var(--Convade-gray);
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+.terms-content ul {
+    padding-left: 20px;
+}
+.terms-content li {
+    margin-bottom: 8px;
+}
+</style>
+<style>
+.faq-section {
+    max-width: 800px;
+    margin: 40px auto;
+}
+.faq-item {
+    border-bottom: 1px solid #eee;
+}
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 18px 0;
+    cursor: pointer;
+    color: var(--Convade-base, #1a237e);
+    transition: color 0.2s;
+}
+.faq-question.active {
+    color: #007bff;
+}
+.faq-answer {
+    display: none;
+    padding: 0 0 18px 0;
+    font-size: 16px;
+    color: var(--Convade-gray, #444);
+    animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.faq-question {
+    position: relative;
+    padding-right: 32px;
+}
+.faq-question .dropdown-icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    transition: transform 0.2s;
+    font-size: 18px;
+    pointer-events: none;
+}
+.faq-question.active .dropdown-icon {
+    transform: translateY(-50%) rotate(180deg);
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url({% static 'images/shapes/page-header-bg-shape.png' %});"></div>
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 140px;">
+        <div class="page-header__inner text-center" style="margin-top: 40px;">
+            <h2>Frequently Asked Questions</h2>
+            <div class="thm-breadcrumb__box">
+                <ul class="thm-breadcrumb list-unstyled d-inline-flex justify-content-center align-items-center">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><span>//</span></li>
+                    <li>Frequently Asked Questions</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Page Header End-->
+
+<!--faq start-->
+<!--faq start-->
+<div class="faq-section">
+    <h3>Frequently Asked Questions (FAQs)</h3>
+    <div class="faq-item">
+        <button class="faq-question">1. What is Convade?</button>
+        <div class="faq-answer">
+            <p>Convade is a leading training institution dedicated to empowering individuals with practical, job-ready skills in various fields. We offer a wide range of courses designed to prepare learners for local and global opportunities in tech, entrepreneurship, business, finance, administration, and artisanship. Our programs are tailored to equip learners with the skills and knowledge needed to succeed in their chosen careers.</p>
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question">2. What courses does Convade offer?</button>
+        <div class="faq-answer">
+            <p>Kindly visit our website to check all the available courses, including:</p>
+            <ul>
+                <li>Tech courses</li>
+                <li>Entrepreneurship courses</li>
+                <li>Business courses</li>
+                <li>Finance and administration courses</li>
+                <li>Artisanship courses</li>
+            </ul>
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question">3. Who can enroll at Convade?</button>
+        <div class="faq-answer">
+            <p>Our programs are open to:</p>
+            <ul>
+                <li>Secondary school leavers</li>
+                <li>University students and graduates</li>
+                <li>Career changers</li>
+                <li>Professionals seeking upskilling</li>
+                <li>Tech enthusiasts with or without prior experience</li>
+                <li>Entrepreneurs and business owners</li>
+                <li>Individuals seeking to acquire new skills</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Repeat for all other questions... -->
+    <div class="faq-item">
+        <button class="faq-question">15. Where is Convade located?</button>
+        <div class="faq-answer">
+            <p>Convade is based in Nigeria and the United Kingdom but serves students worldwide through our online platforms.</p>
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question">Additional Information</button>
+        <div class="faq-answer">
+            <ul>
+                <li>Follow us on social media to stay updated on our latest courses, promotions, and events.</li>
+                <li>Join our community to connect with other learners, instructors, and industry professionals.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--faq end-->
+<!--faq end-->
+
+<!--Contact Info One Start -->
+<section class="contact-info-one">
+    <div class="container">
+        <ul class="list-unstyled contact-info-one__list">
+            <li>
+                <div class="contact-info-one__single">
+                    <div class="contact-info-one__icon">
+                        <span class="icon-envelope"></span>
+                    </div>
+                    <div class="contact-info-one__content">
+                        <p class="contact-info-one__sub-title">Email Address:</p>
+                        <h5 class="contact-info-one__email"><a href="mailto:support@convade.org">support@convade.org</a></h5>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="contact-info-one__single">
+                    <div class="contact-info-one__icon">
+                        <span class="icon-phone"></span>
+                    </div>
+                    <div class="contact-info-one__content">
+                        <p class="contact-info-one__sub-title">Phone Number</p>
+                        <h5 class="contact-info-one__email"><a href="tel:1212345678900">+447836675410</a></h5>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="contact-info-one__single">
+                    <div class="contact-info-one__icon">
+                        <span class="icon-location"></span>
+                    </div>
+                    <div class="contact-info-one__content">
+                        <p class="contact-info-one__sub-title">Our Address</p>
+                        <h5 class="contact-info-one__email">100 Felixstowe road ABBEYWOOD, London.</h5>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!--Contact Info One End -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const questions = document.querySelectorAll('.faq-question');
+    questions.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Close all open answers except the one clicked
+            questions.forEach(q => {
+                if (q !== btn) {
+                    q.classList.remove('active');
+                    q.nextElementSibling.style.display = 'none';
+                }
+            });
+            // Toggle current answer
+            btn.classList.toggle('active');
+            const answer = btn.nextElementSibling;
+            if (btn.classList.contains('active')) {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add dropdown icon to each faq-question if not already present
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        if (!btn.querySelector('.dropdown-icon')) {
+            const icon = document.createElement('span');
+            icon.className = 'dropdown-icon';
+            icon.innerHTML = '&#9660;'; // ▼
+            btn.appendChild(icon);
+        }
+    });
+});
+</script>
+{% endblock %}
