@@ -4,6 +4,50 @@
 {% block title %}Home - Convade{% endblock %}
 
 {% block content %}
+
+<div id="event-popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:#fff; padding:64px 48px; border-radius:24px; box-shadow:0 16px 64px rgba(0,0,0,0.22); border:1px solid #e0e0e0; z-index:999; min-width:540px; min-height:340px; max-width:98vw;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+        <h3 id="popup-title" style="margin:0; font-size:2.4rem; color:#2d3748; font-weight:700;"></h3>
+        <button onclick="document.getElementById('event-popup').style.display='none'" style="background:none; border:none; font-size:2.4rem; color:#888; cursor:pointer;">&times;</button>
+    </div>
+    <p id="popup-message" style="color:#4a5568; margin-bottom:40px; font-size:1.3rem;"></p>
+    <div style="display:flex; gap:24px;">
+        <button onclick="handleEventClick()" style="background:#3182ce; color:#fff; border:none; padding:18px 40px; border-radius:12px; font-weight:600; cursor:pointer; box-shadow:0 2px 16px rgba(49,130,206,0.10); font-size:1.2rem; transition:background 0.2s;">Fill Form</button>
+        <button onclick="document.getElementById('event-popup').style.display='none'" style="background:#edf2f7; color:#2d3748; border:none; padding:18px 40px; border-radius:12px; font-weight:600; cursor:pointer; font-size:1.2rem; transition:background 0.2s;">Close</button>
+    </div>
+</div>
+
+<script>
+let popupUrl = "";
+
+window.onload = function() {
+  fetch("/help/get-active-popup/")
+    .then(res => {
+      if (!res.ok) {
+        throw new Error("API Error");
+      }
+      return res.json();
+    })
+    .then(data => {
+      if (data.url) {
+        document.getElementById("popup-title").innerText = data.title;
+        document.getElementById("popup-message").innerText = data.message;
+        popupUrl = data.url;
+        document.getElementById("event-popup").style.display = "block";
+      }
+    })
+    .catch(error => {
+      console.error("Failed to load popup:", error);
+    });
+};
+
+function handleEventClick() {
+  fetch("/help/record-popup-click/", { method: "POST" });
+  window.open(popupUrl, "_blank");
+  document.getElementById("event-popup").style.display = "none";
+}
+</script>
+
 <!-- Banner One Start -->
 <section class="banner-one" id="home">
     <div class="banner-one__bg-shape-1"
@@ -262,128 +306,208 @@
                             <br> Find Your Preferred <span>Courses <img src="{% static 'images/shapes/section-title-shape-2.png' %}"
                                     alt=""></span></h2>
                     </div>
-                    <ul class="category-one__category-list list-unstyled">
-                        <li>
-                            <div class="category-one__count-and-arrow">
-                                <div class="category-one__count-box">
-                                    <div class="category-one__count"></div>
-                                    <div class="category-one__count-content">
-                                        <h3><a href="{% url 'courses:list' %}">Tech & Programming</a></h3>
-                                        <p>view Courses</p>
-                                    </div>
-                                </div>
-                                <div class="category-one__count-arrow">
-                                    <a href="{% url 'courses:list' %}"><span
-                                            class="fa fa-chevron-right"></span></a>
-                                </div>
-                            </div>
-                            <div class="category-one__hover-icon-and-arrow">
-                                <div class="category-one__hover-icon-box">
-                                    <div class="category-one__hover-icon">
-                                        <img src="{% static 'images/icon/category-one-hover-icon-1-1.png' %}" alt="">
-                                    </div>
-                                    <div class="category-one__hover-content">
-                                        <h3><a href="{% url 'courses:list' %}">Tech & Programming</a></h3>
-                                        <p>view Courses</p>
-                                    </div>
-                                </div>
-                                <div class="category-one__hover-arrow">
-                                    <a href="{% url 'courses:list' %}"><span
-                                            class="fa fa-chevron-right"></span></a>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="category-one__count-and-arrow">
-                                <div class="category-one__count-box">
-                                    <div class="category-one__count"></div>
-                                    <div class="category-one__count-content">
-                                        <h3><a href="{% url 'courses:list' %}">Art & Design</a></h3>
-                                        <p>view Courses</p>
-                                    </div>
-                                </div>
-                                <div class="category-one__count-arrow">
-                                    <a href="{% url 'courses:list' %}"><span
-                                            class="fa fa-chevron-right"></span></a>
-                                </div>
-                            </div>
-                            <div class="category-one__hover-icon-and-arrow">
-                                <div class="category-one__hover-icon-box">
-                                    <div class="category-one__hover-icon">
-                                        <img src="{% static 'images/icon/category-one-hover-icon-1-1.png' %}" alt="">
-                                    </div>
-                                    <div class="category-one__hover-content">
-                                        <h3><a href="{% url 'courses:list' %}">Art & Design</a></h3>
-                                        <p>view Courses</p>
-                                    </div>
-                                </div>
-                                <div class="category-one__hover-arrow">
-                                    <a href="{% url 'courses:list' %}"><span
-                                            class="fa fa-chevron-right"></span></a>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="category-one__count-and-arrow">
-                                <div class="category-one__count-box">
-                                    <div class="category-one__count"></div>
-                                    <div class="category-one__count-content">
-                                        <h3><a href="{% url 'courses:list' %}">Online Marketing</a></h3>
-                                        <p>view Courses</p>
-                                    </div>
-                                </div>
-                                <div class="category-one__count-arrow">
-                                    <a href="{% url 'courses:list' %}"><span
-                                            class="fa fa-chevron-right"></span></a>
-                                </div>
-                            </div>
-                            <div class="category-one__hover-icon-and-arrow">
-                                <div class="category-one__hover-icon-box">
-                                    <div class="category-one__hover-icon">
-                                        <img src="{% static 'images/icon/category-one-hover-icon-1-1.png' %}" alt="">
-                                    </div>
-                                    <div class="category-one__hover-content">
-                                        <h3><a href="{% url 'courses:list' %}">Online Marketing</a></h3>
-                                        <p>view Courses</p>
-                                    </div>
-                                </div>
-                                <div class="category-one__hover-arrow">
-                                    <a href="{% url 'courses:list' %}"><span
-                                            class="fa fa-chevron-right"></span></a>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="category-one__count-and-arrow">
-                                <div class="category-one__count-box">
-                                    <div class="category-one__count"></div>
-                                    <div class="category-one__count-content">
-                                        <h3><a href="{% url 'courses:list' %}">Content Creation</a></h3>
-                                        <p>view Courses</p>
-                                    </div>
-                                </div>
-                                <div class="category-one__count-arrow">
-                                    <a href="{% url 'courses:list' %}"><span
-                                            class="fa fa-chevron-right"></span></a>
-                                </div>
-                            </div>
-                            <div class="category-one__hover-icon-and-arrow">
-                                <div class="category-one__hover-icon-box">
-                                    <div class="category-one__hover-icon">
-                                        <img src="{% static 'images/icon/category-one-hover-icon-1-1.png' %}" alt="">
-                                    </div>
-                                    <div class="category-one__hover-content">
-                                        <h3><a href="{% url 'courses:list' %}">Content Creation</a></h3>
-                                        <p>view Courses</p>
-                                    </div>
-                                </div>
-                                <div class="category-one__hover-arrow">
-                                    <a href="{% url 'courses:list' %}"><span
-                                            class="fa fa-chevron-right"></span></a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+<ul class="category-one__category-list list-unstyled">
+    <!-- Tech & Programming -->
+    <li>
+        <div class="category-one__count-and-arrow">
+            <div class="category-one__count-box">
+                <div class="category-one__count"></div>
+                <div class="category-one__count-content">
+                    <h3>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'courses:list' %}">Tech & Programming</a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}?next={% url 'courses:list' %}">Tech & Programming</a>
+                        {% endif %}
+                    </h3>
+                    <p>View Courses</p>
+                </div>
+            </div>
+            <div class="category-one__count-arrow">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'courses:list' %}"><span class="fa fa-chevron-right"></span></a>
+                {% else %}
+                    <a href="{% url 'account_login' %}?next={% url 'courses:list' %}"><span class="fa fa-chevron-right"></span></a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="category-one__hover-icon-and-arrow">
+            <div class="category-one__hover-icon-box">
+                <div class="category-one__hover-icon">
+                    <img src="{% static 'images/icon/category-one-hover-icon-1-1.png' %}" alt="">
+                </div>
+                <div class="category-one__hover-content">
+                    <h3>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'courses:list' %}">Tech & Programming</a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}?next={% url 'courses:list' %}">Tech & Programming</a>
+                        {% endif %}
+                    </h3>
+                    <p>View Courses</p>
+                </div>
+            </div>
+            <div class="category-one__hover-arrow">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'courses:list' %}"><span class="fa fa-chevron-right"></span></a>
+                {% else %}
+                    <a href="{% url 'account_login' %}?next={% url 'courses:list' %}"><span class="fa fa-chevron-right"></span></a>
+                {% endif %}
+            </div>
+        </div>
+    </li>
+
+    <!-- Art & Design -->
+    <li>
+        <div class="category-one__count-and-arrow">
+            <div class="category-one__count-box">
+                <div class="category-one__count"></div>
+                <div class="category-one__count-content">
+                    <h3>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'courses:list' %}">Art & Design</a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}?next={% url 'courses:list' %}">Art & Design</a>
+                        {% endif %}
+                    </h3>
+                    <p>View Courses</p>
+                </div>
+            </div>
+            <div class="category-one__count-arrow">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'courses:list' %}"><span class="fa fa-chevron-right"></span></a>
+                {% else %}
+                    <a href="{% url 'account_login' %}?next={% url 'courses:list' %}"><span class="fa fa-chevron-right"></span></a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="category-one__hover-icon-and-arrow">
+            <div class="category-one__hover-icon-box">
+                <div class="category-one__hover-icon">
+                    <img src="{% static 'images/icon/category-one-hover-icon-1-2.png' %}" alt="">
+                </div>
+                <div class="category-one__hover-content">
+                    <h3>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'courses:list' %}">Art & Design</a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}?next={% url 'courses:list' %}">Art & Design</a>
+                        {% endif %}
+                    </h3>
+                    <p>View Courses</p>
+                </div>
+            </div>
+            <div class="category-one__hover-arrow">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'courses:list' %}"><span class="fa fa-chevron-right"></span></a>
+                {% else %}
+                    <a href="{% url 'account_login' %}?next={% url 'courses:list' %}"><span class="fa fa-chevron-right"></span></a>
+                {% endif %}
+            </div>
+        </div>
+    </li>
+
+    <!-- Online Marketing -->
+    <li>
+        <div class="category-one__count-and-arrow">
+            <div class="category-one__count-box">
+                <div class="category-one__count"></div>
+                <div class="category-one__count-content">
+                    <h3>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'courses:list' %}">Online Marketing</a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}?next={% url 'courses:list' %}">Online Marketing</a>
+                        {% endif %}
+                    </h3>
+                    <p>View Courses</p>
+                </div>
+            </div>
+            <div class="category-one__count-arrow">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'courses:list' %}"><span class="fa fa-chevron-right"></span></a>
+                {% else %}
+                    <a href="{% url 'account_login' %}?next={% url 'courses:list' %}"><span class="fa fa-chevron-right"></span></a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="category-one__hover-icon-and-arrow">
+            <div class="category-one__hover-icon-box">
+                <div class="category-one__hover-icon">
+                    <img src="{% static 'images/icon/category-one-hover-icon-1-3.png' %}" alt="">
+                </div>
+                <div class="category-one__hover-content">
+                    <h3>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'courses:list' %}">Online Marketing</a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}?next={% url 'courses:list' %}">Online Marketing</a>
+                        {% endif %}
+                    </h3>
+                    <p>View Courses</p>
+                </div>
+            </div>
+            <div class="category-one__hover-arrow">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'courses:list' %}"><span class="fa fa-chevron-right"></span></a>
+                {% else %}
+                    <a href="{% url 'account_login' %}?next={% url 'courses:list' %}"><span class="fa fa-chevron-right"></span></a>
+                {% endif %}
+            </div>
+        </div>
+    </li>
+
+    <!-- Content Creation -->
+    <li>
+        <div class="category-one__count-and-arrow">
+            <div class="category-one__count-box">
+                <div class="category-one__count"></div>
+                <div class="category-one__count-content">
+                    <h3>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'courses:list' %}">Content Creation</a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}?next={% url 'courses:list' %}">Content Creation</a>
+                        {% endif %}
+                    </h3>
+                    <p>View Courses</p>
+                </div>
+            </div>
+            <div class="category-one__count-arrow">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'courses:list' %}"><span class="fa fa-chevron-right"></span></a>
+                {% else %}
+                    <a href="{% url 'account_login' %}?next={% url 'courses:list' %}"><span class="fa fa-chevron-right"></span></a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="category-one__hover-icon-and-arrow">
+            <div class="category-one__hover-icon-box">
+                <div class="category-one__hover-icon">
+                    <img src="{% static 'images/icon/category-one-hover-icon-1-4.png' %}" alt="">
+                </div>
+                <div class="category-one__hover-content">
+                    <h3>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'courses:list' %}">Content Creation</a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}?next={% url 'courses:list' %}">Content Creation</a>
+                        {% endif %}
+                    </h3>
+                    <p>View Courses</p>
+                </div>
+            </div>
+            <div class="category-one__hover-arrow">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'courses:list' %}"><span class="fa fa-chevron-right"></span></a>
+                {% else %}
+                    <a href="{% url 'account_login' %}?next={% url 'courses:list' %}"><span class="fa fa-chevron-right"></span></a>
+                {% endif %}
+            </div>
+        </div>
+    </li>
+</ul>
+
                 </div>
             </div>
             <div class="col-xl-6 col-lg-5">
@@ -2588,4 +2712,6 @@
             </div>
         </section>
         <!--Contact Three End-->
+
+
 {% endblock %} 

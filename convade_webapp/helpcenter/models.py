@@ -125,3 +125,28 @@ class FAQ(models.Model):
     
     def __str__(self):
         return self.question
+
+        # ---- popup event------
+
+class PopupEvent(models.Model):
+    title = models.CharField(max_length=200)
+    message = models.TextField()
+    google_form_url = models.URLField()
+    is_active = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        if self.is_active:
+            PopupEvent.objects.update(is_active=False)  # deactivate others
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+    
+class PopupClick(models.Model):
+    event = models.ForeignKey(PopupEvent, on_delete=models.CASCADE)
+    ip_address = models.GenericIPAddressField()
+    clicked_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.event.title} - {self.ip_address}"

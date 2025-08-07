@@ -13,4 +13,7 @@ urlpatterns = [
     path('support/', views.SupportTicketCreateView.as_view(), name='support'),
     path('tickets/', views.TicketListView.as_view(), name='tickets'),
     path('tickets/<int:pk>/', views.TicketDetailView.as_view(), name='ticket_detail'),
-] 
+    # -----pop up------
+    path("get-active-popup/", views.get_active_popup, name="get_active_popup"),
+    path("record-popup-click/", views.record_popup_click, name="record_popup_click"),
+]
