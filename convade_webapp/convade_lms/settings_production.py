@@ -29,8 +29,14 @@ DATABASES = {
 
 
 # Static files configuration for cPanel
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # can be any folder for collected files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # only if it's a source folder with assets
+]
+
 
 # Media files configuration
 MEDIA_URL = '/media/'

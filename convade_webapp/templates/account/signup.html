@@ -234,6 +234,28 @@
                             </div>
                         </div>
                     </div>
+
+                <!-- firstname -->
+                    <div class="col-xl-12 mb-3">
+                        <div class="form-group">
+                            <div class="input-box">
+                                <input type="text" 
+                                       name="{{ form.first_name.name }}" 
+                                       id="{{ form.first_name.id_for_label }}" 
+                                       placeholder="First name..." 
+                                       required="" 
+                                       value="{{ form.first_name.value|default:'' }}"
+                                       class="{% if form.first_name.errors %}is-invalid{% endif %}">
+                                {% if form.first_name.errors %}
+                                    <div class="text-danger mt-2">
+                                        {% for error in form.first_name.errors %}
+                                            <small>{{ error }}</small>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
                     
                     <!-- Username -->
                     <div class="col-xl-12 mb-3">

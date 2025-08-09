@@ -22,6 +22,8 @@ class CustomSignupForm(SignupForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # Add custom classes to existing fields
+        self.fields['first_name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'First Name...'})
+        self.fields['last_name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Last Name...'})
         self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Username...'})
         self.fields['email'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Email...'})
         self.fields['password1'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Password...'})
