@@ -2671,8 +2671,9 @@ function handleEventClick() {
                                     Hear from You</span>
                                 </h2>
                             </div>
-                            <form class="contact-form-validated contact-three__form" action="assets/inc/sendemail.php"
-                                method="post" novalidate="novalidate">
+                            <form class="contact-form-validated contact-three__form" action="{% url 'contact_submit' %}"
+                                method="post">
+                                {% csrf_token %}
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-6">
                                         <h4 class="contact-three__input-title">Full Name</h4>
@@ -2689,7 +2690,7 @@ function handleEventClick() {
                                     <div class="col-xl-12">
                                         <h4 class="contact-three__input-title">Subject *</h4>
                                         <div class="contact-three__input-box">
-                                            <input type="text" name="Phone" placeholder="write about your enquiry"
+                                            <input type="text" name="subject" placeholder="write about your enquiry"
                                                 required="">
                                         </div>
                                     </div>
@@ -2705,6 +2706,19 @@ function handleEventClick() {
                                     </div>
                                 </div>
                             </form>
+                            
+                            <!-- Django Messages Display -->
+                            {% if messages %}
+                                <div class="result mt-3">
+                                    {% for message in messages %}
+                                        <div class="alert alert-{% if message.tags == 'error' %}danger{% elif message.tags == 'success' %}success{% else %}info{% endif %} alert-dismissible fade show" role="alert">
+                                            {{ message }}
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            
                             <div class="result"></div>
                         </div>
                     </div>
