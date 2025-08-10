@@ -6,6 +6,29 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/module-css/page-header.css' %}" />
 <style>
+
+
+.single_feature_one span {
+  border-radius: 100px;
+  float: left;
+  font-size: 30px;
+  width: 65px;
+  height: 65px;
+  line-height: 65px;
+  text-align: center;
+  margin-right: 20px;
+}
+
+.ss_one{background:rgba(46,202,127,0.2);}
+{% comment %} .single_feature_one:hover .ss_one{background:#fff;} {% endcomment %}
+.ss_two{background:#ECFFFC}
+.ss_three{background:#E8F5FF}
+.ss_four{background:#E3F9F6}
+.ss_five{background:#FFF6EB}
+.ss_six{background:#E8FFEA}
+.ss_seven{background:#EEE8FF}
+.ss_eight{background:#FFE8E8}
+  
 .terms-one {
     position: relative;
     display: block;
@@ -181,7 +204,7 @@
 	<!-- END TOP PROMO FEATURES -->	
 	
 	<!-- START ABOUT US HOME ONE -->
-  <section class="ab_one section-padding" style="padding-top: 60px;">
+  <section class="ab_one section-padding" style="padding-top: 60px; padding-bottom: 90px">
     <div class="container">
       <div class="row align-items-start" style="gap: 0;">
         <div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
@@ -191,8 +214,8 @@
         </div>
         <div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
           <div class="ab_content" style="padding-left: 32px; display: flex; flex-direction: column; justify-content: flex-start; height: 100%;">
-            <h2 style="font-weight: 700; margin-bottom: 18px;">
-              <u><span>1700+</span></u> Students Trust Our Online Courses Powered by Convade Expertise
+            <h2 style="font-weight: 700; margin-bottom: 18px; color: #1a2d62">
+              <u style="color:#4d54fd"><span>1700+</span></u> Students Trust Our Online Courses Powered by Convade Expertise
             </h2>
             <p>Convade offers expertly crafted online courses, interactive tests, and real-time results to help you learn smarter. Our platform is designed to support students, professionals, and lifelong learners every step of the way.</p>
             <!-- <a class="btn_one" href="#">Read More </a> -->
@@ -204,21 +227,22 @@
 	<!-- END ABOUT US HOME ONE -->	
 
 	<!-- START WHY CHOOSE US-->
-<section class="marketing_content_area section-padding">
+<section class="marketing_content_area section-padding" style="padding-top: 48px; background-color: #ebecff; padding-bottom: 30px">
   <div class="container">
-    <div class="section-title">
-      <h2>Why Choose Convade</h2>
-      <p>Discover the <span><u>key features</u></span> that make Convade the smart choice for online learning.</p>
+    <div class="section-title mb-4" style="text-align: center; justify-content: center;"> 
+      <h2 style="font-size: 20px; color:#4d54fd">Why Choose Convade</h2>
+      <p style="width: 60%; margin: auto; font-size: 40px; font-weight: 800; text-transform: capitalize; line-height: 50px; color: #1a2d62;">
+      Discover the <span style="color:#4d54fd"><u>key features</u></span> that make Convade the smart choice for online learning.
+      </p>
     </div>
-    <div class="row">
+    <div class="row g-4 justify-content-center">
 
       <!-- Feature 1 -->
       <div class="col-lg-4 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-        <div class="single_feature_one">
-          <div class="sf_top">
-            <span  class="fa fa-book-open ss_one"></span>
-            
-            <h2><a href="single-service.html" target="_blank">Learn Anytime, Anywhere</a></h2>
+        <div class="card h-100 shadow-sm border-0 single_feature_one p-4">
+          <div class="sf_top mb-3">
+            <span class="fa fa-book-open ss_one"></span>
+            <h2 class="h5 mt-2"><a href="single-service.html" target="_blank">Learn Anytime, Anywhere</a></h2>
           </div>
           <p>Access your courses from any device and study on your schedule with our flexible, cloud-based platform.</p>
         </div>
@@ -226,10 +250,10 @@
 
       <!-- Feature 2 -->
       <div class="col-lg-4 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-        <div class="single_feature_one">
-          <div class="sf_top">
+        <div class="card h-100 shadow-sm border-0 single_feature_one p-4">
+          <div class="sf_top mb-3">
             <span class="fa-sharp fa-regular fa-heart ss_two"></span>
-            <h2><a href="single-service.html" target="_blank">Expert Instructors</a></h2>
+            <h2 class="h5 mt-2"><a href="single-service.html" target="_blank">Expert Instructors</a></h2>
           </div>
           <p>Learn from experienced educators and professionals who bring real-world insights into every lesson.</p>
         </div>
@@ -237,10 +261,10 @@
 
       <!-- Feature 3 -->
       <div class="col-lg-4 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-        <div class="single_feature_one">
-          <div class="sf_top">
+        <div class="card h-100 shadow-sm border-0 single_feature_one p-4">
+          <div class="sf_top mb-3">
             <span class="fa fa-users ss_three"></span>
-            <h2><a href="single-service.html" target="_blank">Collaborative Learning</a></h2>
+            <h2 class="h5 mt-2"><a href="single-service.html" target="_blank">Collaborative Learning</a></h2>
           </div>
           <p>Engage with peers through group projects, forums, and team-based activities designed to deepen understanding.</p>
         </div>
@@ -248,10 +272,10 @@
 
       <!-- Feature 4 -->
       <div class="col-lg-4 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
-        <div class="single_feature_one">
-          <div class="sf_top">
+        <div class="card h-100 shadow-sm border-0 single_feature_one p-4">
+          <div class="sf_top mb-3">
             <span class="far fa-eye ss_four"></span>
-            <h2><a href="single-service.html" target="_blank">Structured Courses</a></h2>
+            <h2 class="h5 mt-2"><a href="single-service.html" target="_blank">Structured Courses</a></h2>
           </div>
           <p>Follow guided learning paths with clear goals, progress tracking, and assessments to measure success.</p>
         </div>
@@ -259,10 +283,10 @@
 
       <!-- Feature 5 -->
       <div class="col-lg-4 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-        <div class="single_feature_one">
-          <div class="sf_top">
+        <div class="card h-100 shadow-sm border-0 single_feature_one p-4">
+          <div class="sf_top mb-3">
             <span class="far fa-lightbulb ss_five"></span>
-            <h2><a href="single-service.html" target="_blank">Real-Time Monitoring</a></h2>
+            <h2 class="h5 mt-2"><a href="single-service.html" target="_blank">Real-Time Monitoring</a></h2>
           </div>
           <p>Track student performance and engagement in real time to improve outcomes and guide learning effectively.</p>
         </div>
@@ -270,10 +294,10 @@
 
       <!-- Feature 6 -->
       <div class="col-lg-4 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
-        <div class="single_feature_one">
-          <div class="sf_top">
+        <div class="card h-100 shadow-sm border-0 single_feature_one p-4">
+          <div class="sf_top mb-3">
             <span class="far fa-envelope ss_six"></span>
-            <h2><a href="single-service.html" target="_blank">24/7 Support</a></h2>
+            <h2 class="h5 mt-2"><a href="single-service.html" target="_blank">24/7 Support</a></h2>
           </div>
           <p>Our dedicated support team is available around the clock to help you stay focused and on track.</p>
         </div>
@@ -286,19 +310,19 @@
 	<!-- END WHY CHOOSE US -->
 	
 	<!-- START COUNTER -->
-    <section id="counts" class="counts section-padding">
-      <div class="container" data-aos="fade-up">
-		<div class="section-title">
-		  <h2>Some Fun Fact</h2>
-		  <p>Our Great <span><u>Achievement</u></span></p>
-		</div>	  
+  <section id="counts" class="counts section-padding">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title" style="text-align: center; margin-top: 40px;">
+          <h2 style=" font-size: 20px; color:#4d54fd; font-weight: 500">Some Fun Fact</h2>
+          <p style=" font-size: 40px; margin-top: 10px; font-weight: 700; color: #1a2d62">Our Great <span style="color: #4d54fd"><u>Achievement</u></span></p>
+        </div>	  
         <div class="row gy-4">
           <div class="col-lg-3 col-md-6">
             <div class="count-box">
               <i class="far fa-face-smile"></i>
               <div>
-                <span data-purecounter-start="0" data-purecounter-end="8232" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Enrolled Students</p>
+          <span data-purecounter-start="0" data-purecounter-end="8232" data-purecounter-duration="1" class="purecounter"></span>
+          <p>Enrolled Students</p>
               </div>
             </div>
           </div><!--- END COL -->		
@@ -306,8 +330,8 @@
             <div class="count-box">
               <i class="far fa-file" style="color: #ee6c20;"></i>
               <div>
-                <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Academic Programs</p>
+          <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+          <p>Academic Programs</p>
               </div>
             </div>
           </div><!--- END COL -->		
@@ -315,8 +339,8 @@
             <div class="count-box">
               <i class="fa fa-award" style="color: #15be56;"></i>
               <div>
-                <span data-purecounter-start="0" data-purecounter-end="163" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Winning Award</p>
+          <span data-purecounter-start="0" data-purecounter-end="163" data-purecounter-duration="1" class="purecounter"></span>
+          <p>Winning Award</p>
               </div>
             </div>
           </div><!--- END COL -->		
@@ -324,14 +348,14 @@
             <div class="count-box">
               <i class="fas fa-graduation-cap" style="color: #bb0852;"></i>
               <div>
-                <span data-purecounter-start="0" data-purecounter-end="93" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Certified Students</p>
+          <span data-purecounter-start="0" data-purecounter-end="93" data-purecounter-duration="1" class="purecounter"></span>
+          <p>Certified Students</p>
               </div>
             </div>
           </div><!--- END COL -->		
-        </div><!--- END ROW -->		
+        </div><!--- END ROW -->	
       </div><!--- END CONTAINER -->		
-    </section>	
+  </section>	
 	<!-- END COUNTER -->	
 
 	<!-- START TEAM-->
@@ -339,78 +363,98 @@
 	<!-- END TEAM -->	
 	
 	<!-- START FAQ -->
-	<section class="faq_area section-padding">
+	<section class="faq_area section-padding" style="padding-top: 10px; margin-bottom: 50px;">
 		<div class="container">													
-			<div class="section-title">
-				<h2>Frequently Asked Question</h2>
-				<p>General <span><u>Questions</u></span></p>
-			</div>			
+			<div class="section-title" style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: 20px; font-weight: 500; color: #1a2d62; margin-bottom: 10px;">
+          Frequently Asked Questions
+        </h2>
+        <p style="font-size: 55px; color: #1a2d62; font-weight: 500;">
+          General <span style="text-decoration: underline; color: #4d54fd;">Questions</span>
+        </p>
+      </div>
 			<div class="row justify-content-center">
 				<div class="col-lg-6 col-sm-6 col-xs-12">
-					<div class="accordion" id="accordionExample">
+					<div class="accordion" id="accordionExample" style="padding-top: 50px;">
 					  <div class="accordion-item">
 						<h2 class="accordion-header" id="headingOne">
 						  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-							What does it take excellent author?
+							What is Convade?
 						  </button>
 						</h2>
 						<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 						  <div class="accordion-body">
-							Great value and so easy to use and saves me so much time! I was shocked by how much time and brain energy it saved me. Simple & easy gotta love that. Great value and so easy to use.
+            <p>Convade is a leading training institution dedicated to empowering individuals with practical, job-ready skills in various fields. We offer a wide range of courses designed to prepare learners for local and global opportunities in tech, entrepreneurship, business, finance, administration, and artisanship. Our programs are tailored to equip learners with the skills and knowledge needed to succeed in their chosen careers.</p>
 						  </div>
 						</div>
 					  </div><!-- END ACCORDION ITEM  -->
 					  <div class="accordion-item">
 						<h2 class="accordion-header" id="headingTwo">
 						  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-							Who will view my content?
+							What courses does Convade offer?
 						  </button>
 						</h2>
 						<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
 						  <div class="accordion-body">
-							Great value and so easy to use and saves me so much time! I was shocked by how much time and brain energy it saved me. Simple & easy gotta love that. Great value and so easy to use.
+                <p>Kindly visit our website to check all the available courses, including:</p>
+            <ul>
+                <li>Tech courses</li>
+                <li>Entrepreneurship courses</li>
+                <li>Business courses</li>
+                <li>Finance and administration courses</li>
+                <li>Artisanship courses</li>
+            </ul>
 						  </div>
 						</div>
 					  </div><!-- END ACCORDION ITEM  -->
 					  <div class="accordion-item">
 						<h2 class="accordion-header" id="headingThree">
 						  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-							What does it take become an author?
+							Who can enroll at Convade?
 						  </button>
 						</h2>
 						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
 						  <div class="accordion-body">
-							Great value and so easy to use and saves me so much time! I was shocked by how much time and brain energy it saved me. Simple & easy gotta love that. Great value and so easy to use.
+                <p>Our programs are open to:</p>
+            <ul>
+                <li>Secondary school leavers</li>
+                <li>University students and graduates</li>
+                <li>Career changers</li>
+                <li>Professionals seeking upskilling</li>
+                <li>Tech enthusiasts with or without prior experience</li>
+                <li>Entrepreneurs and business owners</li>
+                <li>Individuals seeking to acquire new skills</li>
+            </ul>
 						  </div>
 						</div>
 					  </div><!-- END ACCORDION ITEM  -->
 					  <div class="accordion-item">
 						<h2 class="accordion-header" id="headingFour">
 						  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-							How to Change my Password easily?
+							Are Convade classes online or physical?
 						  </button>
 						</h2>
 						<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
 						  <div class="accordion-body">
-							Great value and so easy to use and saves me so much time! I was shocked by how much time and brain energy it saved me. Simple & easy gotta love that. Great value and so easy to use.
+            <p>Convade offers both online and physical (on-site) training options. You can choose the mode that works best for you.</p>
 						  </div>
 						</div>
 					  </div><!-- END ACCORDION ITEM  -->	
 					  <div class="accordion-item">
 						<h2 class="accordion-header" id="headingFive">
 						  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-							How does it create content?
+							Will I get a certificate after completing a course?
 						  </button>
 						</h2>
 						<div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
 						  <div class="accordion-body">
-							Great value and so easy to use and saves me so much time! I was shocked by how much time and brain energy it saved me. Simple & easy gotta love that. Great value and so easy to use.
+            <p>Yes. All students who complete their courses successfully will receive a Certificate of Completion. Some courses also offer access to international certifications.</p>
 						  </div>
 						</div>
 					  </div><!-- END ACCORDION ITEM  -->					  
 					</div>						
 				</div><!-- END COL  -->	
-				<div class="col-lg-6 col-sm-6 col-xs-12">
+				<div class="col-lg-4 col-sm-6 col-xs-12">
 					<div class="pt_faq">
 						<img src="{% static 'images/all-img/faq.png' %}" class="img-fluid" alt="image" />
 					</div>
@@ -420,30 +464,35 @@
 	</section>
 	<!-- END FAQ -->	
 	
-	<!-- START COMPANY PARTNER LOGO  -->
-	<div class="partner-logo section-padding">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<div class="partner_title">
-						<h3>Trusted Company Arround The World! </h3>
-					</div>
-					<div class="partner">
-						<a href="#"><img src="{% static 'images/all-img/1.png' %}" alt="image"></a>
-						<a href="#"><img src="{% static 'images/all-img/2.png' %}" alt="image"></a>
-						<a href="#"><img src="{% static 'images/all-img/3.png' %}" alt="image"></a>
-						<a href="#"><img src="{% static 'images/all-img/4.png' %}" alt="image"></a>
-						<a href="#"><img src="{% static 'images/all-img/5.png' %}" alt="image"></a>
-						<a href="#"><img src="{% static 'images/all-img/2.png' %}" alt="image"></a>
-						<a href="#"><img src="{% static 'images/all-img/1.png' %}" alt="image"></a>
-						<a href="#"><img src="{% static 'images/all-img/3.png' %}" alt="image"></a>
-						<a href="#"><img src="{% static 'images/all-img/4.png' %}" alt="image"></a>
-					</div>
-				</div><!-- END COL  -->
-			</div><!--END  ROW  -->
-		</div><!-- END CONTAINER  -->
-	</div>
-	<!-- END COMPANY PARTNER LOGO -->	
+<!-- Newsletter One Start -->
+        <section class="newsletter-one">
+            <div class="container">
+                <div class="newsletter-one__inner">
+                    <div class="newsletter-one__bg-shape"
+                        style="background-image: url(assets/images/shapes/newsletter-one-bg-shape.png);"></div>
+                    <div class="newsletter-one__shape-1 float-bob-y">
+                        <img src="{% static "images/shapes/newsletter-one-shape-1.png" %}" alt="">
+                    </div>
+                    <div class="newsletter-one__shape-2 img-bounce">
+                        <img src="{% static "images/shapes/newsletter-one-shape-2.png" %}" alt="">
+                    </div>
+                    <div class="newsletter-one__img">
+                        <img src="{% static "images/resources/newsletter-one-img-1.png" %}" alt="">
+                    </div>
+                    <h2 class="newsletter-one__title">Subscribe TO Our Newsletter</h2>
+                    <p class="newsletter-one__text">Explore a diverse selection of courses all in one platform,<br>
+                        designed to cater to various fields of learning</p>
+                    <form class="newsletter-one__contact-form">
+                        <div class="newsletter-one__contact-input-box">
+                            <input type="email" placeholder="Enter email address" name="email">
+                            <button type="submit" class="thm-btn"><span
+                                    class="icon-angles-right"></span>Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- Newsletter One End -->
 	
 <script>
 document.addEventListener('DOMContentLoaded', function() {
