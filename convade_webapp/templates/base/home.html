@@ -668,12 +668,12 @@ function handleEventClick() {
                             <div class="courses-one__content">
                                 <div class="courses-one__tag-and-meta">
                                     <div class="courses-one__tag">
-                                        <span>{{ course.tag }}</span>
+                                        <span>{{ course.category }}</span>
                                     </div>
                                     <ul class="courses-one__meta list-unstyled">
                                         <li>
                                             <div class="icon"><span class="icon-book"></span></div>
-                                            <p>{{ course.lessons }} Lesson{% if course.lessons > 1 %}s{% endif %}</p>
+                                            <p>{{ course.number_of_lessons }} Lesson{% if course.number_of_lessons > 1 %}s{% endif %}</p>
                                         </li>
                                         <li>
                                             <div class="icon"><span class="icon-clock"></span></div>
@@ -867,7 +867,7 @@ function handleEventClick() {
 
         <!-- Counter One Start -->
         <section class="counter-one">
-            <div class="counter-one__bg" style="background-image: url(assets/images/backgrounds/counter-one-bg.jpg);">
+            <div class="counter-one__bg" style="background-image: url({% static "images/backgrounds/counter-one-bg.jpg" %});">
                 <div class="counter-one__video-link">
                     <div class="counter-one__video-shape-1">
                         <img src="{% static "images/shapes/counter-one-video-shape-1.png" %}" alt="">
@@ -881,7 +881,7 @@ function handleEventClick() {
                 </div>
             </div>
             <div class="counter-one__shape-1"
-                style="background-image: url(assets/images/shapes/counter-one-shape-1.png);"></div>
+                style="background-image: url({% static "images/shapes/counter-one-shape-1.png" %});"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-xl-8">
@@ -889,7 +889,7 @@ function handleEventClick() {
                             <ul class="counter-one__list list-unstyled">
                                 <li>
                                     <div class="counter-one__count-hover-img"
-                                        style="background-image: url(assets/images/resources/counter-one-single-hover-img.jpg);">
+                                        style="background-image: url({% static "images/resources/counter-one-single-hover-img.jpg" %});">
                                     </div>
                                     <div class="counter-one__count count-box">
                                         <h3 class="count-text" data-stop="10" data-speed="1500">00</h3>
@@ -899,7 +899,7 @@ function handleEventClick() {
                                 </li>
                                 <li>
                                     <div class="counter-one__count-hover-img"
-                                        style="background-image: url(assets/images/resources/counter-one-single-hover-img.jpg);">
+                                        style="background-image: url({% static "images/resources/counter-one-single-hover-img.jpg" %});">
                                     </div>
                                     <div class="counter-one__count count-box">
                                         <h3 class="count-text" data-stop="50" data-speed="1500">00</h3>
@@ -909,7 +909,7 @@ function handleEventClick() {
                                 </li>
                                 <li>
                                     <div class="counter-one__count-hover-img"
-                                        style="background-image: url(assets/images/resources/counter-one-single-hover-img.jpg);">
+                                        style="background-image: url({% static "images/resources/counter-one-single-hover-img.jpg" %});">
                                     </div>
                                     <div class="counter-one__count count-box">
                                         <h3 class="count-text" data-stop="15" data-speed="1500">00</h3>
@@ -958,7 +958,7 @@ function handleEventClick() {
                                 </div>
                                 <div class="team-one__content">
                                     <div class="team-one__single-bg-shape"
-                                        style="background-image: url(assets/images/shapes/team-one-single-bg-shape.png);">
+                                        style="background-image: url({% static "images/shapes/team-one-single-bg-shape.png" %});">
                                     </div>
                                     <div class="team-one__content-shape-1">
                                         <img src="{% static "images/shapes/team-one-content-shape-1.png" %}" alt="">
@@ -993,7 +993,7 @@ function handleEventClick() {
                                 </div>
                                 <div class="team-one__content">
                                     <div class="team-one__single-bg-shape"
-                                        style="background-image: url(assets/images/shapes/team-one-single-bg-shape.png);">
+                                        style="background-image: url({% static "images/shapes/team-one-single-bg-shape.png" %});">
                                     </div>
                                     <div class="team-one__content-shape-1">
                                         <img src="{% static "images/shapes/team-one-content-shape-1.png" %}" alt="">
@@ -1028,7 +1028,7 @@ function handleEventClick() {
                                 </div>
                                 <div class="team-one__content">
                                     <div class="team-one__single-bg-shape"
-                                        style="background-image: url(assets/images/shapes/team-one-single-bg-shape.png);">
+                                        style="background-image: url({% static "images/shapes/team-one-single-bg-shape.png" %});">
                                     </div>
                                     <div class="team-one__content-shape-1">
                                         <img src="{% static "images/shapes/team-one-content-shape-1.png" %}" alt="">
@@ -1063,7 +1063,7 @@ function handleEventClick() {
                                 </div>
                                 <div class="team-one__content">
                                     <div class="team-one__single-bg-shape"
-                                        style="background-image: url(assets/images/shapes/team-one-single-bg-shape.png);">
+                                        style="background-image: url({% static "images/shapes/team-one-single-bg-shape.png" %});">
                                     </div>
                                     <div class="team-one__content-shape-1">
                                         <img src="{% static "images/shapes/team-one-content-shape-1.png" %}" alt="">
@@ -1379,7 +1379,7 @@ function handleEventClick() {
             <div class="container">
                 <div class="newsletter-one__inner">
                     <div class="newsletter-one__bg-shape"
-                        style="background-image: url(assets/images/shapes/newsletter-one-bg-shape.png);"></div>
+                        style="background-image: url({% static "images/shapes/newsletter-one-bg-shape.png" %});"></div>
                     <div class="newsletter-one__shape-1 float-bob-y">
                         <img src="{% static "images/shapes/newsletter-one-shape-1.png" %}" alt="">
                     </div>
