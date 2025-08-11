@@ -3,14 +3,16 @@ from django.contrib import messages
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
+from courses.models import HomeCourse
 from .forms import ContactForm
 import json
 
 
 def home(request):
+    courses = HomeCourse.objects.all()
     """Home page view with contact form"""
     contact_form = ContactForm()
-    return render(request, 'base/home.html', {'contact_form': contact_form})
+    return render(request, 'base/home.html', {'contact_form': contact_form, 'courses': courses})
 
 
 @require_http_methods(["POST"])

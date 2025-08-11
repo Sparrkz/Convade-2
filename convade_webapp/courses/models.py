@@ -94,3 +94,22 @@ class Enrollment(models.Model):
         self.progress = 100
         self.completed_at = timezone.now()
         self.save()
+
+
+
+class HomeCourse(models.Model):
+    title = models.CharField(max_length=255)
+    tag = models.CharField(max_length=100)
+    lessons = models.PositiveIntegerField()
+    duration = models.CharField(max_length=50)  # e.g. "120h 45min"
+    reviews_count = models.PositiveIntegerField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    image = models.ImageField(upload_to='courses/')
+    course_url = models.URLField(blank=True, null=True)  # link to course page
+
+    class Meta:
+        verbose_name = "Home Course"
+        verbose_name_plural = "Home Courses"
+
+    def __str__(self):
+        return self.title

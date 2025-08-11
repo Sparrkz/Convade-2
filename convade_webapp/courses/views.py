@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.db.models import Q, Count
 from django.http import JsonResponse
 from django.urls import reverse_lazy, reverse
-from .models import Course, CourseContent, CourseCategory, Enrollment
+from .models import Course, CourseContent, CourseCategory, Enrollment, HomeCourse
 from .forms import CourseForm, CourseSearchForm
 
 # Create your views here.
@@ -242,3 +242,9 @@ def update_progress(request, pk):
         return JsonResponse({'success': True, 'progress': enrollment.progress})
     except Enrollment.DoesNotExist:
         return JsonResponse({'error': 'Not enrolled in this course'}, status=400)
+
+
+# def home(request):
+#     courses = HomeCourse.objects.all()
+#     print("Courses in DB:", courses)  # check terminal
+#     return render(request, 'base/home.html', {'courses': courses})

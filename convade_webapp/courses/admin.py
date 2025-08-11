@@ -1,11 +1,17 @@
 from django.contrib import admin
-from .models import Course, CourseContent, Enrollment, CourseCategory
+from .models import Course, CourseContent, Enrollment, CourseCategory, HomeCourse
 from .forms import CourseAdminForm
 
 class CourseContentInline(admin.TabularInline):
     model = CourseContent
     extra = 0
     fields = ['title', 'content_type', 'order', 'is_free']
+
+@admin.register(HomeCourse)
+class HomeCourseAdmin(admin.ModelAdmin):
+    list_display = ('title', 'category', 'number_of_lessons', 'duration', 'price', 'reviews_count')
+
+
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
