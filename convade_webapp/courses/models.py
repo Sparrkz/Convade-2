@@ -99,8 +99,8 @@ class Enrollment(models.Model):
 
 class HomeCourse(models.Model):
     title = models.CharField(max_length=255)
-    tag = models.CharField(max_length=100)
-    lessons = models.PositiveIntegerField()
+    category = models.CharField(max_length=100)
+    number_of_lessons = models.PositiveIntegerField()
     duration = models.CharField(max_length=50)  # e.g. "120h 45min"
     reviews_count = models.PositiveIntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
