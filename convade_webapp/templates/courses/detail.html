@@ -339,12 +339,9 @@
                             <i class="fas fa-play me-2"></i>Continue Learning
                         </a>
                     {% else %}
-                        <form method="POST" action="{% url 'courses:enroll' course.pk %}">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-primary enroll-btn">
-                                <i class="fas fa-plus me-2"></i>Enroll Now
-                            </button>
-                        </form>
+                        <a href="{% url 'courses:enroll' course.pk %}" class="btn btn-primary enroll-btn">
+                            <i class="fas fa-plus me-2"></i>Enroll Now
+                        </a>
                     {% endif %}
                 {% else %}
                     <a href="{% url 'account_login' %}" class="btn btn-primary enroll-btn">

@@ -77,28 +77,6 @@ if (csrftoken) {
     });
 }
 
-// Course enrollment functionality
-function enrollInCourse(courseId) {
-    $.ajax({
-        url: `/courses/${courseId}/enroll/`,
-        method: 'POST',
-        data: {
-            'csrfmiddlewaretoken': csrftoken
-        },
-        success: function(response) {
-            if (response.success) {
-                showNotification('Successfully enrolled in course!', 'success');
-                location.reload();
-            } else {
-                showNotification(response.message || 'Enrollment failed', 'error');
-            }
-        },
-        error: function() {
-            showNotification('An error occurred during enrollment', 'error');
-        }
-    });
-}
-
 // Test timer functionality
 let testTimer = null;
 let timeRemaining = 0;
@@ -322,18 +300,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Initialize enrollment buttons
-    const enrollButtons = document.querySelectorAll('.enroll-btn');
-    enrollButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            const courseId = this.dataset.courseId;
-            if (courseId) {
-                enrollInCourse(courseId);
-            }
-        });
-    });
-    
     // Initialize test timer if on test page
     const timerElement = document.getElementById('test-timer');
     if (timerElement && timerElement.dataset.duration) {
@@ -350,7 +316,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Export functions for external use
 window.ConvadeLMS = {
-    enrollInCourse,
     startTestTimer,
     submitTest,
     validateForm,

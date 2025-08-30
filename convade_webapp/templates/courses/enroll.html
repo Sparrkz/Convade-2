@@ -1,37 +1,336 @@
-{% extends 'base/base.html' %}
+{% extends "base/base.html" %}
+{% load static %}
 
-{% block title %}Enroll in {{ course.title }}{% endblock %}
+{% block title %}Enroll in {{ course.title }} - Convade{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/module-css/page-header.css' %}" />
+<style>
+    .enrollment-form-container {
+        padding-top: 60px;
+        padding-bottom: 120px;
+    }
+    .enrollment-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+    .enrollment-card-header {
+        background: linear-gradient(135deg, var(--Convade-base), var(--Convade-accent));
+        color: white;
+        padding: 1.5rem 2rem;
+    }
+    .enrollment-card-header h3 {
+        margin-bottom: 0;
+        font-size: 1.75rem;
+        font-weight: 700;
+    }
+    .enrollment-card-body {
+        padding: 2rem 2.5rem;
+    }
+    .form-section {
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #e9ecef;
+    }
+    .form-section:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    .form-section-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--Convade-base);
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+    }
+    .form-section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--Convade-accent);
+    }
+    .form-label {
+        font-weight: 500;
+        color: #333;
+        margin-bottom: .5rem;
+    }
+    .form-check-label {
+        padding-left: 0.5rem;
+    }
+    .btn-submit-application {
+        padding: 1rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 8px;
+    }
+    /* Style for radio buttons if they render as a list */
+    .preferred-contact-method-container ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 0;
+    }
+    .preferred-contact-method-container li {
+        display: flex;
+        align-items: center;
+    }
+    .preferred-contact-method-container label {
+        margin-left: 0.5rem;
+        margin-bottom: 0;
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-<div class="container">
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url({% static 'images/shapes/page-header-bg-shape.png' %});"></div>
+    <div class="container">
+        <div class="page-header__inner" style="padding-top: 180px; padding-bottom: 50px;">
+            <h2>Enroll in: {{ course.title }}</h2>
+            <div class="thm-breadcrumb__box">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><span>//</span></li>
+                    <li><a href="{% url 'courses:list' %}">Courses</a></li>
+                    <li><span>//</span></li>
+                    <li><a href="{% url 'courses:detail' course.pk %}">{{ course.title|truncatewords:5 }}</a></li>
+                    <li><span>//</span></li>
+                    <li>Enroll</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Page Header End-->
+
+<div class="container enrollment-form-container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Enroll in Course</h3>
+        <div class="col-lg-10 col-md-12">
+            <div class="enrollment-card">
+                <div class="enrollment-card-header">
+                    <h3>Student Registration Form</h3>
                 </div>
-                <div class="card-body">
-                    <h4>{{ course.title }}</h4>
-                    <p>{{ course.description }}</p>
-                    <p><strong>Instructor:</strong> {{ course.instructor.get_full_name }}</p>
-                    <p><strong>Duration:</strong> {{ course.duration_hours }} hours</p>
-                    <p><strong>Price:</strong> 
-                        {% if course.price == 0 %}
-                            Free
-                        {% else %}
-                            ${{ course.price }}
-                        {% endif %}
-                    </p>
-                    
-                    <form method="POST">
+                <div class="enrollment-card-body">
+                    <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-primary btn-lg">
-                            Enroll Now
-                        </button>
+                        
+                        <!-- Personal Information -->
+                        <div class="form-section">
+                            <h4 class="form-section-title">1. Personal Information</h4>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="{{ form.first_name.id_for_label }}" class="form-label">First Name</label>
+                                    {{ form.first_name }}
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="{{ form.middle_name.id_for_label }}" class="form-label">Middle Name (Optional)</label>
+                                    {{ form.middle_name }}
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="{{ form.last_name.id_for_label }}" class="form-label">Last Name</label>
+                                    {{ form.last_name }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="{{ form.date_of_birth.id_for_label }}" class="form-label">Date of Birth</label>
+                                    {{ form.date_of_birth }}
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="{{ form.gender.id_for_label }}" class="form-label">Gender</label>
+                                    {{ form.gender }}
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="{{ form.nationality.id_for_label }}" class="form-label">Nationality</label>
+                                    {{ form.nationality }}
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="{{ form.address.id_for_label }}" class="form-label">Contact Address</label>
+                                {{ form.address }}
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.phone_number.id_for_label }}" class="form-label">Phone Number</label>
+                                    {{ form.phone_number }}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.email.id_for_label }}" class="form-label">Email Address</label>
+                                    {{ form.email }}
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Preferred Contact Method</label>
+                                <div class="preferred-contact-method-container">
+                                    {{ form.preferred_contact_method }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Educational Background -->
+                        <div class="form-section">
+                            <h4 class="form-section-title">2. Educational Background</h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.highest_qualification.id_for_label }}" class="form-label">Highest Qualification</label>
+                                    {{ form.highest_qualification }}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.current_status.id_for_label }}" class="form-label">Current Status</label>
+                                    {{ form.current_status }}
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="{{ form.field_of_study.id_for_label }}" class="form-label">Field of Study (if applicable)</label>
+                                {{ form.field_of_study }}
+                            </div>
+                        </div>
+
+                        <!-- Program Selection -->
+                        <div class="form-section">
+                            <h4 class="form-section-title">3. Program Selection</h4>
+                            <div class="mb-3">
+                                <label for="{{ form.course_of_interest.id_for_label }}" class="form-label">Course/Program of Interest</label>
+                                {{ form.course_of_interest }}
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.mode_of_learning.id_for_label }}" class="form-label">Mode of Learning</label>
+                                    {{ form.mode_of_learning }}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.preferred_start_date.id_for_label }}" class="form-label">Preferred Start Date / Batch Selection</label>
+                                    {{ form.preferred_start_date }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Career Goals & Motivation -->
+                        <div class="form-section">
+                            <h4 class="form-section-title">4. Career Goals & Motivation</h4>
+                            <div class="mb-3">
+                                <label for="{{ form.motivation.id_for_label }}" class="form-label">Why are you interested in this program?</label>
+                                {{ form.motivation }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="{{ form.career_aspiration.id_for_label }}" class="form-label">Career Aspiration</label>
+                                {{ form.career_aspiration }}
+                            </div>
+                        </div>
+
+                        <!-- Payment & Sponsorship -->
+                        <div class="form-section">
+                            <h4 class="form-section-title">5. Payment & Sponsorship</h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.sponsorship.id_for_label }}" class="form-label">Who will sponsor your training?</label>
+                                    {{ form.sponsorship }}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.payment_plan.id_for_label }}" class="form-label">Preferred Payment Plan</label>
+                                    {{ form.payment_plan }}
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="{{ form.proof_of_payment.id_for_label }}" class="form-label">Upload Proof of Payment (if applicable)</label>
+                                {{ form.proof_of_payment }}
+                            </div>
+                        </div>
+
+                        <!-- Technical Requirements Check -->
+                        <div class="form-section">
+                            <h4 class="form-section-title">6. Technical Requirements Check</h4>
+                            <div class="form-check">
+                                {{ form.has_laptop }}
+                                <label class="form-check-label" for="{{ form.has_laptop.id_for_label }}">
+                                    Do you have access to a Laptop/Desktop?
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                {{ form.has_internet }}
+                                <label class="form-check-label" for="{{ form.has_internet.id_for_label }}">
+                                    Do you have stable Internet access?
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Emergency Contact -->
+                        <div class="form-section">
+                            <h4 class="form-section-title">7. Emergency Contact</h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.emergency_contact_name.id_for_label }}" class="form-label">Name of Emergency Contact</label>
+                                    {{ form.emergency_contact_name }}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.emergency_contact_relationship.id_for_label }}" class="form-label">Relationship</label>
+                                    {{ form.emergency_contact_relationship }}
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="{{ form.emergency_contact_phone.id_for_label }}" class="form-label">Phone Number</label>
+                                {{ form.emergency_contact_phone }}
+                            </div>
+                        </div>
+
+                        <!-- Agreements & Consents -->
+                        <div class="form-section">
+                            <h4 class="form-section-title">8. Agreements & Consents</h4>
+                            <div class="form-check">
+                                {{ form.agree_terms }}
+                                <label class="form-check-label" for="{{ form.agree_terms.id_for_label }}">
+                                    I acknowledge the <a href="#">Terms & Conditions</a>.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                {{ form.agree_attendance }}
+                                <label class="form-check-label" for="{{ form.agree_attendance.id_for_label }}">
+                                    I agree to the <a href="#">Attendance Policy</a>.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                {{ form.agree_privacy }}
+                                <label class="form-check-label" for="{{ form.agree_privacy.id_for_label }}">
+                                    I consent to the use of my data for academic purposes only.
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Uploads -->
+                        <div class="form-section">
+                            <h4 class="form-section-title">9. Uploads</h4>
+                            <div class="mb-3">
+                                <label for="{{ form.passport_photo.id_for_label }}" class="form-label">Passport Photograph</label>
+                                {{ form.passport_photo }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="{{ form.id_card.id_for_label }}" class="form-label">ID Card / Means of Identification</label>
+                                {{ form.id_card }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="{{ form.resume.id_for_label }}" class="form-label">Resume or CV (optional)</label>
+                                {{ form.resume }}
+                            </div>
+                        </div>
+
+
+                        <div class="d-grid">
+                            <button style="background-color: #052143; color: #ffff" type="submit" class="btn  btn-lg btn-submit-application">Submit Application</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-{% endblock %} 
+{% endblock %}

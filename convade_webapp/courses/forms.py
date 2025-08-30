@@ -103,3 +103,45 @@ class CourseAdminForm(forms.ModelForm):
         widgets = {
             'categories': forms.CheckboxSelectMultiple()
         }
+
+class EnrollmentForm(forms.Form):
+    first_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    middle_name = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    date_of_birth = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
+    gender = forms.ChoiceField(choices=[('male', 'Male'), ('female', 'Female'), ('other', 'Other')], widget=forms.Select(attrs={'class': 'form-select'}))
+    nationality = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    address = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    phone_number = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    preferred_contact_method = forms.ChoiceField(choices=[('phone', 'Phone'), ('whatsapp', 'WhatsApp'), ('email', 'Email')], widget=forms.RadioSelect)
+
+    highest_qualification = forms.ChoiceField(choices=[('secondary', 'Secondary School'), ('undergraduate', 'Undergraduate'), ('graduate', 'Graduate'), ('other', 'Other')], widget=forms.Select(attrs={'class': 'form-select'}))
+    current_status = forms.ChoiceField(choices=[('student', 'Student'), ('graduate', 'Graduate'), ('professional', 'Working Professional'), ('entrepreneur', 'Entrepreneur')], widget=forms.Select(attrs={'class': 'form-select'}))
+    field_of_study = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+
+    course_of_interest = forms.CharField(max_length=100, widget=forms.Select(attrs={'class': 'form-select'}))
+    mode_of_learning = forms.ChoiceField(choices=[('online', 'Online Live Classes'), ('self_paced', 'Self-paced'), ('hybrid', 'Hybrid')], widget=forms.Select(attrs={'class': 'form-select'}))
+    preferred_start_date = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
+
+    motivation = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 3}))
+    career_aspiration = forms.ChoiceField(choices=[('tech_career', 'Tech Career'), ('startup', 'Start-up'), ('freelancing', 'Freelancing'), ('job_readiness', 'Job Readiness')], widget=forms.Select(attrs={'class': 'form-select'}))
+
+    sponsorship = forms.ChoiceField(choices=[('self', 'Self'), ('parent', 'Parent'), ('employer', 'Employer'), ('scholarship', 'Scholarship')], widget=forms.Select(attrs={'class': 'form-select'}))
+    payment_plan = forms.ChoiceField(choices=[('full', 'Full'), ('installment', 'Installment'), ('subscription', 'Subscription')], widget=forms.Select(attrs={'class': 'form-select'}))
+    proof_of_payment = forms.FileField(required=False, widget=forms.FileInput(attrs={'class': 'form-control'}))
+
+    has_laptop = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
+    has_internet = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
+
+    emergency_contact_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    emergency_contact_relationship = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    emergency_contact_phone = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'class': 'form-control'}))
+
+    agree_terms = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
+    agree_attendance = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
+    agree_privacy = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
+
+    passport_photo = forms.FileField(widget=forms.FileInput(attrs={'class': 'form-control'}))
+    id_card = forms.FileField(widget=forms.FileInput(attrs={'class': 'form-control'}))
+    resume = forms.FileField(required=False, widget=forms.FileInput(attrs={'class': 'form-control'}))

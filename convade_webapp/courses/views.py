@@ -111,31 +111,42 @@ class CourseDetailView(DetailView):
         
         return context
 
-class EnrollView(LoginRequiredMixin, TemplateView):
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, TemplateView, FormView
+from .forms import CourseForm, CourseSearchForm, EnrollmentForm
+
+class EnrollView(LoginRequiredMixin, FormView):
     template_name = 'courses/enroll.html'
-    
-    def post(self, request, pk):
-        course = get_object_or_404(Course, pk=pk, is_published=True)
-        
+    form_class = EnrollmentForm
+
+    def get_success_url(self):
+        return reverse('courses:content', kwargs={'pk': self.kwargs['pk']})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['course'] = get_object_or_404(Course, pk=self.kwargs['pk'], is_published=True)
+        return context
+
+    def form_valid(self, form):
+        course = get_object_or_404(Course, pk=self.kwargs['pk'], is_published=True)
+
         # Check if already enrolled
-        if Enrollment.objects.filter(student=request.user, course=course).exists():
-            messages.warning(request, 'You are already enrolled in this course!')
+        if Enrollment.objects.filter(student=self.request.user, course=course).exists():
+            messages.warning(self.request, 'You are already enrolled in this course!')
             return redirect('courses:detail', pk=course.pk)
-        
+
         # Create enrollment
         enrollment = Enrollment.objects.create(
-            student=request.user,
+            student=self.request.user,
             course=course,
             is_active=True
         )
-        
-        messages.success(request, f'Successfully enrolled in {course.title}!')
-        return redirect('courses:content', pk=course.pk)
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['course'] = get_object_or_404(Course, pk=kwargs['pk'], is_published=True)
-        return context
+
+        # Save form data to user profile or a new model
+        # This part depends on your data model. For now, let's just print the data.
+        print(form.cleaned_data)
+
+        messages.success(self.request, f'Successfully enrolled in {course.title}!')
+        return super().form_valid(form)
 
 class CourseContentView(LoginRequiredMixin, TemplateView):
     template_name = 'courses/content.html'
