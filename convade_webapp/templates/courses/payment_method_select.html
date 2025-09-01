@@ -1,0 +1,81 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}Select Payment Method{% endblock %}
+{% block extra_css %}
+<style>
+    .payment-methods-container {
+        padding-top: 60px;
+        padding-bottom: 120px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .payment-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        padding: 2rem 2.5rem;
+        margin-bottom: 2rem;
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+    }
+    .payment-btn {
+        width: 80%;
+        margin: 1rem auto;
+        padding: 1.2rem 0;
+        font-size: 1.2rem;
+        font-weight: 600;
+        border-radius: 8px;
+        border: none;
+        color: #fff;
+        background: linear-gradient(135deg, #052143, #0a58ca);
+        transition: background 0.2s;
+    }
+    .payment-btn.paystack {
+        background: linear-gradient(135deg, #0a58ca, #052143);
+    }
+    .payment-btn.flutterwave {
+        background: linear-gradient(135deg, #fbbf24, #f59e42);
+        color: #222;
+    }
+    .payment-btn:hover {
+        opacity: 0.9;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url({% static 'images/shapes/page-header-bg-shape.png' %});"></div>
+    <div class="container">
+        <div class="page-header__inner">
+            <h2>Select Payment Method</h2>
+            <div class="thm-breadcrumb__box">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><span>//</span></li>
+                    <li><a href="{% url 'courses:list' %}">Courses</a></li>
+                    <li><span>//</span></li>
+                    <li><a href="{% url 'courses:detail' course.pk %}">{{ course.title|truncatewords:5 }}</a></li>
+                    <li><span>//</span></li>
+                    <li>Payment</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container payment-methods-container">
+    <div class="payment-card">
+        <h3>Pay for: {{ course.title }}</h3>
+        <p><strong>Amount:</strong> ${{ course.price }}</p>
+        <form method="post" action="{% url 'courses:paystack_init' course.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="payment-btn paystack">Pay with Paystack</button>
+        </form>
+        <form method="post" action="{% url 'initialize_payment' %}?course_id={{ course.pk }}">
+            {% csrf_token %}
+            <button type="submit" class="payment-btn flutterwave">Pay with Flutterwave</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

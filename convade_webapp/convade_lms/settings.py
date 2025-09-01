@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'certifications',
     'analytics',
     'helpcenter',
+    'payments',
 ]
 
 MIDDLEWARE = [
@@ -249,3 +250,13 @@ ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True  # Auto login after email confirmatio
 # For development - print emails to console instead of sending
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+FLW_PUBLIC_KEY = os.getenv("FLW_PUBLIC_KEY")
+FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")
+FLW_ENCRYPTION_KEY = os.getenv("FLW_ENCRYPTION_KEY")
+

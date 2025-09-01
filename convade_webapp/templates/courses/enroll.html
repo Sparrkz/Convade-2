@@ -121,9 +121,13 @@
                     <h3>Student Registration Form</h3>
                 </div>
                 <div class="enrollment-card-body">
-                    <form method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data" action="{% url 'courses:enroll' course.pk %}">
                         {% csrf_token %}
-                        
+                        {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                        {% endif %}
                         <!-- Personal Information -->
                         <div class="form-section">
                             <h4 class="form-section-title">1. Personal Information</h4>
@@ -131,48 +135,78 @@
                                 <div class="col-md-4 mb-3">
                                     <label for="{{ form.first_name.id_for_label }}" class="form-label">First Name</label>
                                     {{ form.first_name }}
+                                    {% if form.first_name.errors %}
+                                    <div class="text-danger small">{{ form.first_name.errors|striptags }}</div>
+                                    {% endif %}
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="{{ form.middle_name.id_for_label }}" class="form-label">Middle Name (Optional)</label>
                                     {{ form.middle_name }}
+                                    {% if form.middle_name.errors %}
+                                    <div class="text-danger small">{{ form.middle_name.errors|striptags }}</div>
+                                    {% endif %}
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="{{ form.last_name.id_for_label }}" class="form-label">Last Name</label>
                                     {{ form.last_name }}
+                                    {% if form.last_name.errors %}
+                                    <div class="text-danger small">{{ form.last_name.errors|striptags }}</div>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="{{ form.date_of_birth.id_for_label }}" class="form-label">Date of Birth</label>
                                     {{ form.date_of_birth }}
+                                    {% if form.date_of_birth.errors %}
+                                    <div class="text-danger small">{{ form.date_of_birth.errors|striptags }}</div>
+                                    {% endif %}
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="{{ form.gender.id_for_label }}" class="form-label">Gender</label>
                                     {{ form.gender }}
+                                    {% if form.gender.errors %}
+                                    <div class="text-danger small">{{ form.gender.errors|striptags }}</div>
+                                    {% endif %}
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="{{ form.nationality.id_for_label }}" class="form-label">Nationality</label>
                                     {{ form.nationality }}
+                                    {% if form.nationality.errors %}
+                                    <div class="text-danger small">{{ form.nationality.errors|striptags }}</div>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="{{ form.address.id_for_label }}" class="form-label">Contact Address</label>
                                 {{ form.address }}
+                                {% if form.address.errors %}
+                                <div class="text-danger small">{{ form.address.errors|striptags }}</div>
+                                {% endif %}
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="{{ form.phone_number.id_for_label }}" class="form-label">Phone Number</label>
                                     {{ form.phone_number }}
+                                    {% if form.phone_number.errors %}
+                                    <div class="text-danger small">{{ form.phone_number.errors|striptags }}</div>
+                                    {% endif %}
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="{{ form.email.id_for_label }}" class="form-label">Email Address</label>
                                     {{ form.email }}
+                                    {% if form.email.errors %}
+                                    <div class="text-danger small">{{ form.email.errors|striptags }}</div>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Preferred Contact Method</label>
                                 <div class="preferred-contact-method-container">
                                     {{ form.preferred_contact_method }}
+                                    {% if form.preferred_contact_method.errors %}
+                                    <div class="text-danger small">{{ form.preferred_contact_method.errors|striptags }}</div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -184,15 +218,24 @@
                                 <div class="col-md-6 mb-3">
                                     <label for="{{ form.highest_qualification.id_for_label }}" class="form-label">Highest Qualification</label>
                                     {{ form.highest_qualification }}
+                                    {% if form.highest_qualification.errors %}
+                                    <div class="text-danger small">{{ form.highest_qualification.errors|striptags }}</div>
+                                    {% endif %}
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="{{ form.current_status.id_for_label }}" class="form-label">Current Status</label>
                                     {{ form.current_status }}
+                                    {% if form.current_status.errors %}
+                                    <div class="text-danger small">{{ form.current_status.errors|striptags }}</div>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="{{ form.field_of_study.id_for_label }}" class="form-label">Field of Study (if applicable)</label>
                                 {{ form.field_of_study }}
+                                {% if form.field_of_study.errors %}
+                                <div class="text-danger small">{{ form.field_of_study.errors|striptags }}</div>
+                                {% endif %}
                             </div>
                         </div>
 
@@ -202,15 +245,24 @@
                             <div class="mb-3">
                                 <label for="{{ form.course_of_interest.id_for_label }}" class="form-label">Course/Program of Interest</label>
                                 {{ form.course_of_interest }}
+                                {% if form.course_of_interest.errors %}
+                                <div class="text-danger small">{{ form.course_of_interest.errors|striptags }}</div>
+                                {% endif %}
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="{{ form.mode_of_learning.id_for_label }}" class="form-label">Mode of Learning</label>
                                     {{ form.mode_of_learning }}
+                                    {% if form.mode_of_learning.errors %}
+                                    <div class="text-danger small">{{ form.mode_of_learning.errors|striptags }}</div>
+                                    {% endif %}
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="{{ form.preferred_start_date.id_for_label }}" class="form-label">Preferred Start Date / Batch Selection</label>
                                     {{ form.preferred_start_date }}
+                                    {% if form.preferred_start_date.errors %}
+                                    <div class="text-danger small">{{ form.preferred_start_date.errors|striptags }}</div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -221,10 +273,16 @@
                             <div class="mb-3">
                                 <label for="{{ form.motivation.id_for_label }}" class="form-label">Why are you interested in this program?</label>
                                 {{ form.motivation }}
+                                {% if form.motivation.errors %}
+                                <div class="text-danger small">{{ form.motivation.errors|striptags }}</div>
+                                {% endif %}
                             </div>
                             <div class="mb-3">
                                 <label for="{{ form.career_aspiration.id_for_label }}" class="form-label">Career Aspiration</label>
                                 {{ form.career_aspiration }}
+                                {% if form.career_aspiration.errors %}
+                                <div class="text-danger small">{{ form.career_aspiration.errors|striptags }}</div>
+                                {% endif %}
                             </div>
                         </div>
 
@@ -235,16 +293,19 @@
                                 <div class="col-md-6 mb-3">
                                     <label for="{{ form.sponsorship.id_for_label }}" class="form-label">Who will sponsor your training?</label>
                                     {{ form.sponsorship }}
+                                    {% if form.sponsorship.errors %}
+                                    <div class="text-danger small">{{ form.sponsorship.errors|striptags }}</div>
+                                    {% endif %}
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="{{ form.payment_plan.id_for_label }}" class="form-label">Preferred Payment Plan</label>
                                     {{ form.payment_plan }}
+                                    {% if form.payment_plan.errors %}
+                                    <div class="text-danger small">{{ form.payment_plan.errors|striptags }}</div>
+                                    {% endif %}
                                 </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="{{ form.proof_of_payment.id_for_label }}" class="form-label">Upload Proof of Payment (if applicable)</label>
-                                {{ form.proof_of_payment }}
-                            </div>
+                            
                         </div>
 
                         <!-- Technical Requirements Check -->
@@ -252,12 +313,18 @@
                             <h4 class="form-section-title">6. Technical Requirements Check</h4>
                             <div class="form-check">
                                 {{ form.has_laptop }}
+                                {% if form.has_laptop.errors %}
+                                <div class="text-danger small">{{ form.has_laptop.errors|striptags }}</div>
+                                {% endif %}
                                 <label class="form-check-label" for="{{ form.has_laptop.id_for_label }}">
                                     Do you have access to a Laptop/Desktop?
                                 </label>
                             </div>
                             <div class="form-check">
                                 {{ form.has_internet }}
+                                {% if form.has_internet.errors %}
+                                <div class="text-danger small">{{ form.has_internet.errors|striptags }}</div>
+                                {% endif %}
                                 <label class="form-check-label" for="{{ form.has_internet.id_for_label }}">
                                     Do you have stable Internet access?
                                 </label>
@@ -271,15 +338,24 @@
                                 <div class="col-md-6 mb-3">
                                     <label for="{{ form.emergency_contact_name.id_for_label }}" class="form-label">Name of Emergency Contact</label>
                                     {{ form.emergency_contact_name }}
+                                    {% if form.emergency_contact_name.errors %}
+                                    <div class="text-danger small">{{ form.emergency_contact_name.errors|striptags }}</div>
+                                    {% endif %}
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="{{ form.emergency_contact_relationship.id_for_label }}" class="form-label">Relationship</label>
                                     {{ form.emergency_contact_relationship }}
+                                    {% if form.emergency_contact_relationship.errors %}
+                                    <div class="text-danger small">{{ form.emergency_contact_relationship.errors|striptags }}</div>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="{{ form.emergency_contact_phone.id_for_label }}" class="form-label">Phone Number</label>
                                 {{ form.emergency_contact_phone }}
+                                {% if form.emergency_contact_phone.errors %}
+                                <div class="text-danger small">{{ form.emergency_contact_phone.errors|striptags }}</div>
+                                {% endif %}
                             </div>
                         </div>
 
@@ -288,18 +364,27 @@
                             <h4 class="form-section-title">8. Agreements & Consents</h4>
                             <div class="form-check">
                                 {{ form.agree_terms }}
+                                {% if form.agree_terms.errors %}
+                                <div class="text-danger small">{{ form.agree_terms.errors|striptags }}</div>
+                                {% endif %}
                                 <label class="form-check-label" for="{{ form.agree_terms.id_for_label }}">
                                     I acknowledge the <a href="#">Terms & Conditions</a>.
                                 </label>
                             </div>
                             <div class="form-check">
                                 {{ form.agree_attendance }}
+                                {% if form.agree_attendance.errors %}
+                                <div class="text-danger small">{{ form.agree_attendance.errors|striptags }}</div>
+                                {% endif %}
                                 <label class="form-check-label" for="{{ form.agree_attendance.id_for_label }}">
                                     I agree to the <a href="#">Attendance Policy</a>.
                                 </label>
                             </div>
                             <div class="form-check">
                                 {{ form.agree_privacy }}
+                                {% if form.agree_privacy.errors %}
+                                <div class="text-danger small">{{ form.agree_privacy.errors|striptags }}</div>
+                                {% endif %}
                                 <label class="form-check-label" for="{{ form.agree_privacy.id_for_label }}">
                                     I consent to the use of my data for academic purposes only.
                                 </label>
@@ -312,14 +397,16 @@
                             <div class="mb-3">
                                 <label for="{{ form.passport_photo.id_for_label }}" class="form-label">Passport Photograph</label>
                                 {{ form.passport_photo }}
+                                {% if form.passport_photo.errors %}
+                                <div class="text-danger small">{{ form.passport_photo.errors|striptags }}</div>
+                                {% endif %}
                             </div>
                             <div class="mb-3">
                                 <label for="{{ form.id_card.id_for_label }}" class="form-label">ID Card / Means of Identification</label>
                                 {{ form.id_card }}
-                            </div>
-                            <div class="mb-3">
-                                <label for="{{ form.resume.id_for_label }}" class="form-label">Resume or CV (optional)</label>
-                                {{ form.resume }}
+                                {% if form.id_card.errors %}
+                                <div class="text-danger small">{{ form.id_card.errors|striptags }}</div>
+                                {% endif %}
                             </div>
                         </div>
 

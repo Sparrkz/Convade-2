@@ -9,6 +9,20 @@ from courses.models import Course, Enrollment
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/profile.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+        # Get latest enrollment for matric_no
+        latest_enrollment = user.enrollments.order_by('-enrolled_at').first()
+        context['matric_no'] = latest_enrollment.matric_no if latest_enrollment else ''
+
+        # Ensure date_of_birth is available (from user or profile)
+        dob = user.date_of_birth
+        if not dob and hasattr(user, 'profile'):
+            dob = user.profile.preferred_start_date or None
+        context['date_of_birth'] = dob
+        return context
+
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/dashboard.html'
     

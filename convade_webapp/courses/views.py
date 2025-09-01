@@ -1,3 +1,90 @@
+
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
+import requests
+from django.conf import settings
+
+class PaymentMethodSelectView(LoginRequiredMixin, TemplateView):
+    template_name = 'courses/payment_method_select.html'
+
+    def get(self, request, *args, **kwargs):
+        course = get_object_or_404(Course, pk=kwargs['pk'])
+        return render(request, self.template_name, {'course': course})
+
+# Paystack and Flutterwave payment initiation stubs
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+
+@method_decorator(csrf_exempt, name='dispatch')
+class PaystackInitView(LoginRequiredMixin, TemplateView):
+    def post(self, request, *args, **kwargs):
+        course = get_object_or_404(Course, pk=kwargs['pk'])
+        user = request.user
+        amount = int(float(course.price) * 100)  # Paystack expects amount in kobo
+        paystack_secret = getattr(settings, 'PAYSTACK_SECRET_KEY', None)
+        if not paystack_secret:
+            return render(request, 'courses/payment_error.html', {'message': 'Paystack secret key not set.'})
+        headers = {
+            'Authorization': f'Bearer {paystack_secret}',
+            'Content-Type': 'application/json',
+        }
+        callback_url = request.build_absolute_uri(reverse('courses:payment_confirmed', kwargs={'pk': course.pk}))
+        data = {
+            'email': user.email,
+            'amount': amount,
+            'callback_url': callback_url,
+        }
+        response = requests.post('https://api.paystack.co/transaction/initialize', json=data, headers=headers)
+        if response.status_code == 200 and response.json().get('status'):
+            auth_url = response.json()['data']['authorization_url']
+            return redirect(auth_url)
+        else:
+            error_msg = response.json().get('message', 'Paystack payment initialization failed.')
+            return render(request, 'courses/payment_error.html', {'message': error_msg})
+
+@method_decorator(csrf_exempt, name='dispatch')
+class FlutterwaveInitView(LoginRequiredMixin, TemplateView):
+    def post(self, request, *args, **kwargs):
+        course = get_object_or_404(Course, pk=kwargs['pk'])
+        user = request.user
+        amount = float(course.price)
+        flutterwave_secret = getattr(settings, 'FLUTTERWAVE_SECRET_KEY', None)
+        if not flutterwave_secret:
+            return render(request, 'courses/payment_error.html', {'message': 'Flutterwave secret key not set.'})
+        headers = {
+            'Authorization': f'Bearer {flutterwave_secret}',
+            'Content-Type': 'application/json',
+        }
+        callback_url = request.build_absolute_uri(reverse('courses:payment_confirmed', kwargs={'pk': course.pk}))
+        tx_ref = f"CV-{course.pk}-{user.pk}-{user.id}-{user.username}"
+        data = {
+            "tx_ref": tx_ref,
+            "amount": amount,
+            "currency": "NGN",  # Use NGN for test mode
+            "redirect_url": callback_url,
+            "customer": {
+                "email": user.email,
+                "name": f"{user.first_name} {user.last_name}",
+            },
+            "customizations": {
+                "title": course.title,
+                "description": f"Payment for {course.title}",
+            }
+        }
+        response = requests.post('https://api.flutterwave.com/v3/payments', json=data, headers=headers)
+        if response.status_code == 200 and response.json().get('status') == 'success':
+            link = response.json()['data']['link']
+            return redirect(link)
+        else:
+            error_msg = response.json().get('message', 'Flutterwave payment initialization failed.')
+            return render(request, 'courses/payment_error.html', {'message': error_msg})
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+from .forms import EnrollmentForm
+from django import forms
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -121,32 +208,161 @@ class EnrollView(LoginRequiredMixin, FormView):
     def get_success_url(self):
         return reverse('courses:content', kwargs={'pk': self.kwargs['pk']})
 
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        course = get_object_or_404(Course, pk=self.kwargs['pk'], is_published=True)
+        kwargs['course_title'] = course.title
+        return kwargs
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['course'] = get_object_or_404(Course, pk=self.kwargs['pk'], is_published=True)
         return context
 
     def form_valid(self, form):
-        course = get_object_or_404(Course, pk=self.kwargs['pk'], is_published=True)
+        # Convert date fields to string for session serialization and remove file fields
+        data = form.cleaned_data.copy()
+        file_field_names = []
+        for name, field in form.fields.items():
+            if isinstance(field, (forms.FileField,)):
+                file_field_names.append(name)
+        for k, v in data.items():
+            if hasattr(v, 'isoformat'):
+                data[k] = v.isoformat()
+        for name in file_field_names:
+            data.pop(name, None)
+        self.request.session['enroll_form_data'] = data
+        return redirect('courses:enroll_confirm', pk=self.kwargs['pk'])
 
-        # Check if already enrolled
-        if Enrollment.objects.filter(student=self.request.user, course=course).exists():
-            messages.warning(self.request, 'You are already enrolled in this course!')
-            return redirect('courses:detail', pk=course.pk)
+
+# Step 2: Confirmation page
+class EnrollConfirmView(LoginRequiredMixin, TemplateView):
+    template_name = 'courses/enroll_confirm.html'
+
+    def get(self, request, *args, **kwargs):
+        form_data = request.session.get('enroll_form_data')
+        if not form_data:
+            return redirect('courses:enroll', pk=kwargs['pk'])
+        form = EnrollmentForm(initial=form_data, course_title=get_object_or_404(Course, pk=kwargs['pk']).title)
+        return render(request, self.template_name, {'form': form, 'course': get_object_or_404(Course, pk=kwargs['pk'])})
+
+    def post(self, request, *args, **kwargs):
+        from accounts.models import UserProfile
+        form_data = request.session.get('enroll_form_data')
+        if not form_data:
+            return redirect('courses:enroll', pk=kwargs['pk'])
+        course = get_object_or_404(Course, pk=kwargs['pk'])
+        # Prevent duplicate enrollments
+        existing = Enrollment.objects.filter(student=request.user, course=course).first()
+        if existing:
+            request.session['matric_no'] = getattr(existing, 'matric_no', '')
+            messages.warning(request, 'You are already enrolled in this course!')
+            return redirect('courses:enroll_success', pk=course.pk)
 
         # Create enrollment
         enrollment = Enrollment.objects.create(
-            student=self.request.user,
+            student=request.user,
             course=course,
             is_active=True
         )
+        # Generate a matriculation number (simple example)
+        matric_no = f"CV{enrollment.pk:05d}"
+        enrollment.matric_no = matric_no
+        enrollment.save()
+        request.session['matric_no'] = matric_no
 
-        # Save form data to user profile or a new model
-        # This part depends on your data model. For now, let's just print the data.
-        print(form.cleaned_data)
+        # Update or create UserProfile with form data
+        profile, created = UserProfile.objects.get_or_create(user=request.user)
+        # Map all form_data fields that exist on UserProfile
+        profile_model_fields = [f.name for f in UserProfile._meta.fields if f.name not in ('id', 'user')]
+        for field in profile_model_fields:
+            if field in form_data:
+                setattr(profile, field, form_data[field])
+        # Save passport_photo and id_card if present in request.FILES
+        if 'passport_photo' in request.FILES:
+            profile.passport_photo = request.FILES['passport_photo']
+        if 'id_card' in request.FILES:
+            profile.id_card = request.FILES['id_card']
+        profile.save()
+        print(f"[DEBUG] UserProfile for {request.user.username} saved/updated: {profile}")
 
-        messages.success(self.request, f'Successfully enrolled in {course.title}!')
-        return super().form_valid(form)
+        # Also update User basic info if present
+        user = request.user
+        if 'phone_number' in form_data:
+            user.phone_number = form_data['phone_number']
+        if 'date_of_birth' in form_data:
+            user.date_of_birth = form_data['date_of_birth']
+        user.save()
+
+        return redirect('courses:enroll_success', pk=course.pk)
+
+
+# Step 3: Show course info and payment CTA
+class EnrollSuccessView(LoginRequiredMixin, TemplateView):
+    template_name = 'courses/enroll_success.html'
+
+    def get(self, request, *args, **kwargs):
+        course = get_object_or_404(Course, pk=kwargs['pk'])
+        matric_no = ''
+        try:
+            from .models import Enrollment
+            enrollment = Enrollment.objects.get(student=request.user, course=course)
+            matric_no = enrollment.matric_no or ''
+        except Exception:
+            matric_no = ''
+        return render(request, self.template_name, {'course': course, 'matric_no': matric_no})
+
+
+# Step 4: Payment page (redirect to Paystack or show payment instructions)
+class PaymentView(LoginRequiredMixin, TemplateView):
+    template_name = 'courses/payment_receipt_upload.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, {'course': get_object_or_404(Course, pk=kwargs['pk'])})
+
+    def post(self, request, *args, **kwargs):
+        # Save uploaded receipt (implement as needed)
+        receipt = request.FILES.get('receipt')
+        # Here you would save the receipt to the Enrollment or a related model
+        # For now, just simulate confirmation
+        return redirect('courses:payment_confirmed', pk=kwargs['pk'])
+
+
+# Step 5: Payment confirmation page
+
+class PaymentConfirmedView(LoginRequiredMixin, TemplateView):
+    template_name = 'courses/payment_confirmed.html'
+
+    def get(self, request, *args, **kwargs):
+        course = get_object_or_404(Course, pk=kwargs['pk'])
+        flutterwave_ref = request.GET.get('tx_ref')
+        payment_verified = False
+        message = ''
+        if flutterwave_ref:
+            secret = getattr(settings, 'FLUTTERWAVE_SECRET_KEY', None)
+            headers = {'Authorization': f'Bearer {secret}'}
+            url = f'https://api.flutterwave.com/v3/transactions/verify_by_reference?tx_ref={flutterwave_ref}'
+            resp = requests.get(url, headers=headers)
+            data = resp.json()
+            if data.get('status') == 'success' and data['data']['status'] == 'successful':
+                payment_verified = True
+            else:
+                message = data.get('message', 'Flutterwave verification failed.')
+        else:
+            message = 'No payment reference provided.'
+
+        # Mark enrollment as paid if verified
+        if payment_verified:
+            try:
+                enrollment = Enrollment.objects.get(student=request.user, course=course)
+                enrollment.is_active = True  # or set a paid flag if you have one
+                enrollment.save()
+            except Enrollment.DoesNotExist:
+                pass
+            return render(request, self.template_name, {'course': course, 'success': True})
+        else:
+            return render(request, self.template_name, {'course': course, 'success': False, 'message': message})
 
 class CourseContentView(LoginRequiredMixin, TemplateView):
     template_name = 'courses/content.html'
@@ -154,17 +370,20 @@ class CourseContentView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         course = get_object_or_404(Course, pk=kwargs['pk'], is_published=True)
-        
-        # Check enrollment
+
+        # Check enrollment and payment
         try:
             enrollment = Enrollment.objects.get(student=self.request.user, course=course)
+            if not enrollment.is_active:
+                messages.error(self.request, 'You must complete payment to access course content.')
+                return redirect('courses:payment', pk=course.pk)
             context['enrollment'] = enrollment
             context['course'] = course
             context['contents'] = course.contents.all().order_by('order')
         except Enrollment.DoesNotExist:
-            messages.error(self.request, 'You must be enrolled to access course content.')
-            return redirect('courses:detail', pk=course.pk)
-        
+            messages.error(self.request, 'You must enroll and pay to access course content.')
+            return redirect('courses:payment', pk=course.pk)
+
         return context
 
 class MyCourseListView(LoginRequiredMixin, ListView):

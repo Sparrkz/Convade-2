@@ -83,6 +83,7 @@ class Enrollment(models.Model):
     is_active = models.BooleanField(default=True)
     progress = models.PositiveIntegerField(default=0)  # Progress percentage
     completed_at = models.DateTimeField(blank=True, null=True)
+    matric_no = models.CharField(max_length=32, blank=True, null=True, unique=True)
     
     class Meta:
         unique_together = ['student', 'course']

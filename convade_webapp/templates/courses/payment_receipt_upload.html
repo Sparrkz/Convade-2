@@ -1,0 +1,112 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}Upload Payment Receipt{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/module-css/page-header.css' %}" />
+<style>
+    .enrollment-form-container {
+        padding-top: 60px;
+        padding-bottom: 120px;
+    }
+    .enrollment-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+    .enrollment-card-header {
+        background: linear-gradient(135deg, var(--Convade-base), var(--Convade-accent));
+        color: white;
+        padding: 1.5rem 2rem;
+    }
+    .enrollment-card-header h3 {
+        margin-bottom: 0;
+        font-size: 1.75rem;
+        font-weight: 700;
+    }
+    .enrollment-card-body {
+        padding: 2rem 2.5rem;
+    }
+    .form-section {
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #e9ecef;
+    }
+    .form-section:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    .form-section-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--Convade-base);
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+    }
+    .form-section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--Convade-accent);
+    }
+    .form-label {
+        font-weight: 500;
+        color: #333;
+        margin-bottom: .5rem;
+    }
+    .form-check-label {
+        padding-left: 0.5rem;
+    }
+    .btn-submit-application {
+        padding: 1rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 8px;
+    }
+    /* Style for radio buttons if they render as a list */
+    .preferred-contact-method-container ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 0;
+    }
+    .preferred-contact-method-container li {
+        display: flex;
+        align-items: center;
+    }
+    .preferred-contact-method-container label {
+        margin-left: 0.5rem;
+        margin-bottom: 0;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="container enrollment-form-container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="enrollment-card">
+                <div class="enrollment-card-header">
+                    <h3>Upload Your Payment Receipt</h3>
+                </div>
+                <div class="enrollment-card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="receipt" class="form-label">Payment Receipt (from Paystack)</label>
+                            <input type="file" name="receipt" id="receipt" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-submit-application">Submit Receipt</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -104,6 +104,7 @@ class CourseAdminForm(forms.ModelForm):
             'categories': forms.CheckboxSelectMultiple()
         }
 
+
 class EnrollmentForm(forms.Form):
     first_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
     middle_name = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -120,7 +121,7 @@ class EnrollmentForm(forms.Form):
     current_status = forms.ChoiceField(choices=[('student', 'Student'), ('graduate', 'Graduate'), ('professional', 'Working Professional'), ('entrepreneur', 'Entrepreneur')], widget=forms.Select(attrs={'class': 'form-select'}))
     field_of_study = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
-    course_of_interest = forms.CharField(max_length=100, widget=forms.Select(attrs={'class': 'form-select'}))
+    course_of_interest = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control', 'readonly': 'readonly'}))
     mode_of_learning = forms.ChoiceField(choices=[('online', 'Online Live Classes'), ('self_paced', 'Self-paced'), ('hybrid', 'Hybrid')], widget=forms.Select(attrs={'class': 'form-select'}))
     preferred_start_date = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
 
@@ -129,7 +130,6 @@ class EnrollmentForm(forms.Form):
 
     sponsorship = forms.ChoiceField(choices=[('self', 'Self'), ('parent', 'Parent'), ('employer', 'Employer'), ('scholarship', 'Scholarship')], widget=forms.Select(attrs={'class': 'form-select'}))
     payment_plan = forms.ChoiceField(choices=[('full', 'Full'), ('installment', 'Installment'), ('subscription', 'Subscription')], widget=forms.Select(attrs={'class': 'form-select'}))
-    proof_of_payment = forms.FileField(required=False, widget=forms.FileInput(attrs={'class': 'form-control'}))
 
     has_laptop = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
     has_internet = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
@@ -144,4 +144,10 @@ class EnrollmentForm(forms.Form):
 
     passport_photo = forms.FileField(widget=forms.FileInput(attrs={'class': 'form-control'}))
     id_card = forms.FileField(widget=forms.FileInput(attrs={'class': 'form-control'}))
-    resume = forms.FileField(required=False, widget=forms.FileInput(attrs={'class': 'form-control'}))
+
+    def __init__(self, *args, **kwargs):
+        course_title = kwargs.pop('course_title', None)
+        super().__init__(*args, **kwargs)
+        if course_title:
+            self.fields['course_of_interest'].initial = course_title
+        self.fields['course_of_interest'].widget.attrs['readonly'] = True

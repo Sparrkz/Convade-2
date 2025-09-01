@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import User, UserProfile
+from django.db import models
 
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
@@ -23,6 +24,20 @@ class UserAdmin(BaseUserAdmin):
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ['user', 'city', 'country']
-    search_fields = ['user__username', 'user__email', 'city', 'country']
-    list_filter = ['country', 'city']
+    def __init__(self, model, admin_site):
+        super().__init__(model, admin_site)
+
+        # Show all fields in list_display
+        self.list_display = ['user'] + [field.name for field in model._meta.fields if field.name not in ('id', 'user')]
+
+        # Search only text-based fields
+        self.search_fields = [
+            field.name for field in model._meta.fields
+            if isinstance(field, (models.CharField, models.TextField))
+        ]
+
+        # Filter on all choice or foreign key fields
+        self.list_filter = [
+            field.name for field in model._meta.fields
+            if field.choices or field.get_internal_type() in ["ForeignKey"]
+        ]
