@@ -154,6 +154,9 @@ ALLOWED_HOSTS=localhost,127.0.0.1
 DATABASE_URL=sqlite:///db.sqlite3
 ```
 
+<!-- client_max_body_size 50M; -->
+
+
 ### Social Authentication Setup
 To enable Google and Facebook login:
 
