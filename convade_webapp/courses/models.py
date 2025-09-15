@@ -114,3 +114,70 @@ class HomeCourse(models.Model):
 
     def __str__(self):
         return self.title
+
+class EnrollmentApplication(models.Model):
+    # Link to user and course
+    student = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='enrollment_applications')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='enrollment_applications')
+
+    # Personal Information
+    first_name = models.CharField(max_length=100)
+    middle_name = models.CharField(max_length=100, blank=True, null=True)
+    last_name = models.CharField(max_length=100)
+    date_of_birth = models.DateField()
+    GENDER_CHOICES = [('male', 'Male'), ('female', 'Female'), ('other', 'Other')]
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
+    nationality = models.CharField(max_length=100)
+    address = models.CharField(max_length=255)
+    phone_number = models.CharField(max_length=20)
+    email = models.EmailField()
+    CONTACT_CHOICES = [('phone', 'Phone'), ('whatsapp', 'WhatsApp'), ('email', 'Email')]
+    preferred_contact_method = models.CharField(max_length=10, choices=CONTACT_CHOICES)
+
+    # Educational Background
+    QUALIFICATION_CHOICES = [('secondary', 'Secondary School'), ('undergraduate', 'Undergraduate'), ('graduate', 'Graduate'), ('other', 'Other')]
+    highest_qualification = models.CharField(max_length=20, choices=QUALIFICATION_CHOICES)
+    STATUS_CHOICES = [('student', 'Student'), ('graduate', 'Graduate'), ('professional', 'Working Professional'), ('entrepreneur', 'Entrepreneur')]
+    current_status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    field_of_study = models.CharField(max_length=100, blank=True, null=True)
+
+    # Course Preferences
+    LEARNING_MODE_CHOICES = [('online', 'Online Live Classes'), ('self_paced', 'Self-paced'), ('hybrid', 'Hybrid')]
+    mode_of_learning = models.CharField(max_length=20, choices=LEARNING_MODE_CHOICES)
+    preferred_start_date = models.DateField()
+
+    # Motivation and Aspirations
+    motivation = models.TextField()
+    ASPIRATION_CHOICES = [('tech_career', 'Tech Career'), ('startup', 'Start-up'), ('freelancing', 'Freelancing'), ('job_readiness', 'Job Readiness')]
+    career_aspiration = models.CharField(max_length=20, choices=ASPIRATION_CHOICES)
+
+    # Financial Information
+    SPONSORSHIP_CHOICES = [('self', 'Self'), ('parent', 'Parent'), ('employer', 'Employer'), ('scholarship', 'Scholarship')]
+    sponsorship = models.CharField(max_length=20, choices=SPONSORSHIP_CHOICES)
+    PAYMENT_PLAN_CHOICES = [('full', 'Full'), ('installment', 'Installment'), ('subscription', 'Subscription')]
+    payment_plan = models.CharField(max_length=20, choices=PAYMENT_PLAN_CHOICES)
+
+    # Technical Readiness
+    has_laptop = models.BooleanField(default=False)
+    has_internet = models.BooleanField(default=False)
+
+    # Emergency Contact
+    emergency_contact_name = models.CharField(max_length=100)
+    emergency_contact_relationship = models.CharField(max_length=50)
+    emergency_contact_phone = models.CharField(max_length=20)
+
+    # Agreements
+    agree_terms = models.BooleanField()
+    agree_attendance = models.BooleanField()
+    agree_privacy = models.BooleanField()
+
+    # Document Uploads
+    passport_photo = models.ImageField(upload_to='enrollment_passports/')
+    id_card = models.ImageField(upload_to='enrollment_ids/')
+
+    # Admin fields
+    created_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=20, choices=[('pending', 'Pending'), ('approved', 'Approved'), ('rejected', 'Rejected')], default='pending')
+
+    def __str__(self):
+        return f"Application for {self.first_name} {self.last_name} - {self.course.title}"

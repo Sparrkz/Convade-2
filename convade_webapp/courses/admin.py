@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Course, CourseContent, Enrollment, CourseCategory, HomeCourse
+from .models import EnrollmentApplication
 from .forms import CourseAdminForm
 
 class CourseContentInline(admin.TabularInline):
@@ -53,4 +54,11 @@ class EnrollmentAdmin(admin.ModelAdmin):
 class CourseCategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'description']
     search_fields = ['name']
+    # filter_horizontal = ['courses']
+
+@admin.register(EnrollmentApplication)
+class EnrollmentApplicationAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'course', 'status', 'created_at')
+    list_filter = ('status', 'course', 'created_at')
+    search_fields = ('first_name', 'last_name', 'email', 'course__title')
     # filter_horizontal = ['courses']

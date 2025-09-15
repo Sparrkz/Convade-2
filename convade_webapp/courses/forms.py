@@ -1,5 +1,5 @@
 from django import forms
-from .models import Course, CourseCategory
+from .models import Course, CourseCategory, EnrollmentApplication
 
 class CourseForm(forms.ModelForm):
     categories = forms.ModelMultipleChoiceField(
@@ -105,49 +105,45 @@ class CourseAdminForm(forms.ModelForm):
         }
 
 
-class EnrollmentForm(forms.Form):
-    first_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    middle_name = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    last_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    date_of_birth = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
-    gender = forms.ChoiceField(choices=[('male', 'Male'), ('female', 'Female'), ('other', 'Other')], widget=forms.Select(attrs={'class': 'form-select'}))
-    nationality = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    address = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    phone_number = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
-    preferred_contact_method = forms.ChoiceField(choices=[('phone', 'Phone'), ('whatsapp', 'WhatsApp'), ('email', 'Email')], widget=forms.RadioSelect)
-
-    highest_qualification = forms.ChoiceField(choices=[('secondary', 'Secondary School'), ('undergraduate', 'Undergraduate'), ('graduate', 'Graduate'), ('other', 'Other')], widget=forms.Select(attrs={'class': 'form-select'}))
-    current_status = forms.ChoiceField(choices=[('student', 'Student'), ('graduate', 'Graduate'), ('professional', 'Working Professional'), ('entrepreneur', 'Entrepreneur')], widget=forms.Select(attrs={'class': 'form-select'}))
-    field_of_study = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
-
-    course_of_interest = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control', 'readonly': 'readonly'}))
-    mode_of_learning = forms.ChoiceField(choices=[('online', 'Online Live Classes'), ('self_paced', 'Self-paced'), ('hybrid', 'Hybrid')], widget=forms.Select(attrs={'class': 'form-select'}))
-    preferred_start_date = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
-
-    motivation = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 3}))
-    career_aspiration = forms.ChoiceField(choices=[('tech_career', 'Tech Career'), ('startup', 'Start-up'), ('freelancing', 'Freelancing'), ('job_readiness', 'Job Readiness')], widget=forms.Select(attrs={'class': 'form-select'}))
-
-    sponsorship = forms.ChoiceField(choices=[('self', 'Self'), ('parent', 'Parent'), ('employer', 'Employer'), ('scholarship', 'Scholarship')], widget=forms.Select(attrs={'class': 'form-select'}))
-    payment_plan = forms.ChoiceField(choices=[('full', 'Full'), ('installment', 'Installment'), ('subscription', 'Subscription')], widget=forms.Select(attrs={'class': 'form-select'}))
-
-    has_laptop = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
-    has_internet = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
-
-    emergency_contact_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    emergency_contact_relationship = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    emergency_contact_phone = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'class': 'form-control'}))
-
-    agree_terms = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
-    agree_attendance = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
-    agree_privacy = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
-
-    passport_photo = forms.FileField(widget=forms.FileInput(attrs={'class': 'form-control'}))
-    id_card = forms.FileField(widget=forms.FileInput(attrs={'class': 'form-control'}))
+class EnrollmentForm(forms.ModelForm):
+    class Meta:
+        model = EnrollmentApplication
+        exclude = ['student', 'course', 'status', 'created_at']
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'middle_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'date_of_birth': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'gender': forms.Select(attrs={'class': 'form-select'}),
+            'nationality': forms.TextInput(attrs={'class': 'form-control'}),
+            'address': forms.TextInput(attrs={'class': 'form-control'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'preferred_contact_method': forms.RadioSelect,
+            'highest_qualification': forms.Select(attrs={'class': 'form-select'}),
+            'current_status': forms.Select(attrs={'class': 'form-select'}),
+            'field_of_study': forms.TextInput(attrs={'class': 'form-control'}),
+            'mode_of_learning': forms.Select(attrs={'class': 'form-select'}),
+            'preferred_start_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'motivation': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'career_aspiration': forms.Select(attrs={'class': 'form-select'}),
+            'sponsorship': forms.Select(attrs={'class': 'form-select'}),
+            'payment_plan': forms.Select(attrs={'class': 'form-select'}),
+            'has_laptop': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'has_internet': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'emergency_contact_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'emergency_contact_relationship': forms.TextInput(attrs={'class': 'form-control'}),
+            'emergency_contact_phone': forms.TextInput(attrs={'class': 'form-control'}),
+            'agree_terms': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'agree_attendance': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'agree_privacy': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'passport_photo': forms.FileInput(attrs={'class': 'form-control'}),
+            'id_card': forms.FileInput(attrs={'class': 'form-control'}),
+        }
 
     def __init__(self, *args, **kwargs):
-        course_title = kwargs.pop('course_title', None)
+        kwargs.pop('course_title', None)  # No longer needed
         super().__init__(*args, **kwargs)
-        if course_title:
-            self.fields['course_of_interest'].initial = course_title
-        self.fields['course_of_interest'].widget.attrs['readonly'] = True
+        self.fields['agree_terms'].required = True
+        self.fields['agree_attendance'].required = True
+        self.fields['agree_privacy'].required = True

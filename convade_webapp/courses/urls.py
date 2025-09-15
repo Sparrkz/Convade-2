@@ -7,7 +7,6 @@ urlpatterns = [
     path('', views.CourseListView.as_view(), name='list'),
     path('<int:pk>/', views.CourseDetailView.as_view(), name='detail'),
     path('<int:pk>/enroll/', views.EnrollView.as_view(), name='enroll'),
-    path('<int:pk>/enroll/confirm/', views.EnrollConfirmView.as_view(), name='enroll_confirm'),
     path('<int:pk>/enroll/success/', views.EnrollSuccessView.as_view(), name='enroll_success'),
     path('<int:pk>/payment/', views.PaymentMethodSelectView.as_view(), name='payment'),
     path('<int:pk>/payment/paystack/', views.PaystackInitView.as_view(), name='paystack_init'),

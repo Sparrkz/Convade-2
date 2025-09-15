@@ -211,7 +211,7 @@ API documentation available at `/api/docs/` when running in development mode.
 - [ ] Set up SSL certificates
 - [ ] Configure domain and ALLOWED_HOSTS
 - [ ] Create Superuser with `python manage.py createsuperuser --settings=convade_lms.settings_production`
-- [ ] After using git pull on the vps - restart the server with ('sudo systemctl restart gunicorn')
+- [ ] After using git pull on the vps - restart the server with 'sudo systemctl restart gunicorn'
 
 ### Recommended Deployment Platforms
 - **Heroku**: Easy deployment with PostgreSQL addon

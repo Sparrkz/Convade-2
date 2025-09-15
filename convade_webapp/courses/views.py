@@ -81,6 +81,8 @@ class FlutterwaveInitView(LoginRequiredMixin, TemplateView):
         else:
             error_msg = response.json().get('message', 'Flutterwave payment initialization failed.')
             return render(request, 'courses/payment_error.html', {'message': error_msg})
+
+
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from .forms import EnrollmentForm
@@ -92,7 +94,7 @@ from django.contrib import messages
 from django.db.models import Q, Count
 from django.http import JsonResponse
 from django.urls import reverse_lazy, reverse
-from .models import Course, CourseContent, CourseCategory, Enrollment, HomeCourse
+from .models import Course, CourseContent, CourseCategory, Enrollment, HomeCourse, EnrollmentApplication
 from .forms import CourseForm, CourseSearchForm
 
 # Create your views here.
@@ -201,101 +203,56 @@ class CourseDetailView(DetailView):
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, TemplateView, FormView
 from .forms import CourseForm, CourseSearchForm, EnrollmentForm
 
-class EnrollView(LoginRequiredMixin, FormView):
-    template_name = 'courses/enroll.html'
+class EnrollView(LoginRequiredMixin, CreateView):
+    model = EnrollmentApplication
     form_class = EnrollmentForm
+    template_name = 'courses/enroll.html'
 
     def get_success_url(self):
-        return reverse('courses:content', kwargs={'pk': self.kwargs['pk']})
-
-
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        course = get_object_or_404(Course, pk=self.kwargs['pk'], is_published=True)
-        kwargs['course_title'] = course.title
-        return kwargs
+        return reverse('courses:enroll_success', kwargs={'pk': self.kwargs['pk']})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['course'] = get_object_or_404(Course, pk=self.kwargs['pk'], is_published=True)
+        context['course'] = get_object_or_404(Course, pk=self.kwargs['pk'])
         return context
 
+    def get_initial(self):
+        initial = super().get_initial()
+        user = self.request.user
+        initial.update({
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            'email': user.email,
+        })
+        # You can pre-populate more fields from the user's profile if they exist
+        return initial
+
     def form_valid(self, form):
-        # Convert date fields to string for session serialization and remove file fields
-        data = form.cleaned_data.copy()
-        file_field_names = []
-        for name, field in form.fields.items():
-            if isinstance(field, (forms.FileField,)):
-                file_field_names.append(name)
-        for k, v in data.items():
-            if hasattr(v, 'isoformat'):
-                data[k] = v.isoformat()
-        for name in file_field_names:
-            data.pop(name, None)
-        self.request.session['enroll_form_data'] = data
-        return redirect('courses:enroll_confirm', pk=self.kwargs['pk'])
-
-
-# Step 2: Confirmation page
-class EnrollConfirmView(LoginRequiredMixin, TemplateView):
-    template_name = 'courses/enroll_confirm.html'
-
-    def get(self, request, *args, **kwargs):
-        form_data = request.session.get('enroll_form_data')
-        if not form_data:
-            return redirect('courses:enroll', pk=kwargs['pk'])
-        form = EnrollmentForm(initial=form_data, course_title=get_object_or_404(Course, pk=kwargs['pk']).title)
-        return render(request, self.template_name, {'form': form, 'course': get_object_or_404(Course, pk=kwargs['pk'])})
-
-    def post(self, request, *args, **kwargs):
-        from accounts.models import UserProfile
-        form_data = request.session.get('enroll_form_data')
-        if not form_data:
-            return redirect('courses:enroll', pk=kwargs['pk'])
         course = get_object_or_404(Course, pk=kwargs['pk'])
-        # Prevent duplicate enrollments
-        existing = Enrollment.objects.filter(student=request.user, course=course).first()
-        if existing:
-            request.session['matric_no'] = getattr(existing, 'matric_no', '')
-            messages.warning(request, 'You are already enrolled in this course!')
-            return redirect('courses:enroll_success', pk=course.pk)
 
-        # Create enrollment
-        enrollment = Enrollment.objects.create(
+        if Enrollment.objects.filter(student=self.request.user, course=course).exists():
+            messages.warning(request, 'You are already enrolled in this course!')
+            return redirect('courses:detail', pk=course.pk)
+
+        form.instance.student = self.request.user
+        form.instance.course = course
+
+        response = super().form_valid(form)
+
+        messages.success(self.request, 'Your enrollment application has been submitted successfully!')
+
+        enrollment, created = Enrollment.objects.get_or_create(
             student=request.user,
             course=course,
-            is_active=True
+            defaults={'is_active': True}
         )
-        # Generate a matriculation number (simple example)
-        matric_no = f"CV{enrollment.pk:05d}"
-        enrollment.matric_no = matric_no
-        enrollment.save()
-        request.session['matric_no'] = matric_no
+        if created:
+            matric_no = f"CV{enrollment.pk:05d}"
+            enrollment.matric_no = matric_no
+            enrollment.save()
+            self.request.session['matric_no'] = matric_no
 
-        # Update or create UserProfile with form data
-        profile, created = UserProfile.objects.get_or_create(user=request.user)
-        # Map all form_data fields that exist on UserProfile
-        profile_model_fields = [f.name for f in UserProfile._meta.fields if f.name not in ('id', 'user')]
-        for field in profile_model_fields:
-            if field in form_data:
-                setattr(profile, field, form_data[field])
-        # Save passport_photo and id_card if present in request.FILES
-        if 'passport_photo' in request.FILES:
-            profile.passport_photo = request.FILES['passport_photo']
-        if 'id_card' in request.FILES:
-            profile.id_card = request.FILES['id_card']
-        profile.save()
-        print(f"[DEBUG] UserProfile for {request.user.username} saved/updated: {profile}")
-
-        # Also update User basic info if present
-        user = request.user
-        if 'phone_number' in form_data:
-            user.phone_number = form_data['phone_number']
-        if 'date_of_birth' in form_data:
-            user.date_of_birth = form_data['date_of_birth']
-        user.save()
-
-        return redirect('courses:enroll_success', pk=course.pk)
+        return response
 
 
 # Step 3: Show course info and payment CTA
