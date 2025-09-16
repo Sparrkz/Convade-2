@@ -10,7 +10,7 @@ django-crispy-forms==2.4
 django-widget-tweaks==1.5.0
 djangorestframework==3.16.0
 idna==3.10
-pillow==11.2.1
+docker-compose up -d --build
 pycparser==2.22
 PyJWT==2.10.1
 python-decouple==3.8

@@ -227,11 +227,12 @@ class EnrollView(LoginRequiredMixin, CreateView):
         # You can pre-populate more fields from the user's profile if they exist
         return initial
 
+
     def form_valid(self, form):
-        course = get_object_or_404(Course, pk=kwargs['pk'])
+        course = get_object_or_404(Course, pk=self.kwargs['pk'])
 
         if Enrollment.objects.filter(student=self.request.user, course=course).exists():
-            messages.warning(request, 'You are already enrolled in this course!')
+            messages.warning(self.request, 'You are already enrolled in this course!')
             return redirect('courses:detail', pk=course.pk)
 
         form.instance.student = self.request.user
@@ -242,7 +243,7 @@ class EnrollView(LoginRequiredMixin, CreateView):
         messages.success(self.request, 'Your enrollment application has been submitted successfully!')
 
         enrollment, created = Enrollment.objects.get_or_create(
-            student=request.user,
+            student=self.request.user,
             course=course,
             defaults={'is_active': True}
         )
